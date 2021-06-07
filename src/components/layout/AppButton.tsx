@@ -6,16 +6,19 @@ interface Props {
   onClick: any;
   backgroundColor?: string;
   color?: string;
+  size?: string;
+  disabled?: boolean;
 }
 
-const AppButton: React.FC<Props> = ({ label, onClick, backgroundColor, color }) => {
+const AppButton: React.FC<Props> = ({ label, onClick, backgroundColor, color, size, disabled }) => {
   return (
     <div style={{display: 'inline', paddingLeft: 5, paddingRight: 5}}>
       <button
         onClick={() => onClick()}
         type="button"
-        className="btn btn-outline-primary"
+        className={`btn btn-outline-primary ${size}`}
         style={{backgroundColor: backgroundColor && backgroundColor, color: color && color, borderColor: 'white'}}
+        disabled={disabled}
       >
         {label}
       </button>

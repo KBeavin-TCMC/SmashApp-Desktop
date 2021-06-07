@@ -1,5 +1,6 @@
 import React from "react";
 import { IoPersonCircleOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 import Colors from "../../constants/Colors";
 
 const RightHeader = () => {
@@ -10,22 +11,30 @@ const RightHeader = () => {
         flex: 1,
         flexDirection: "column",
         alignItems: "flex-end",
-        marginLeft: 10,
-        marginRight: 10,
+        marginLeft: "1vw",
+        marginRight: "1vw",
       }}
     >
-      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-        <IoPersonCircleOutline
+      <Link to="/">
+        <div
           style={{
-            fontSize: 38,
-            fontWeight: "bold",
-            color: Colors.SMT_Primary_1_Light_1,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
-        />
-        <div>
-          <label style={{ color: "white" }}>Dashboard</label>
+        >
+          <IoPersonCircleOutline
+            style={{
+              fontSize: 38,
+              fontWeight: "bold",
+              color: Colors.SMT_Primary_1_Light_1,
+            }}
+          />
+          <div>
+            <label style={{ fontSize: 12, color: "white" }}>Dashboard</label>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
