@@ -1,9 +1,10 @@
 import React from 'react';
+import AppTitle from '../../components/layout/AppTitle';
 
 const DashboardScreen = () => {
     return (
         <div>
-          <h1>Dashboard Screen</h1>  
+          <AppTitle title='Dashboard' /> 
         </div>
     );
 }

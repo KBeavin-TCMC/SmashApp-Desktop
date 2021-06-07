@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import AppHeader from "./components/header/AppHeader";
 import "./content/styles/App.css";
 
-import AuthScreen from "./components/AuthScreen";
+import AuthScreen from "./screens/auth/AuthScreen";
 import AppContext from "./providers/AppContext";
 import { BrowserRouter as Router } from "react-router-dom";
 import Navigation from "./navigation/index";

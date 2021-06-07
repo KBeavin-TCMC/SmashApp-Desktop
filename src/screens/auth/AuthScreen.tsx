@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
-import Colors from "../constants/Colors";
-import logo from "../content/assets/smt_logo.png";
-import AppContext from "../providers/AppContext";
-import { isSuccessStatusCode } from "../utils/Helpers";
-import AppButton from "./layout/AppButton";
-import AppTextInput from "./layout/AppTextInput";
+import Colors from "../../constants/Colors";
+import logo from "../../content/assets/smt_logo.png";
+import AppContext from "../../providers/AppContext";
+import { isSuccessStatusCode } from "../../utils/Helpers";
+import AppButton from "../../components/layout/AppButton";
+import AppTextInput from "../../components/layout/AppTextInput";
+import { Link } from "react-router-dom";
 
 const AuthScreen = () => {
   const [email, setEmail] = useState("kyle.beavin@tcmcllc.com");
@@ -39,15 +40,23 @@ const AuthScreen = () => {
   };
 
   return (
-    <main className="row" style={{height: '100vh', backgroundColor: Colors.SMT_Secondary_1_Light_1}}>
-      <section className="col-6" style={{marginTop: '5vh'}}>
+    <main
+      className="row"
+      style={{
+        height: "100vh",
+        backgroundColor: Colors.SMT_Secondary_1_Light_1,
+      }}
+    >
+      <section className="col-6" style={{ marginTop: "5vh" }}>
         <img alt={"Logo"} src={logo} />
       </section>
       <section className="col-2" style={{ margin: "auto" }}>
-        <h1 style={{marginBottom: '1vh'}}>Log In</h1>
+        <h1 style={{ marginBottom: "1vh" }}>Log In</h1>
         <AppTextInput value={email} onChange={setEmail} />
         <AppTextInput value={password} onChange={setPassword} password />
-        <AppButton label='Log In!' onClick={login} />
+        <Link to='/dashboard'>
+          <AppButton label="Log In!" onClick={login} />
+        </Link>
       </section>
     </main>
   );

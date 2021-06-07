@@ -15,7 +15,7 @@ const RightHeader = () => {
         marginRight: "1vw",
       }}
     >
-      <Link to="/">
+      <Link to="/dashboard">
         <div
           style={{
             display: "flex",
