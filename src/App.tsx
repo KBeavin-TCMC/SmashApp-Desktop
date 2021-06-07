@@ -1,24 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import AppHeader from './components/header/AppHeader';
+import './content/styles/App.css'
 
-function App() {
+import AuthScreen from './components/AuthScreen';
+import AppContext from './providers/AppContext';
+
+const App = () => {
+  const [isAuth, setIsAuth] = useState(false);
+  const [token, setToken] = useState('');
+  const [grpId, setGrpId] = useState('');
+  const [id, setId] = useState('');
+  const [role, setRole] = useState('');
+  const [displayName, setDisplayName] = useState('');
+  const [image, setImage] = useState('');
+  const [grpArr, setGrpArr] = useState([]);
+
+  const userSettings = {
+    isAuth,
+    token,
+    grpId,
+    id,
+    displayName,
+    grpArr,
+    role,
+    image,
+    setDisplayName,
+    setToken,
+    setGrpId,
+    setIsAuth,
+    setId,
+    setGrpArr,
+    setRole,
+    setImage,
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AppContext.Provider value={userSettings}>
+      <AppHeader />
+      {!isAuth ? <AuthScreen/> : <div></div>}
+      </AppContext.Provider>
     </div>
   );
 }
