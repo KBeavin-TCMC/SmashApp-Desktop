@@ -1,9 +1,14 @@
 import React from 'react';
 
+import AppTabs from '../../components/layout/AppTabs';
+import AppTitle from '../../components/layout/AppTitle';
+
 const CrmScreen = () => {
+
     return (
-        <div>
-            <h1>CRM Screen</h1>
+        <div className='tabs'>
+            <AppTitle title='CRM' />
+            <AppTabs />
         </div>
     );
 }

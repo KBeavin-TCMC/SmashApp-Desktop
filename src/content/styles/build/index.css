@@ -1,0 +1,17 @@
+.tabs {
+  background-color: #BB1E10;
+  display: "block";
+  position: relative;
+  height: 1000;
+  width: 1000;
+}
+
+.foo {
+  height: 1000;
+}
+
+.bar {
+  width: 1000;
+}
+
+/*# sourceMappingURL=index.css.map */
