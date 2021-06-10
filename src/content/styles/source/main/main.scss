@@ -1,0 +1,97 @@
+//======== Tables ========//
+.table-container {
+    
+    thead {
+        background-color: $SMT_Secondary_2_Light_2;
+
+        tr {
+            border: 1px solid $SMT_Secondary_1_Light_1;
+            font-size: small;
+        }        
+    }
+
+    tr {
+        border-bottom: 1px solid $SMT_Secondary_1_Light_1;
+
+        &:hover {
+            border-bottom: 2px solid $SMT_Secondary_1_Light_1;
+        }
+    }
+
+    td {
+        padding-left: 5px;
+        padding-right: 5px;
+        border-left: 1px solid $SMT_Secondary_1_Light_1;
+        border-right: 1px solid $SMT_Secondary_1_Light_1;
+        text-align: center;
+    }
+}
+
+
+//======== Tables ========//
+
+//======== Tabs ========//
+.tabs-container {
+    .tabs-list {
+        overflow: hidden;
+        background-color: $SMT_Tertiary_1;
+
+        button {
+            background-color: inherit;
+            float: left;
+            border: 1px solid $SMT_Secondary_1_Light_1;
+            outline: none;
+            cursor: pointer;
+            transition: 0.3s;
+            
+            h5 {
+                display: inline;
+            }
+
+            &.active {
+                background-color: $SMT_Secondary_1_Light_1;
+
+                &:hover {
+                    background-color: #ddd;
+                }
+            }
+
+            &:hover {
+                background-color: #ddd;
+              }
+        }
+    }
+
+    .tab-content-container {
+        min-height: 50vh;
+        max-height: 75vh;
+        background-color: $SMT_Secondary_1_Light_1;
+        overflow-y: scroll;
+
+        .tab-filter {
+            display: inline-block;
+            height: 100%;
+        }
+
+        .tab-content {
+            background-color: $SMT_Tertiary_1;
+            padding: 0;
+
+            .tabcontent {
+                display: none;
+            }
+        }
+    }
+}
+
+.tab-icon {
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    display: inline;
+
+    &:first-child {
+        font-size: 16px;
+    }
+}
+//======== Tabs ========//
