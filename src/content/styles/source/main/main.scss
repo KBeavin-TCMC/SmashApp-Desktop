@@ -13,8 +13,16 @@
     tr {
         border-bottom: 1px solid $SMT_Secondary_1_Light_1;
 
-        &:hover {
-            border-bottom: 2px solid $SMT_Secondary_1_Light_1;
+        // &:hover {
+        //     border-bottom: 2px solid $SMT_Secondary_1_Light_1;
+        // }
+    }
+
+    tbody {
+        tr {
+            &:hover {
+                background-color: lighten($SMT_Secondary_2_Light_2, 1);
+            }
         }
     }
 
@@ -26,8 +34,6 @@
         text-align: center;
     }
 }
-
-
 //======== Tables ========//
 
 //======== Tabs ========//

@@ -8,8 +8,8 @@
 .table-container tr {
   border-bottom: 1px solid #CCCCCC;
 }
-.table-container tr:hover {
-  border-bottom: 2px solid #CCCCCC;
+.table-container tbody tr:hover {
+  background-color: #cedeff;
 }
 .table-container td {
   padding-left: 5px;

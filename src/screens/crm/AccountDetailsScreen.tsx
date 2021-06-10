@@ -6,6 +6,8 @@ import AppContext from '../../providers/AppContext';
 import { isSuccessStatusCode } from '../../utils/Helpers';
 
 const AccountDetailsScreen = () => {
+    const { REACT_APP_TCMC_URI } = process.env;
+    console.log('env: ', REACT_APP_TCMC_URI);
     let route: {id: string} = useParams(); 
     const {grpId, token} = useContext(AppContext);
     const [account, setAccount] = useState();
