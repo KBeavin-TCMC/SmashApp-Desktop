@@ -1,13 +1,10 @@
-import React, { useContext } from "react";
 import Colors from "../../constants/Colors";
 import "../../content/styles/App.css";
-import AppContext from "../../providers/AppContext";
 import CenterHeader from "./CenterHeader";
 import LeftHeader from "./LeftHeader";
 import RightHeader from "./RightHeader";
 
 const AppHeader = () => {
-  const { isAuth } = useContext(AppContext);
 
   return (
     <header style={{ backgroundColor: Colors.SMT_Primary_2 }}>

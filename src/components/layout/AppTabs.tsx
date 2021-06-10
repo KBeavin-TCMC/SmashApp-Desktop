@@ -16,8 +16,6 @@ const AppTabs: React.FC<Props> = ({List, Calendar, Map, Filter}) => {
     { name: "Tokyo", active: false },
   ]);
 
-  console.log(List);
-
   return (
     <div className="tabs-container">
       <div className="tabs-list">

@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AppHeader from "../components/header/AppHeader";
+import AccountDetailsScreen from "../screens/crm/AccountDetailsScreen";
 import CrmScreen from "../screens/header/CrmScreen";
 import DashboardScreen from "../screens/header/DashboardScreen";
 import InvoicesScreen from "../screens/header/InvoicesScreen";
@@ -17,7 +18,11 @@ const Navigation = () => {
       <Switch>
         <Route path="/dashboard" component={DashboardScreen} exact />
         <Route path="/settings" component={SettingsScreen} exact />
+
+        {/* CRM Routes */}
         <Route path="/crm" component={CrmScreen} exact />
+        <Route path='/crm/accounts/:id' component={AccountDetailsScreen} />
+
         <Route path="/orders" component={OrdersScreen} exact />
         <Route path="/routes" component={RoutesScreen} exact />
         <Route path="/invoices" component={InvoicesScreen} exact />

@@ -1,5 +1,4 @@
 import React from "react";
-import Colors from "../../constants/Colors";
 
 interface Props {
   title: string;
