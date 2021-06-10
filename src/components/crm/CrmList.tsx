@@ -6,12 +6,14 @@ import { isSuccessStatusCode } from "../../utils/Helpers";
 
 const CrmList = () => {
   let history = useHistory();
+  const { REACT_APP_TCMC_URI } = process.env;
+
   const { grpId, token } = useContext(AppContext);
   const [accounts, setAccounts] = useState([]);
 
   useEffect(() => {
     const getAccounts = async () => {
-        fetch(`${"http://localhost:3000"}/api/accountsBy`, {
+        fetch(`${REACT_APP_TCMC_URI}/api/accountsBy`, {
           method: "POST",
           headers: { "Content-type": "application/json", "x-access-token": token },
           body: JSON.stringify({ group_id: grpId }),

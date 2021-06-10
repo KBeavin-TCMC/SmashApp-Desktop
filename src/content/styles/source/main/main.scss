@@ -1,6 +1,5 @@
 //======== Tables ========//
 .table-container {
-    
     thead {
         background-color: $SMT_Secondary_2_Light_2;
 
@@ -12,17 +11,19 @@
 
     tr {
         border-bottom: 1px solid $SMT_Secondary_1_Light_1;
-
-        // &:hover {
-        //     border-bottom: 2px solid $SMT_Secondary_1_Light_1;
-        // }
     }
 
     tbody {
         tr {
+            background-color: $SMT_Tertiary_1;
             &:hover {
-                background-color: lighten($SMT_Secondary_2_Light_2, 1);
+                // background-color: $SMT_Secondary_2_Light_2;
+                background-color: lighten($SMT_Secondary_2_Light_2, 7%);
             }
+        }
+
+        &:hover {
+            cursor: pointer;
         }
     }
 
