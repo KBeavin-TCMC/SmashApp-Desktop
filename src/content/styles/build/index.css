@@ -63,7 +63,6 @@
   padding: 20px;
 }
 .tabs-container .tab-content-container .filter-btn {
-  margin: auto;
   margin-bottom: 10px;
 }
 .tabs-container .tab-content-container .tab-content {
@@ -103,6 +102,9 @@
   padding-right: 13px;
   padding-top: 3px;
   padding-bottom: 3px;
+}
+.button.primary.block {
+  width: 100%;
 }
 .button.sm {
   padding-left: 8px;

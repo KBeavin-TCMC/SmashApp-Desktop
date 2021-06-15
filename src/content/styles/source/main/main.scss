@@ -87,7 +87,6 @@
         }
 
         .filter-btn {
-            margin: auto;
             margin-bottom: 10px;
         }
 
@@ -116,6 +115,7 @@
 
 //======= Buttons ======//
 .button {
+    
     &.primary {
         background-color: $SMT_Secondary_2_Dark_1;
         color: $SMT_Tertiary_1;
@@ -125,6 +125,7 @@
         padding-right: 14px;
         padding-top: 4px;
         padding-bottom: 4px;
+        
     
         &.outlined {
             background-color: $SMT_Tertiary_1;
@@ -135,6 +136,10 @@
             padding-right: 13px;
             padding-top: 3px;
             padding-bottom: 3px;
+        }
+
+        &.block {
+            width: 100%;
         }
     }
 

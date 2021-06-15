@@ -11,21 +11,31 @@ interface Props {
   outlined?: boolean;
   icon?: {type: string; name: string};
   className?: string;
+  block?: boolean;
 }
 
-const AppButton: React.FC<Props> = ({ label, onClick, backgroundColor, size, disabled, outlined, icon }) => {
+const AppButton: React.FC<Props> = ({ label, onClick, backgroundColor, size, disabled, outlined, icon, block }) => {
   
   const getClassNames = (): string => {
     let classNames: string = 'button primary';
 
     if (outlined) classNames = classNames + ' outlined';
     if (size) classNames = classNames + ' ' + size;
+    if (block) classNames = classNames + ' block';
 
     return classNames;
-  }
+  };
+
+  const getContainerStyles = () => {
+    let styles: any = { display: "inline", paddingLeft: 5, paddingRight: 5 }
+
+    if (block) styles['width'] = '100%';
+    
+    return styles;
+  };
 
   return (
-    <div style={{ display: "inline", paddingLeft: 5, paddingRight: 5 }}>
+    <div style={getContainerStyles()} >
       <button
         onClick={() => onClick()}
         type="button"

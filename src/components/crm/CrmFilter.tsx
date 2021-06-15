@@ -25,6 +25,7 @@ const CrmFilter: React.FC<Props> = ({setSelected, filter }) => {
           label="Show All"
           onClick={() => setFilter(0)}
           outlined={!filter.list[0].selected}
+          block
         />
       </div>
       <div className="d-flex justify-content-center filter-btn">
@@ -32,6 +33,7 @@ const CrmFilter: React.FC<Props> = ({setSelected, filter }) => {
           label="Owned By Me"
           onClick={() => setFilter(1)}
           outlined={!filter.list[1].selected}
+          block
         />
       </div>
       <div className="d-flex justify-content-center filter-btn">
@@ -39,27 +41,29 @@ const CrmFilter: React.FC<Props> = ({setSelected, filter }) => {
           label="Unassigned"
           onClick={() => setFilter(2)}
           outlined={!filter.list[2].selected}
+          block
         />
       </div>
+      <hr/>
       <div className="d-flex justify-content-center filter-btn">
         <AppButton
           label="+ Add View"
-          onClick={() => setFilter(3)}
-          outlined={!filter.list[3].selected}
+          onClick={() => null}
+          block
         />
       </div>
       <div className="d-flex justify-content-center filter-btn">
         <AppButton
           label="Schedule Demo"
-          onClick={() => setFilter(4)}
-          outlined={!filter.list[4].selected}
+          onClick={() => null}
+          block
         />
       </div>
       <div className="d-flex justify-content-center filter-btn">
         <AppButton
           label="Create Agreement"
-          onClick={() => setFilter(5)}
-          outlined={!filter.list[5].selected}
+          onClick={() => null}
+          block
         />
       </div>
     </div>
