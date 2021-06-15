@@ -1,0 +1,65 @@
+//======= Bootstrap =====//
+.col-1 {
+    &.td-checkbox {
+        width: 0;
+    }
+}
+
+.btn {
+    border: 0 none;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.btn-primary {
+    background: $SMT_Secondary_2_Dark_1;
+    color: $SMT_Tertiary_1;
+
+    &:focus {
+        border: 0 none;
+        outline: 0 none;
+        box-shadow: none;
+    }
+}
+
+.btn-primary:hover {
+    background: $SMT_Secondary_2_Dark_1;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: $SMT_Secondary_2_Dark_1;
+}
+
+// .btn-primary:active, .btn-primary.active {
+//     background: #007299;
+//     box-shadow: none;
+// }
+
+.btn-outline-primary {
+    background-color: $SMT_Tertiary_1;
+    border-width: 2px;
+    border-color: $SMT_Secondary_2_Dark_1;
+    border-style: solid;
+    color: $SMT_Secondary_2_Dark_1;
+    font-weight: bold;
+
+    &:hover {
+        background: $SMT_Tertiary_1;
+        color: $SMT_Secondary_2_Dark_1;
+        border-color: $SMT_Secondary_2_Dark_1;
+    }
+
+    &:focus {
+        border: 0 $SMT_Secondary_2_Dark_1;
+        outline: 0 none;
+        box-shadow: none !important;
+    }
+
+    &:checked {
+        border: 0 $SMT_Secondary_2_Dark_1;
+        outline: 0 none;
+        box-shadow: none;
+    }
+}

@@ -61,9 +61,9 @@ const AppTabs: React.FC<Props> = ({List, Calendar, Map, Filter}) => {
       </div>
 
       {/* Tab Content */}
-      <div className='row tab-content-container'>
+      <div className='row g-0 tab-content-container'>
         <div className='col-2 tab-filter' >
-          <div>{Filter}</div>
+          <div className='tab-filter-container'>{Filter}</div>
         </div>
 
         <div className='col-10 tab-content'>

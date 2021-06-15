@@ -17,16 +17,16 @@ const CenterHeader = () => {
         style={{ alignSelf: "center", marginLeft: "1vw", marginRight: "1vw" }}
       >
         <Link to="/crm">
-          <AppButton size={"btn-sm"} label="CRM" onClick={() => null} />
+          <AppButton size={"sm"} label="CRM" onClick={() => null} />
         </Link>
         <Link to="/orders">
-          <AppButton size={"btn-sm"} label="Orders" onClick={() => null} />
+          <AppButton size={"sm"} label="Orders" onClick={() => null} />
         </Link>
         <Link to="/routes">
-          <AppButton size={"btn-sm"} label="Routes" onClick={() => null} />
+          <AppButton size={"sm"} label="Routes" onClick={() => null} />
         </Link>
         <Link to="/invoices">
-          <AppButton size={"btn-sm"} label="Invoices" onClick={() => null} />
+          <AppButton size={"sm"} label="Invoices" onClick={() => null} />
         </Link>
       </div>
     </div>

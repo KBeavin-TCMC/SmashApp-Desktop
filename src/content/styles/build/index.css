@@ -18,8 +18,8 @@
   cursor: pointer;
 }
 .table-container td {
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-left: 1px solid #CCCCCC;
   border-right: 1px solid #CCCCCC;
   text-align: center;
@@ -59,6 +59,13 @@
   display: inline-block;
   height: 100%;
 }
+.tabs-container .tab-content-container .tab-filter .tab-filter-container {
+  padding: 20px;
+}
+.tabs-container .tab-content-container .filter-btn {
+  margin: auto;
+  margin-bottom: 10px;
+}
 .tabs-container .tab-content-container .tab-content {
   background-color: #FFFFFF;
   padding: 0;
@@ -75,6 +82,87 @@
 }
 .tab-icon:first-child {
   font-size: 16px;
+}
+
+.button.primary {
+  background-color: #003069;
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.button.primary.outlined {
+  background-color: #FFFFFF;
+  color: #003069;
+  font-weight: bold;
+  border: 2px solid #003069;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.button.sm {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.col-1.td-checkbox {
+  width: 0;
+}
+
+.btn {
+  border: 0 none;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  outline: 0 none;
+}
+
+.btn-primary {
+  background: #003069;
+  color: #FFFFFF;
+}
+.btn-primary:focus {
+  border: 0 none;
+  outline: 0 none;
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  background: #003069;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  background: #003069;
+}
+
+.btn-outline-primary {
+  background-color: #FFFFFF;
+  border-width: 2px;
+  border-color: #003069;
+  border-style: solid;
+  color: #003069;
+  font-weight: bold;
+}
+.btn-outline-primary:hover {
+  background: #FFFFFF;
+  color: #003069;
+  border-color: #003069;
+}
+.btn-outline-primary:focus {
+  border: 0 #003069;
+  outline: 0 none;
+  box-shadow: none !important;
+}
+.btn-outline-primary:checked {
+  border: 0 #003069;
+  outline: 0 none;
+  box-shadow: none;
 }
 
 .foo {

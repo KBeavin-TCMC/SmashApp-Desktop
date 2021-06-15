@@ -8,16 +8,29 @@ interface Props {
   color?: string;
   size?: string;
   disabled?: boolean;
+  outlined?: boolean;
+  icon?: {type: string; name: string};
+  className?: string;
 }
 
-const AppButton: React.FC<Props> = ({ label, onClick, backgroundColor, color, size, disabled }) => {
+const AppButton: React.FC<Props> = ({ label, onClick, backgroundColor, size, disabled, outlined, icon }) => {
+  
+  const getClassNames = (): string => {
+    let classNames: string = 'button primary';
+
+    if (outlined) classNames = classNames + ' outlined';
+    if (size) classNames = classNames + ' ' + size;
+
+    return classNames;
+  }
+
   return (
-    <div style={{display: 'inline', paddingLeft: 5, paddingRight: 5}}>
+    <div style={{ display: "inline", paddingLeft: 5, paddingRight: 5 }}>
       <button
         onClick={() => onClick()}
         type="button"
-        className={`btn btn-outline-primary ${size}`}
-        style={{backgroundColor: backgroundColor && backgroundColor, color: color && color, borderColor: 'white'}}
+        className={getClassNames()}
+        style={{backgroundColor: backgroundColor}}
         disabled={disabled}
       >
         {label}
@@ -26,9 +39,9 @@ const AppButton: React.FC<Props> = ({ label, onClick, backgroundColor, color, si
   );
 };
 
-AppButton.defaultProps = {
-    backgroundColor: Colors.SMT_Secondary_2_Dark_1,
-    color: Colors.SMT_Tertiary_1,
-};
+// AppButton.defaultProps = {
+//     backgroundColor: Colors.SMT_Secondary_2_Dark_1,
+//     color: Colors.SMT_Tertiary_1,
+// };
 
 export default AppButton;

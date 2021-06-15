@@ -32,10 +32,10 @@ const AccountDetailsScreen = () => {
               });
           };
         getAccountDetails();
-      }, [grpId, token]);
+      }, [grpId, token, REACT_APP_TCMC_URI, route.id]);
 
     return (
-        <div>
+        <div key={account}>
           <AppTitle title={`Account: ${route.id}`} />   
         </div>
     );

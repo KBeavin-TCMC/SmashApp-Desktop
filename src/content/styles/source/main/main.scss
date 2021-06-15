@@ -17,7 +17,6 @@
         tr {
             background-color: $SMT_Tertiary_1;
             &:hover {
-                // background-color: $SMT_Secondary_2_Light_2;
                 background-color: lighten($SMT_Secondary_2_Light_2, 7%);
             }
         }
@@ -28,12 +27,15 @@
     }
 
     td {
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
         border-left: 1px solid $SMT_Secondary_1_Light_1;
         border-right: 1px solid $SMT_Secondary_1_Light_1;
         text-align: center;
+
     }
+
+
 }
 //======== Tables ========//
 
@@ -78,6 +80,15 @@
         .tab-filter {
             display: inline-block;
             height: 100%;
+
+            .tab-filter-container {
+                padding: 20px;
+            }
+        }
+
+        .filter-btn {
+            margin: auto;
+            margin-bottom: 10px;
         }
 
         .tab-content {
@@ -102,3 +113,36 @@
     }
 }
 //======== Tabs ========//
+
+//======= Buttons ======//
+.button {
+    &.primary {
+        background-color: $SMT_Secondary_2_Dark_1;
+        color: $SMT_Tertiary_1;
+        border: 1px solid $SMT_Tertiary_1;
+        border-radius: 5px;
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+    
+        &.outlined {
+            background-color: $SMT_Tertiary_1;
+            color: $SMT_Secondary_2_Dark_1;
+            font-weight: bold;
+            border: 2px solid $SMT_Secondary_2_Dark_1;
+            padding-left: 13px;
+            padding-right: 13px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+    }
+
+    &.sm {
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+}
+//======= Buttons ======//
