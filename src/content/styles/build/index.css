@@ -113,12 +113,42 @@
   padding-bottom: 1px;
 }
 
-.toaster {
+.app-toast {
   display: flex;
   align-items: center;
   padding: 15px;
   background-color: #CCCCCC;
   border-radius: 5px;
+}
+
+.app-modal .modal-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #101820;
+}
+.app-modal .modal-form {
+  position: absolute;
+  background-color: #FFFFFF;
+  height: 100%;
+}
+
+.app-form {
+  width: 30vw;
+}
+.app-form .form-header {
+  display: flex;
+  padding: 15px;
+  background-color: #BB1E10;
+  color: #FFFFFF;
+}
+.app-form .form-header .form-header-title {
+  flex: 1;
+}
+.app-form .form-header .form-header-icon:hover {
+  color: #CCCCCC;
 }
 
 .col-1.td-checkbox {

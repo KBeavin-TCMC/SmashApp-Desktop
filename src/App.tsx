@@ -6,6 +6,8 @@ import AppContext from "./providers/AppContext";
 import { BrowserRouter as Router } from "react-router-dom";
 import Navigation from "./navigation/index";
 import ToastProvider from "./providers/ToastProvider";
+import ModalProvider from "./providers/ModalProvider";
+import AppModal from "./components/layout/AppModal";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
@@ -39,9 +41,12 @@ const App = () => {
   return (
     <div>
       <AppContext.Provider value={userSettings}>
-        <ToastProvider>
-          <Router>{!isAuth ? <AuthScreen /> : <Navigation />}</Router>
-        </ToastProvider>
+        <ModalProvider>
+          <ToastProvider>
+            <AppModal />
+            <Router>{!isAuth ? <AuthScreen /> : <Navigation />}</Router>
+          </ToastProvider>
+        </ModalProvider>
       </AppContext.Provider>
     </div>
   );

@@ -8,7 +8,7 @@ export const Toast = () => {
   const props = useSpring({ opacity: toast.visible ? 1 : 0 });
 
   return (
-    <animated.div style={props} className="toaster">
+    <animated.div style={props} className="app-toast">
       <div>{toast.message}</div>
     </animated.div>
   );

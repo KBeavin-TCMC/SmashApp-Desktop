@@ -153,7 +153,7 @@
 //======= Buttons ======//
 
 //======== Toast =========//
-.toaster {
+.app-toast {
     display: flex;
     align-items: center;
     padding: 15px;
@@ -161,3 +161,45 @@
     border-radius: 5px;
 }
 //======== Toast =========//
+
+//======== Modal =========//
+.app-modal {
+    .modal-overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: $SMT_Primary_2;
+    }
+
+    .modal-form {
+        position: absolute;
+        background-color: $SMT_Tertiary_1;
+        height: 100%;
+    }
+}
+//======== Modal =========//
+
+//======== Form =========//
+.app-form {
+    width: 30vw;
+    
+    .form-header {
+        display: flex;
+        padding: 15px;
+        background-color: $SMT_Primary_1;
+        color: $SMT_Tertiary_1;
+
+        .form-header-title {
+            flex: 1;
+        }
+
+        .form-header-icon {
+            &:hover {
+                color: $SMT_Secondary_1_Light_1;
+            }
+        }
+    }
+}
+//======== Form =========//

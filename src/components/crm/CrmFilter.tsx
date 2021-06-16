@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ModalContext } from "../../providers/ModalProvider";
 import AppButton from "../layout/AppButton";
+import AddAccountForm from "./AddAccountForm";
 
 interface Props {
   setSelected: any;
@@ -7,7 +9,7 @@ interface Props {
 }
 
 const CrmFilter: React.FC<Props> = ({setSelected, filter }) => {
-
+  const {show} = useContext(ModalContext);
   const setFilter = (index: number) => {
     let newFilter = {...filter};
 
@@ -48,7 +50,7 @@ const CrmFilter: React.FC<Props> = ({setSelected, filter }) => {
       <div className="d-flex justify-content-center filter-btn">
         <AppButton
           label="+ Add View"
-          onClick={() => null}
+          onClick={() => show({form: <AddAccountForm />})}
           block
         />
       </div>
