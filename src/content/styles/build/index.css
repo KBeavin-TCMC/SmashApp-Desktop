@@ -113,6 +113,14 @@
   padding-bottom: 1px;
 }
 
+.toaster {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: #CCCCCC;
+  border-radius: 5px;
+}
+
 .col-1.td-checkbox {
   width: 0;
 }

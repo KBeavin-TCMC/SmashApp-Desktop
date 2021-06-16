@@ -8,6 +8,7 @@ import AppTitle from "../../components/layout/AppTitle";
 import CrmFilter from "../../components/crm/CrmFilter";
 import AppContext from "../../providers/AppContext";
 import { isSuccessStatusCode } from "../../utils/Helpers";
+import { ToastContext } from "../../providers/ToastProvider";
 
 const CrmScreen = () => {
   const [filter, setFilter] = useState({
@@ -28,6 +29,7 @@ const CrmScreen = () => {
   });
   const { REACT_APP_TCMC_URI } = process.env;
   const { grpId, token, displayName } = useContext(AppContext);
+  const {show} = useContext(ToastContext);
   const [accounts, setAccounts] = useState([]);
 
   useEffect(() => {
@@ -42,11 +44,11 @@ const CrmScreen = () => {
             if (isSuccessStatusCode(json.status)) {
               setAccounts(json.data);
             } else {
-              // show
+              show({message: json.message});
             }
           })
           .catch((err) => {
-            // show
+            show({message: err.message});
           });
       };
     getAccounts();

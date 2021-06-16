@@ -2,29 +2,34 @@ import React from "react";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import Colors from "../../constants/Colors";
+import AppToast from "../layout/AppToast";
 
 const RightHeader = () => {
   return (
     <div
       style={{
-        display: "flex",
         flex: 1,
-        flexDirection: "column",
-        alignItems: "flex-end",
-        marginLeft: "1vw",
-        marginRight: "1vw",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: 'flex-end'
       }}
     >
-      <Link to="/dashboard">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+      <div style={{ marginRight: '12vh', display: 'flex', alignSelf: 'stretch'}}>
+        <AppToast />
+      </div>
+
+      <div
+        style={{
+          marginLeft: "1vw",
+          marginRight: "1vw",
+        }}
+      >
+        <Link to="/dashboard">
           <IoPersonCircleOutline
             style={{
+              marginLeft: '10px',
+              marginRight: 'auto',
               fontSize: 38,
               fontWeight: "bold",
               color: Colors.SMT_Primary_1_Light_1,
@@ -33,8 +38,8 @@ const RightHeader = () => {
           <div>
             <label style={{ fontSize: 12, color: "white" }}>Dashboard</label>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 };

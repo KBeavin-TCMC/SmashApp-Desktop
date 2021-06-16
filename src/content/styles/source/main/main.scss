@@ -151,3 +151,13 @@
     }
 }
 //======= Buttons ======//
+
+//======== Toast =========//
+.toaster {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: $SMT_Secondary_1_Light_1;
+    border-radius: 5px;
+}
+//======== Toast =========//
