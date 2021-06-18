@@ -103,10 +103,51 @@
   padding-top: 3px;
   padding-bottom: 3px;
 }
+.button.primary.outlined.sm {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
 .button.primary.block {
   width: 100%;
 }
-.button.sm {
+.button.primary.sm {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+.button.secondary {
+  background-color: #BB1E10;
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.button.secondary.outlined {
+  background-color: #FFFFFF;
+  color: #BB1E10;
+  font-weight: bold;
+  border: 2px solid #BB1E10;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.button.secondary.outlined.sm {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.button.secondary.block {
+  width: 100%;
+}
+.button.secondary.sm {
   padding-left: 8px;
   padding-right: 8px;
   padding-top: 1px;
@@ -130,6 +171,7 @@
   background-color: #101820;
 }
 .app-modal .modal-form {
+  display: flex;
   position: absolute;
   background-color: #FFFFFF;
   height: 100%;
@@ -137,9 +179,14 @@
 
 .app-form {
   width: 30vw;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
 }
 .app-form .form-header {
   display: flex;
+  margin-bottom: 15px;
   padding: 15px;
   background-color: #BB1E10;
   color: #FFFFFF;
@@ -149,6 +196,21 @@
 }
 .app-form .form-header .form-header-icon:hover {
   color: #CCCCCC;
+}
+.app-form .form-body {
+  flex: 1;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.app-form .form-footer {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.app-form .form-footer .footer-buttons {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .col-1.td-checkbox {

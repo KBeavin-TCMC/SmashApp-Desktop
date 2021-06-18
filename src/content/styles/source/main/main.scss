@@ -136,18 +136,66 @@
             padding-right: 13px;
             padding-top: 3px;
             padding-bottom: 3px;
+            
+            &.sm {
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
         }
 
         &.block {
             width: 100%;
         }
+
+        &.sm {
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 1px;
+            padding-bottom: 1px;
+        }
     }
 
-    &.sm {
-        padding-left: 8px;
-        padding-right: 8px;
-        padding-top: 1px;
-        padding-bottom: 1px;
+    &.secondary {
+        background-color: $SMT_Primary_1;
+        color: $SMT_Tertiary_1;
+        border: 1px solid $SMT_Tertiary_1;
+        border-radius: 5px;
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        
+    
+        &.outlined {
+            background-color: $SMT_Tertiary_1;
+            color: $SMT_Primary_1;
+            font-weight: bold;
+            border: 2px solid $SMT_Primary_1;
+            padding-left: 13px;
+            padding-right: 13px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+
+            &.sm {
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
+
+        &.block {
+            width: 100%;
+        }
+
+        &.sm {
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 1px;
+            padding-bottom: 1px;
+        }
     }
 }
 //======= Buttons ======//
@@ -174,6 +222,7 @@
     }
 
     .modal-form {
+        display: flex;
         position: absolute;
         background-color: $SMT_Tertiary_1;
         height: 100%;
@@ -184,9 +233,14 @@
 //======== Form =========//
 .app-form {
     width: 30vw;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
     
     .form-header {
         display: flex;
+        margin-bottom: 15px;
         padding: 15px;
         background-color: $SMT_Primary_1;
         color: $SMT_Tertiary_1;
@@ -199,6 +253,24 @@
             &:hover {
                 color: $SMT_Secondary_1_Light_1;
             }
+        }
+    }
+
+    .form-body {
+        flex: 1;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .form-footer {
+        padding-left: 10px;
+        padding-right: 10px;
+
+        .footer-buttons {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
     }
 }
