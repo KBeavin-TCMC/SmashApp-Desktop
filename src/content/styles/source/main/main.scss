@@ -143,6 +143,10 @@
                 padding-top: 0;
                 padding-bottom: 0;
             }
+            
+            &:hover {
+                background-color: darken($SMT_Tertiary_1, 7%);
+            }
         }
 
         &.block {
@@ -158,7 +162,7 @@
     }
 
     &.secondary {
-        background-color: $SMT_Primary_1;
+        background-color: $SMT_Primary_1_Dark_1;
         color: $SMT_Tertiary_1;
         border: 1px solid $SMT_Tertiary_1;
         border-radius: 5px;
@@ -184,6 +188,10 @@
                 padding-top: 0;
                 padding-bottom: 0;
             }
+
+            &:hover {
+                background-color: darken($SMT_Tertiary_1, 7%);
+            }
         }
 
         &.block {
@@ -196,6 +204,22 @@
             padding-top: 1px;
             padding-bottom: 1px;
         }
+
+        &:hover {
+            background-color: darken($SMT_Primary_1_Dark_1, 7%);
+        }
+    }
+
+    &.disabled {
+        background-color: lighten($SMT_Secondary_2_Light_1, 7%);
+
+        &:hover {
+            background-color: lighten($SMT_Secondary_2_Light_1, 7%); 
+        }
+    }
+
+    &:hover {
+        background-color: darken($SMT_Secondary_2_Dark_1, 7%);
     }
 }
 //======= Buttons ======//

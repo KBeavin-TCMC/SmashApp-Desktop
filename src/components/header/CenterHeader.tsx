@@ -10,7 +10,7 @@ const CenterHeader = () => {
         <AppButton
           label={"Franchise Name"}
           onClick={() => null}
-          backgroundColor={Colors.SMT_Primary_1_Dark_1}
+          secondary
         />
       </div>
       <div

@@ -37,6 +37,7 @@ const AppButton: React.FC<Props> = ({
     if (outlined) classNames = classNames + " outlined";
     if (size) classNames = classNames + " " + size;
     if (block) classNames = classNames + " block";
+    if (disabled) classNames = classNames + " disabled";
 
     return classNames;
   };
@@ -55,7 +56,7 @@ const AppButton: React.FC<Props> = ({
         onClick={() => onClick()}
         type="button"
         className={getClassNames()}
-        style={{ backgroundColor: backgroundColor }}
+        // style={{ backgroundColor: backgroundColor }}
         disabled={disabled}
       >
         {label}

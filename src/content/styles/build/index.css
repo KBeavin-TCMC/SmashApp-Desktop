@@ -109,6 +109,9 @@
   padding-top: 0;
   padding-bottom: 0;
 }
+.button.primary.outlined:hover {
+  background-color: #ededed;
+}
 .button.primary.block {
   width: 100%;
 }
@@ -119,7 +122,7 @@
   padding-bottom: 1px;
 }
 .button.secondary {
-  background-color: #BB1E10;
+  background-color: #830000;
   color: #FFFFFF;
   border: 1px solid #FFFFFF;
   border-radius: 5px;
@@ -144,6 +147,9 @@
   padding-top: 0;
   padding-bottom: 0;
 }
+.button.secondary.outlined:hover {
+  background-color: #ededed;
+}
 .button.secondary.block {
   width: 100%;
 }
@@ -152,6 +158,18 @@
   padding-right: 8px;
   padding-top: 1px;
   padding-bottom: 1px;
+}
+.button.secondary:hover {
+  background-color: #5f0000;
+}
+.button.disabled {
+  background-color: #879bd3;
+}
+.button.disabled:hover {
+  background-color: #879bd3;
+}
+.button:hover {
+  background-color: #002045;
 }
 
 .app-toast {

@@ -59,6 +59,7 @@ const CrmFilter: React.FC<Props> = ({setSelected, filter }) => {
           label="Schedule Demo"
           onClick={() => null}
           block
+          disabled
         />
       </div>
       <div className="d-flex justify-content-center filter-btn">
@@ -66,6 +67,7 @@ const CrmFilter: React.FC<Props> = ({setSelected, filter }) => {
           label="Create Agreement"
           onClick={() => null}
           block
+          disabled
         />
       </div>
     </div>
