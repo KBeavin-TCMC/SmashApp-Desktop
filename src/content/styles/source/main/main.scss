@@ -275,3 +275,37 @@
     }
 }
 //======== Form =========//
+
+//======= Text Input ======//
+.app-textinput {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+
+    .textinput-label {
+        font-size: 10px;
+        font-weight: 700;
+        color: $SMT_Primary_2_Light_1;
+        text-transform: uppercase;
+    }
+
+    .textinput {
+        border: 1px solid $SMT_Secondary_1_Light_1;
+        border-radius: 3px;
+        padding-left: 10px;
+        
+        &:focus {
+            border: 1px solid $SMT_Secondary_2_Light_2;
+            // border-color: $SMT_Secondary_2_Light_1;
+        }
+
+        &:focus-visible {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: lighten($SMT_Secondary_1, 7%);
+          }
+    }
+}
+//======= Text Input ======//

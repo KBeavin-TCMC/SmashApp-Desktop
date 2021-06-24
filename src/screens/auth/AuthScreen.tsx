@@ -6,15 +6,17 @@ import { isSuccessStatusCode } from "../../utils/Helpers";
 import AppButton from "../../components/layout/AppButton";
 import AppTextInput from "../../components/layout/AppTextInput";
 import { Link } from "react-router-dom";
+import { ToastContext } from "../../providers/ToastProvider";
 
 const AuthScreen = () => {
+  const {show} = useContext(ToastContext);
   const [email, setEmail] = useState("kyle.beavin@tcmcllc.com");
   const [password, setPassword] = useState("password123");
   const {setId, setIsAuth, setToken, setGrpId, setDisplayName, setGrpArr, setRole, setImage} = useContext(AppContext);
 
 
   const login = async () => {
-    fetch("http://localhost:3000/api/login", {
+    fetch(`${process.env.REACT_APP_TCMC_URI}/api/login`, {
       method: "POST",
       headers: {'Content-type': 'application/json'},
       body: JSON.stringify({ email, password }),
@@ -31,11 +33,11 @@ const AuthScreen = () => {
           setImage(json.data.image);
           setIsAuth(true);
         } else {
-        //   show({message: 'Login Failed.'});
+          show({message: 'Login Failed.'});
         }
       })
       .catch((err) => {
-        //   show({message: 'Error: ' + err.message})
+          show({message: 'Error: ' + err.message})
         });
   };
 
@@ -51,9 +53,8 @@ const AuthScreen = () => {
         <img alt={"Logo"} src={logo} />
       </section>
       <section className="col-2" style={{ margin: "auto" }}>
-        <h1 style={{ marginBottom: "1vh" }}>Log In</h1>
-        <AppTextInput value={email} onChange={setEmail} />
-        <AppTextInput value={password} onChange={setPassword} password />
+        <AppTextInput label='Log In' value={email} onChange={setEmail} />
+        <AppTextInput label='Password' value={password} onChange={setPassword} password />
         <Link to='/dashboard'>
           <AppButton label="Log In!" onClick={login} />
         </Link>

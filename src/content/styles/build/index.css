@@ -213,6 +213,32 @@
   align-items: center;
 }
 
+.app-textinput {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.app-textinput .textinput-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #363e47;
+  text-transform: uppercase;
+}
+.app-textinput .textinput {
+  border: 1px solid #CCCCCC;
+  border-radius: 3px;
+  padding-left: 10px;
+}
+.app-textinput .textinput:focus {
+  border: 1px solid #C9DBFF;
+}
+.app-textinput .textinput:focus-visible {
+  outline: none;
+}
+.app-textinput .textinput::placeholder {
+  color: #787878;
+}
+
 .col-1.td-checkbox {
   width: 0;
 }
