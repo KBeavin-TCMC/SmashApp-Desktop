@@ -1,8 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
-
-import AppContext from "../../providers/AppContext";
-import { isSuccessStatusCode } from "../../utils/Helpers";
 
 interface Props {
   accounts: any;

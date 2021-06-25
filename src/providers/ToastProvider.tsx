@@ -10,7 +10,7 @@ interface Props {
     children: ReactNode;
 }
 
-export const ToastContext = createContext({show: ({}) => {} , toast: initialToast, hide: ({}) => {}});
+export const ToastContext = createContext({show: (a = {}) => {} , toast: initialToast, hide: (b = {}) => {}});
 
 const ToastProvider: React.FC<Props> = ({children}) => {
   const [toast, setToast] = useState(initialToast);

@@ -1,5 +1,4 @@
 import React from "react";
-import Colors from "../../constants/Colors";
 
 interface Props {
   label: string;
@@ -56,7 +55,6 @@ const AppButton: React.FC<Props> = ({
         onClick={() => onClick()}
         type="button"
         className={getClassNames()}
-        // style={{ backgroundColor: backgroundColor }}
         disabled={disabled}
       >
         {label}
@@ -64,10 +62,5 @@ const AppButton: React.FC<Props> = ({
     </div>
   );
 };
-
-// AppButton.defaultProps = {
-//     backgroundColor: Colors.SMT_Secondary_2_Dark_1,
-//     color: Colors.SMT_Tertiary_1,
-// };
 
 export default AppButton;

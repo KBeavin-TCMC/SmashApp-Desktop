@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { MdClose } from 'react-icons/md'
-import Colors from '../../constants/Colors';
 import AppContext from '../../providers/AppContext';
 import { ModalContext } from '../../providers/ModalProvider';
 import { ToastContext } from '../../providers/ToastProvider';

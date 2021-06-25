@@ -1,4 +1,4 @@
-import React, {useState, createContext, useCallback, ReactNode, useRef, useEffect} from 'react';
+import React, {useState, createContext, useCallback, ReactNode} from 'react';
 
 const initialModal = {
   form: React.Component,
@@ -10,7 +10,7 @@ interface Props {
     children: ReactNode;
 }
 
-export const ModalContext = createContext({show: ({}) => {}, modal: initialModal, hide: ({}) => {}});
+export const ModalContext = createContext({show: (a = {}) => {}, modal: initialModal, hide: (b = {}) => {}});
 
 const ModalProvider: React.FC<Props> = ({children}) => {
     const [modal, setModal] = useState(initialModal);

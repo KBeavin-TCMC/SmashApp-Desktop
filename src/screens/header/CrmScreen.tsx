@@ -52,7 +52,7 @@ const CrmScreen = () => {
           });
       };
     getAccounts();
-  }, [grpId, token, REACT_APP_TCMC_URI]);
+  }, [grpId, token, REACT_APP_TCMC_URI, show]);
 
   const getFilteredAccounts = () => {
     if (filter.list.filter(u => u.selected === true)[0].name === 'Show All') return accounts;
@@ -62,8 +62,13 @@ const CrmScreen = () => {
     }
 
     if (filter.list.filter(u => u.selected === true )[0].name === 'Unassigned') {
-      console.log(accounts.filter((u: any) => u.owner_name === 'Unassigned' || u.owner_name === null || u.owner_name === undefined && u));
-      return accounts.filter((u: any) => u.owner_name === 'Unassigned' || u.owner_name === null || u.owner_name === undefined && u);
+      // return accounts.filter((u: any) => u.owner_name === 'Unassigned' || u.owner_name === null || u.owner_name === undefined && u);
+      return accounts.filter((u: any) => {
+        if (u.owner_name === 'Unassigned' || u.owner_name === null || u.owner_name === undefined) {
+          return u;
+        } 
+        return null;
+      });
     }
   };
 

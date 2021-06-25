@@ -257,6 +257,13 @@
   color: #787878;
 }
 
+.app-calendar-pill {
+  width: 100%;
+  background-color: #CCCCCC;
+  padding: 5px;
+  border-radius: 20px;
+}
+
 .col-1.td-checkbox {
   width: 0;
 }
@@ -309,6 +316,66 @@
   border: 0 #003069;
   outline: 0 none;
   box-shadow: none;
+}
+
+div.react-calendar {
+  flex: 1;
+  border: none;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+div.react-calendar .react-calendar__navigation {
+  margin-bottom: 0;
+}
+div.react-calendar .react-calendar__navigation button {
+  min-width: 0;
+}
+div.react-calendar .react-calendar__navigation .react-calendar__navigation__prev2-button {
+  order: 1;
+  font-weight: bold;
+  font-size: 36px;
+}
+div.react-calendar .react-calendar__navigation .react-calendar__navigation__prev-button {
+  order: 2;
+  font-weight: bold;
+  font-size: 36px;
+}
+div.react-calendar .react-calendar__navigation .react-calendar__navigation__next-button {
+  order: 3;
+  font-weight: bold;
+  font-size: 36px;
+}
+div.react-calendar .react-calendar__navigation .react-calendar__navigation__next2-button {
+  order: 4;
+  font-weight: bold;
+  font-size: 36px;
+}
+div.react-calendar .react-calendar__navigation .react-calendar__navigation__label {
+  order: 5;
+  flex-grow: 0 !important;
+  height: 100%;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+}
+div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__weekdays__weekday abbr {
+  cursor: default;
+  text-decoration: none;
+  font-weight: bolder;
+}
+div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__days .react-calendar__tile {
+  display: flex;
+  flex-direction: column;
+  min-height: 10vw;
+  border: 1px solid #CCCCCC;
+}
+div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__days .react-calendar__tile--now {
+  background-color: #C9DBFF;
+}
+div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__days .react-calendar__tile--active {
+  background: #BB1E10;
+  color: white;
 }
 
 .foo {
