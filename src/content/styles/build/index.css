@@ -456,4 +456,34 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
   width: 1000;
 }
 
+.app-auth-container {
+  display: flex;
+  background-color: #CCCCCC;
+}
+.app-auth-container .auth-image-container {
+  flex: 1;
+}
+.app-auth-container .auth-image-container .auth-image {
+  height: 100vh;
+  width: 50vw;
+}
+.app-auth-container .auth-form-container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-self: center;
+}
+.app-auth-container .auth-form-container .auth-form {
+  flex: 0.5;
+  margin-top: -100px;
+}
+.app-auth-container .auth-form-container .auth-form .auth-toast-container {
+  flex: 1;
+  height: 50px;
+  margin-bottom: 15px;
+}
+.app-auth-container .auth-form-container .auth-form .auth-toast-container .app-toast {
+  background-color: #dedede;
+}
+
 /*# sourceMappingURL=index.css.map */

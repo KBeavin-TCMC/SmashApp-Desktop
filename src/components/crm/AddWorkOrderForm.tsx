@@ -31,16 +31,6 @@ const AddWorkOrderForm = () => {
         getAccountsDropDown()
       }, []);
 
-    //   useEffect(() => {
-    //     if (accountList.length > 0) {
-    //       setLocation(
-    //         `${accountList![0].address.address_street}, ${accountList![0].address.address_city}, ${
-    //           accountList![0].address.address_state
-    //         } ${accountList![0].address.address_zip}`,
-    //       );
-    //     }
-    //   }, [accountList]);
-
     useEffect(() => {
         if (accountList.length > 0) {
             setLocation(`${accountList.filter((u) => u._id === account)[0].address.address_street}, ${accountList.filter((u) => u._id === account)[0].address.address_city}, ${accountList.filter((u) => u._id === account)[0].address.address_state} ${accountList.filter((u) => u._id === account)[0].address.address_zip}`);

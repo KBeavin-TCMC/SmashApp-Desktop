@@ -1,0 +1,35 @@
+.app-auth-container {
+    display: flex;
+    background-color: $SMT_Secondary_1_Light_1;
+
+    .auth-image-container {
+        flex: 1;
+
+        .auth-image {
+            height: 100vh;
+            width: 50vw;
+        }
+    }
+
+    .auth-form-container {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-self: center;
+
+        .auth-form {
+            flex: .5;
+            margin-top: -100px;
+            
+            .auth-toast-container {
+                flex: 1;
+                height: 50px;
+                margin-bottom: 15px;
+                
+                .app-toast {
+                    background-color: lighten($SMT_Secondary_1_Light_1, 7%);
+                }
+            }
+        }
+    }
+}
