@@ -3,6 +3,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 interface TileContent {
+  id: string;
   date: Date;
   type: string;
 }
@@ -20,25 +21,28 @@ const AppCalendar: React.FC<Props> = ({
   tileContent,
   tileClassName,
 }) => {
-
   const defaultTileContent = (date: any) => {
+    
+    if (tileContent && tileContent!.length > 0) {
       // only run in month view
-    if (date.view === "month") {
+      if (date.view === "month") {
         // for each date find tile
-        let tile = tileContent?.find(tile => isSameDay(tile.date, date.date));
-      if (tile) {
-          return <TileContentComponent date={tile.date} type={tile.type} />;
+        let tile = tileContent?.find((tile) => isSameDay(new Date(tile.date), date.date));
+        if (tile) {
+          return <TileContentComponent id={tile.id} date={new Date(tile.date)} type={tile.type} />;
         }
+      }
     }
     return null;
   };
 
   const isSameDay = (dDate: Date, date: Date) => {
-      let match = false;
-      let firstDate = dDate.toLocaleDateString();
-      let secondDate = date.toLocaleDateString();
-      
+    let match = false;
+    let firstDate = dDate.toLocaleDateString();
+    let secondDate = date.toLocaleDateString();
+
     if (firstDate === secondDate) match = true;
+
     return match;
   };
 
@@ -55,9 +59,13 @@ const AppCalendar: React.FC<Props> = ({
   );
 };
 
-const TileContentComponent: React.FC<TileContent> = ({ date, type }) => {
+const TileContentComponent: React.FC<TileContent> = ({ id, date, type }) => {
   return (
-    <div className='app-calendar-pill' id={date.toLocaleDateString()}>
+    <div
+      className="app-calendar-pill"
+      id={date.toLocaleDateString()}
+      onClick={() => alert(`Meeting Id: ${id}`)}
+    >
       <div>{type}</div>
     </div>
   );

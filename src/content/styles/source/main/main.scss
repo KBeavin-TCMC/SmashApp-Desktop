@@ -1,3 +1,7 @@
+html {
+    overflow: hidden;
+}
+
 //======== Tables ========//
 .table-container {
     thead {
@@ -75,7 +79,6 @@
         min-height: 50vh;
         max-height: 75vh;
         background-color: $SMT_Secondary_1_Light_1;
-        overflow-y: scroll;
 
         .tab-filter {
             display: inline-block;
@@ -93,11 +96,17 @@
         .tab-content {
             background-color: $SMT_Tertiary_1;
             padding: 0;
+            // overflow-y: scroll;
 
             .tabcontent {
                 display: none;
             }
         }
+
+        // .tab-content-item {
+        //     height: 100%;
+        //     margin-bottom: -315px;
+        // }
     }
 }
 
@@ -334,11 +343,89 @@
 }
 //======= Text Input ======//
 
+//======= Drop Down =======//
+.app-dropdown {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+
+    .dropdown-label {
+        font-size: 10px;
+        font-weight: 700;
+        color: $SMT_Primary_2_Light_1;
+        text-transform: uppercase;
+    }
+
+    .app-dropdown-select {
+        .app-dropdown__control {
+            height: 28px;
+
+            &.app-dropdown__control--is-focused {
+                border-radius: 3px;
+                border: 1px solid $SMT_Secondary_2_Light_2;
+                box-shadow: none;
+                height: 28px;
+
+            }
+
+            &.css-1pahdxg-control {
+                min-height: 28px;
+            }
+
+            &.css-yk16xz-control {
+               min-height: 28px;  
+            }
+
+            .app-dropdown__value-container {
+                height: 28px;
+                padding: 0px 8px;
+                margin-top: -5px;
+            } 
+        }
+
+        .app-dropdown__input {
+            input {
+                height: 18px;
+            }
+        }
+
+        .app-dropdown__indicator {
+            margin-top: -5px;
+        }
+
+        .app-dropdown__indicator-separator {
+            display: none;
+        }
+
+        .app-dropdown__option {
+            &.app-dropdown__option--is-focused {
+                background-color: $SMT_Secondary_2_Light_2;
+            }
+
+            &.app-dropdown__option--is-selected {
+                background-color: $SMT_Secondary_2_Light_2;
+                &:hover {
+                    background-color: darken($SMT_Secondary_2_Light_2, 7%);
+                }
+            }
+
+            &:hover {
+                background-color: $SMT_Secondary_2_Light_2;
+            }
+        }
+    }
+}
+//======= Drop Down =======//
+
 //====== Calendar ==========//
 .app-calendar-pill {
     width: 100%;
     background-color: $SMT_Secondary_1_Light_1;
     padding: 5px;
     border-radius: 20px;
+
+    &:hover {
+        background-color: darken($SMT_Secondary_1_Light_1, 7%);
+    }
 }
 //====== Calendar ==========//

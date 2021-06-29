@@ -113,6 +113,10 @@ div.react-calendar {
     }
 
     .react-calendar__viewContainer {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 100%;
+        margin-bottom: -359px;
 
         .react-calendar__month-view {
 
@@ -125,7 +129,10 @@ div.react-calendar {
             }
             
             .react-calendar__month-view__days {
-
+                border: 1px solid $SMT_Secondary_1_Light_1;
+                margin-top: -1px;
+                margin-right: -1px;
+                
                 .react-calendar__tile {
                     display: flex;
                     flex-direction: column;

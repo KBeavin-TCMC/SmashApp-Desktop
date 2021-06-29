@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
+import { Meeting } from '../../types/crm';
 import AppCalendar from '../layout/AppCalendar';
 
-const CrmCalendar = () => {
-    const [dates, setDates] = useState(new Date('6/1/21'));
+interface Props {
+  pills: {id: string, date: Date, type: string}[];
+}
 
+const CrmCalendar: React.FC<Props> = ({pills}) => {
+    const [dates, setDates] = useState(new Date());
+    
     return (
       <div>
         <AppCalendar
           value={dates}
           onChange={setDates}
-          tileContent={[{date: new Date('06/01/21'), type: 'Demo'},{date: new Date('6/10/21'), type: 'Meeting'}]} 
+          tileContent={pills} 
         />
       </div>
     );

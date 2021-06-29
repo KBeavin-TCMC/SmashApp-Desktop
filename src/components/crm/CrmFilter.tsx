@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { ModalContext } from "../../providers/ModalProvider";
 import AppButton from "../layout/AppButton";
 import AddAccountForm from "./AddAccountForm";
+import AddWorkOrderForm from "./AddWorkOrderForm";
 
 interface Props {
   setSelected: any;
@@ -57,9 +58,8 @@ const CrmFilter: React.FC<Props> = ({setSelected, filter }) => {
       <div className="d-flex justify-content-center filter-btn">
         <AppButton
           label="Schedule Demo"
-          onClick={() => null}
+          onClick={() => show({form: <AddWorkOrderForm />})}
           block
-          disabled
         />
       </div>
       <div className="d-flex justify-content-center filter-btn">

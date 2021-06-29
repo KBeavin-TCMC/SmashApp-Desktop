@@ -5,9 +5,10 @@ interface Props {
   value: string;
   onChange: Dispatch<SetStateAction<string>>;
   password?: boolean;
+  disabled?: boolean;
 }
 
-const AppTextInput: React.FC<Props> = ({ label, value, onChange, password }) => {
+const AppTextInput: React.FC<Props> = ({ label, value, onChange, password, disabled }) => {
   return (
     <div
       className='app-textinput'
@@ -23,6 +24,7 @@ const AppTextInput: React.FC<Props> = ({ label, value, onChange, password }) => 
         type={password ? "password" : "text"}
         className='textinput'
         placeholder="Placeholder Text"
+        disabled={disabled}
       />
     </div>
   );

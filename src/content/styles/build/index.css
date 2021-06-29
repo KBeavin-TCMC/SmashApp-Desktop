@@ -1,3 +1,7 @@
+html {
+  overflow: hidden;
+}
+
 .table-container thead {
   background-color: #C9DBFF;
 }
@@ -53,7 +57,6 @@
   min-height: 50vh;
   max-height: 75vh;
   background-color: #CCCCCC;
-  overflow-y: scroll;
 }
 .tabs-container .tab-content-container .tab-filter {
   display: inline-block;
@@ -257,11 +260,67 @@
   color: #787878;
 }
 
+.app-dropdown {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.app-dropdown .dropdown-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #363e47;
+  text-transform: uppercase;
+}
+.app-dropdown .app-dropdown-select .app-dropdown__control {
+  height: 28px;
+}
+.app-dropdown .app-dropdown-select .app-dropdown__control.app-dropdown__control--is-focused {
+  border-radius: 3px;
+  border: 1px solid #C9DBFF;
+  box-shadow: none;
+  height: 28px;
+}
+.app-dropdown .app-dropdown-select .app-dropdown__control.css-1pahdxg-control {
+  min-height: 28px;
+}
+.app-dropdown .app-dropdown-select .app-dropdown__control.css-yk16xz-control {
+  min-height: 28px;
+}
+.app-dropdown .app-dropdown-select .app-dropdown__control .app-dropdown__value-container {
+  height: 28px;
+  padding: 0px 8px;
+  margin-top: -5px;
+}
+.app-dropdown .app-dropdown-select .app-dropdown__input input {
+  height: 18px;
+}
+.app-dropdown .app-dropdown-select .app-dropdown__indicator {
+  margin-top: -5px;
+}
+.app-dropdown .app-dropdown-select .app-dropdown__indicator-separator {
+  display: none;
+}
+.app-dropdown .app-dropdown-select .app-dropdown__option.app-dropdown__option--is-focused {
+  background-color: #C9DBFF;
+}
+.app-dropdown .app-dropdown-select .app-dropdown__option.app-dropdown__option--is-selected {
+  background-color: #C9DBFF;
+}
+.app-dropdown .app-dropdown-select .app-dropdown__option.app-dropdown__option--is-selected:hover {
+  background-color: #a5c3ff;
+}
+.app-dropdown .app-dropdown-select .app-dropdown__option:hover {
+  background-color: #C9DBFF;
+}
+
 .app-calendar-pill {
   width: 100%;
   background-color: #CCCCCC;
   padding: 5px;
   border-radius: 20px;
+}
+.app-calendar-pill:hover {
+  background-color: #bababa;
 }
 
 .col-1.td-checkbox {
@@ -359,10 +418,21 @@ div.react-calendar .react-calendar__navigation .react-calendar__navigation__labe
   align-items: center;
   font-size: 30px;
 }
+div.react-calendar .react-calendar__viewContainer {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
+  margin-bottom: -359px;
+}
 div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__weekdays__weekday abbr {
   cursor: default;
   text-decoration: none;
   font-weight: bolder;
+}
+div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__days {
+  border: 1px solid #CCCCCC;
+  margin-top: -1px;
+  margin-right: -1px;
 }
 div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__days .react-calendar__tile {
   display: flex;
