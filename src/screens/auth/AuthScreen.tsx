@@ -67,7 +67,7 @@ const AuthScreen = () => {
             label="Password"
             value={password}
             onChange={setPassword}
-            password
+            type='password'
           />
           <Link to="/dashboard">
             <AppButton label="Log In!" onClick={login} />

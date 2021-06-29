@@ -21,13 +21,6 @@ export type Agreement = {
   url: string;
   day_freq: number[];
 
-  // sun_freq: number;
-  // mon_freq: number;
-  // tue_freq: number;
-  // wed_freq: number;
-  // thu_freq: number;
-  // fri_freq: number;
-  // sat_freq: number;
 };
 
 export type AddAgreement = {
@@ -49,13 +42,6 @@ export type AddAgreement = {
   url: string;
   day_freq: number[];
   
-  // sun_freq: number;
-  // mon_freq: number;
-  // tue_freq: number;
-  // wed_freq: number;
-  // thu_freq: number;
-  // fri_freq: number;
-  // sat_freq: number;
 };
 
 export type Order = {
@@ -67,7 +53,7 @@ export type Order = {
   containers_serviced?: number;
   completed_geo_location?: string;
   completed_time?: Date;
-  container_qty: Number;
+  container_qty: string;
   demand_rate: string;
   group_id: string;
   haul_status: boolean;
@@ -93,7 +79,7 @@ export type AddOrder = {
   containers_serviced?: number;
   completed_geo_location?: string;
   completed_time?: Date;
-  container_qty: Number;
+  container_qty: string;
   demand_rate: string;
   group_id: string;
   haul_status: boolean;

@@ -293,6 +293,14 @@ html {
         flex: 1;
         padding-left: 15px;
         padding-right: 15px;
+
+        .form-row {
+            display: flex;
+            
+            :first-child {
+                margin-right: 15px;
+            }
+        }
     }
 
     .form-footer {

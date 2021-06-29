@@ -8,6 +8,7 @@ import { Days } from '../../types/enums';
 import { AddOrder } from '../../types/orders';
 import { isSuccessStatusCode } from '../../utils/Helpers';
 import AppButton from '../layout/AppButton';
+import AppCheckbox from '../layout/AppCheckbox';
 import AppDropDown from '../layout/AppDropDown';
 import AppTextInput from '../layout/AppTextInput';
 
@@ -17,8 +18,7 @@ const AddWorkOrderForm = () => {
     const {hide} = useContext(ModalContext);
     const {show} = useContext(ToastContext);
     const [account, setAccount] = useState('');
-    const [containerQty, setContainerQty] = useState(0);
-    const [demandRate, setDemandRate] = useState('');
+    const [containerQty, setContainerQty] = useState('1');
     const [isDemo, setIsDemo] = useState(false);
     const [isRecurring, setIsRecurring] = useState(false);
     const [monthlyRate, setMonthlyRate] = useState('');
@@ -26,7 +26,7 @@ const AddWorkOrderForm = () => {
     const [serviceDate, setServiceDate] = useState('');
     const [serviceDays, setServiceDays] = useState(Days.sun.toString());
     const [accountList, setAccountList] = useState<Account[]>([]);
-    
+
     useEffect(() => {
         getAccountsDropDown()
       }, []);
@@ -60,7 +60,7 @@ const AddWorkOrderForm = () => {
         _id: '',
         account_id: account,
         container_qty: containerQty,
-        demand_rate: demandRate,
+        demand_rate: '0',
         group_id: grpId,
         haul_status: false,
         is_active: true,
@@ -69,7 +69,7 @@ const AddWorkOrderForm = () => {
         monthly_rate: monthlyRate,
         location: location,
         order_id: '',
-        order_status: 'Not Started',
+        order_status: 'not started',
         services: 'smash',
         service_date: serviceDate,
         service_day: serviceDays,
@@ -116,13 +116,12 @@ const AddWorkOrderForm = () => {
             label='Account'
             value={account}
             list={accountList.map(u => {return {id: u._id, label: u.account_name, value: u._id}})}
-            // onChange={(itemValue: any) => {
-            //   setLocation(`${accountList!.filter((u) => u._id === itemValue.id)[0].address.address_street}, ${accountList.filter((u) => u._id === itemValue.id)[0].address.address_city}, ${accountList.filter((u) => u._id === itemValue.id)[0].address.address_state} ${accountList.filter((u) => u._id === itemValue.id)[0].address.address_zip}`);
-            //   return setAccount(accountList!.filter((u) => u._id === itemValue.id)[0]._id);
-            // }}
             onChange={setAccount}
           />
-              <AppTextInput label='Location' value={location} onChange={() => null} disabled />
+          <AppTextInput label='Location' value={location} onChange={() => null} disabled />
+            <AppTextInput label='Container Qty' value={containerQty} onChange={setContainerQty} type='number' />
+            <AppCheckbox label='Is Demo' value={isDemo} onChange={setIsDemo} />
+          <AppTextInput label='Service Date' value={serviceDate} onChange={setServiceDate} type='date' />
         </div>
 
         <div className="form-footer">

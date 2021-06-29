@@ -4,11 +4,11 @@ interface Props {
   label: string;
   value: string;
   onChange: Dispatch<SetStateAction<string>>;
-  password?: boolean;
+  type?: string;
   disabled?: boolean;
 }
 
-const AppTextInput: React.FC<Props> = ({ label, value, onChange, password, disabled }) => {
+const AppTextInput: React.FC<Props> = ({ label, value, onChange, type, disabled }) => {
   return (
     <div
       className='app-textinput'
@@ -21,7 +21,7 @@ const AppTextInput: React.FC<Props> = ({ label, value, onChange, password, disab
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        type={password ? "password" : "text"}
+        type={type}
         className='textinput'
         placeholder="Placeholder Text"
         disabled={disabled}
@@ -29,5 +29,9 @@ const AppTextInput: React.FC<Props> = ({ label, value, onChange, password, disab
     </div>
   );
 };
+
+AppTextInput.defaultProps = {
+  type: 'text'
+}
 
 export default AppTextInput;
