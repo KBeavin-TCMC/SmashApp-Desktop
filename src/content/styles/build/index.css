@@ -54,8 +54,7 @@ html {
   background-color: #ddd;
 }
 .tabs-container .tab-content-container {
-  min-height: 50vh;
-  max-height: 75vh;
+  height: 100vh;
   background-color: #CCCCCC;
 }
 .tabs-container .tab-content-container .tab-filter {
@@ -74,6 +73,9 @@ html {
 }
 .tabs-container .tab-content-container .tab-content .tabcontent {
   display: none;
+}
+.tabs-container .tab-content-container .app-tab .app-tab-item.hide {
+  display: none !important;
 }
 
 .tab-icon {
@@ -440,6 +442,7 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
   border: 1px solid #CCCCCC;
   margin-top: -1px;
   margin-right: -1px;
+  margin-left: -0.1px;
 }
 div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__days .react-calendar__tile {
   display: flex;

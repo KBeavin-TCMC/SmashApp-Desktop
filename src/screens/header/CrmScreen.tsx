@@ -12,25 +12,11 @@ import { ToastContext } from "../../providers/ToastProvider";
 import useDates from "../../hooks/useDates";
 import { Meeting } from "../../types/crm";
 import { Order } from "../../types/orders";
+import { CrmContext } from "../../providers/CrmProvider";
 
 const CrmScreen = () => {
-  const [filter, setFilter] = useState({
-    list: [
-      { name: 'Show All', selected: true},
-      { name: 'Owned By Me', selected: false},
-      { name: 'Unassigned', selected: false},
-      { name: '+ Add View', selected: false},
-      { name: 'Schedule Demo', selected: false},
-      { name: 'Create Agreement', selected: false},
-    ],
-    calendar: {
-
-    },
-    map: {
-
-    }
-  });
   const { REACT_APP_TCMC_URI } = process.env;
+  const {screen, setFilter} = useContext(CrmContext);
   const { grpId, token, displayName } = useContext(AppContext);
   const {show} = useContext(ToastContext);
   const [accounts, setAccounts] = useState([]);
@@ -63,13 +49,13 @@ const CrmScreen = () => {
   };
 
   const getFilteredAccounts = () => {
-    if (filter.list.filter(u => u.selected === true)[0].name === 'Show All') return accounts;
+    if (screen.filter.list.filter(u => u.selected === true)[0].name === 'Show All') return accounts;
     
-    if (filter.list.filter(u => u.selected === true )[0].name === 'Owned By Me') {
+    if (screen.filter.list.filter(u => u.selected === true )[0].name === 'Owned By Me') {
       return accounts.filter((u: any) => u.owner_name === displayName && u);
     }
 
-    if (filter.list.filter(u => u.selected === true )[0].name === 'Unassigned') {
+    if (screen.filter.list.filter(u => u.selected === true )[0].name === 'Unassigned') {
       return accounts.filter((u: any) => {
         if (u.owner_name === 'Unassigned' || u.owner_name === null || u.owner_name === undefined) {
           return u;
@@ -117,7 +103,7 @@ const CrmScreen = () => {
     <>
       <AppTitle title="CRM" />
       <AppTabs
-        Filter={<CrmFilter filter={filter} setSelected={setFilter} />}
+        Filter={<CrmFilter setSelected={setFilter} />}
         List={<CrmList accounts={getFilteredAccounts()} />}
         Calendar={<CrmCalendar pills={pills} />}
         Map={<CrmMap />}

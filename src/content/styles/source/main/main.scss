@@ -76,8 +76,7 @@ html {
     }
 
     .tab-content-container {
-        min-height: 50vh;
-        max-height: 75vh;
+        height: 100vh;
         background-color: $SMT_Secondary_1_Light_1;
 
         .tab-filter {
@@ -103,10 +102,13 @@ html {
             }
         }
 
-        // .tab-content-item {
-        //     height: 100%;
-        //     margin-bottom: -315px;
-        // }
+        .app-tab {
+            .app-tab-item {
+                &.hide {
+                    display: none !important;
+                }
+            }
+        }
     }
 }
 
