@@ -324,6 +324,7 @@ html {
   background-color: #CCCCCC;
   padding: 5px;
   border-radius: 20px;
+  margin-bottom: 5px;
 }
 .app-calendar-pill:hover {
   background-color: #bababa;

@@ -27,9 +27,13 @@ const AppCalendar: React.FC<Props> = ({
       // only run in month view
       if (date.view === "month") {
         // for each date find tile
-        let tile = tileContent?.find((tile) => isSameDay(new Date(tile.date), date.date));
-        if (tile) {
-          return <TileContentComponent id={tile.id} date={new Date(tile.date)} type={tile.type} />;
+        let tileContentArr = tileContent?.filter((tile) => isSameDay(new Date(tile.date), date.date));
+        
+        if (tileContentArr) {
+          return (
+            <>
+            {tileContentArr.map((u) => <TileContentComponent id={u.id} date={new Date(u.date)} type={u.type} />)}
+            </>)
         }
       }
     }
@@ -64,7 +68,7 @@ const TileContentComponent: React.FC<TileContent> = ({ id, date, type }) => {
     <div
       className="app-calendar-pill"
       id={date.toLocaleDateString()}
-      onClick={() => alert(`Meeting Id: ${id}`)}
+      onClick={() => alert(`${type} Id: ${id}`)}
     >
       <div>{type}</div>
     </div>

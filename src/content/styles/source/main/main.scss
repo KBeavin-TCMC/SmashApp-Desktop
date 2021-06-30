@@ -431,6 +431,7 @@ html {
     background-color: $SMT_Secondary_1_Light_1;
     padding: 5px;
     border-radius: 20px;
+    margin-bottom: 5px;
 
     &:hover {
         background-color: darken($SMT_Secondary_1_Light_1, 7%);

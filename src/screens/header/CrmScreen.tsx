@@ -34,65 +34,25 @@ const CrmScreen = () => {
   const { grpId, token, displayName } = useContext(AppContext);
   const {show} = useContext(ToastContext);
   const [accounts, setAccounts] = useState([]);
-  const [meetings, setMeetings] = useState([]);
-  const [demos, setDemos] = useState([]);
   const [pills, setPills] = useState<any>();
 
   const {addDays} = useDates();
-  
+
   useEffect(() => {
-    const getAccounts = async () => {
-        fetch(`${REACT_APP_TCMC_URI}/api/accountsBy`, {
-          method: "POST",
-          headers: { "Content-type": "application/json", "x-access-token": token },
-          body: JSON.stringify({ group_id: grpId }),
-        })
-          .then((res) => res.json())
-          .then((json) => {
-            if (isSuccessStatusCode(json.status)) {
-              setAccounts(json.data);
-            } else {
-              show({message: json.message});
-            }
-          })
-          .catch((err) => {
-            show({message: err.message});
-          });
-      };
+    getEvents();
+    getAccounts();
+  }, []);
 
-      getAccounts();
-
-      if (!pills || pills.length == 0) {
-        getPills();
-      }
-  }, [
-    grpId,
-    token,
-    REACT_APP_TCMC_URI,
-    show,
-    pills
-    // addDays
-  ]);
-
-  const getMeetings = async () => {
-    let selectedQuery = {
-      group_id: grpId, 
-      meeting_time: {
-        // $gte: formatDate(new Date()),
-        // $lt: addDays(new Date(), 1).toLocaleDateString(),
-        $gte: '5/31/21',
-        $lt: '7/5/21'
-      },
-   }
-    fetch(`${REACT_APP_TCMC_URI}/api/meetingsBy`, {
+  const getAccounts = async () => {
+    fetch(`${REACT_APP_TCMC_URI}/api/accountsBy`, {
       method: "POST",
       headers: { "Content-type": "application/json", "x-access-token": token },
-      body: JSON.stringify(selectedQuery),
+      body: JSON.stringify({ group_id: grpId }),
     })
       .then((res) => res.json())
       .then((json) => {
         if (isSuccessStatusCode(json.status)) {
-          setMeetings(json.data);
+          setAccounts(json.data);
         } else {
           show({message: json.message});
         }
@@ -100,49 +60,6 @@ const CrmScreen = () => {
       .catch((err) => {
         show({message: err.message});
       });
-  };
-
-  const getDemos = async () => {
-    let selectedQuery = {
-      group_id: grpId, 
-      is_demo: true
-   }
-    fetch(`${REACT_APP_TCMC_URI}/api/ordersBy`, {
-      method: "POST",
-      headers: { "Content-type": "application/json", "x-access-token": token },
-      body: JSON.stringify(selectedQuery),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        if (isSuccessStatusCode(json.status)) {
-          setDemos(json.data);
-        } else {
-          show({message: json.message});
-        }
-      })
-      .catch((err) => {
-        show({message: err.message});
-      });
-  };
-
-  const getPills = async () => {
-    let pills: {id: string, date: Date, type: string}[] = [];
-    await getMeetings();
-    await getDemos();
-    
-    if (meetings && meetings.length > 0) {
-      meetings.forEach((u: Meeting) => {
-        pills.push({id: u._id, date: new Date(u.meeting_time), type: 'Meeting'})
-      });    
-    }
-
-    if (demos && demos.length > 0) {
-      demos.forEach((u: Order) => {
-        pills.push({id: u._id, date: new Date(u.service_date), type: 'Demo'})
-      })
-    }
-    setPills([...pills]);
-
   };
 
   const getFilteredAccounts = () => {
@@ -162,6 +79,40 @@ const CrmScreen = () => {
     }
   };
 
+  const getEvents = async () => {
+    let allEvents: {id: string, date: Date, type: string}[] = [];
+    let meetingEvents = await fetch(`${process.env.REACT_APP_TCMC_URI}/api/meetingsBy`, {
+      method: 'POST',
+      headers: {'Content-type': 'application/json', 'x-access-token': token},
+      body: JSON.stringify({group_id: grpId, meeting_time: {
+          // $gte: formatDate(new Date()),
+          // $lt: addDays(new Date(), 1).toLocaleDateString(),
+          $gte: '5/31/21',
+          $lt: '7/5/21'
+        }
+      })
+    }).then(res => res.json());
+    let demoEvents = await fetch(`${REACT_APP_TCMC_URI}/api/ordersBy`, {
+      method: "POST",
+      headers: { "Content-type": "application/json", "x-access-token": token },
+      body: JSON.stringify({
+        group_id: grpId, 
+        is_demo: true
+     }),
+    }).then((res) => res.json());
+
+    
+    meetingEvents.data.forEach((u: Meeting) => {
+      allEvents.push({id: u._id, date: new Date(u.meeting_time), type: 'Meeting'})
+    }); 
+
+    demoEvents.data.forEach((u: Order) => {
+      allEvents.push({id: u._id, date: new Date(u.service_date), type: 'Demo'})
+    });
+
+    setPills(allEvents);
+  };
+  
   return (
     <>
       <AppTitle title="CRM" />

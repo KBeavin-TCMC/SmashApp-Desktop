@@ -21,7 +21,7 @@ const AppDropDown: React.FC<Props> = ({
 
   useEffect(() => {
     let menu = document.getElementsByClassName('app-dropdown__menu');
-    console.log(menu);
+    
       if (!value) {
           setSelectedOption(list[0]);
         }

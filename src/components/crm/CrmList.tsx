@@ -40,7 +40,7 @@ const CrmList: React.FC<Props> = ({ accounts }) => {
                   </td>
                   <td className="col-3">{u.account_name}</td>
                   <td className="col-3">{u.owner_name}</td>
-                  <td className="col-3">{u.createdAt}</td>
+                  <td className="col-3">{new Date(u.createdAt).toLocaleDateString()}</td>
                   <td className="col-3">{u._id}</td>
                 </tr>
               );
