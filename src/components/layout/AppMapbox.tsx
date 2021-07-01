@@ -42,6 +42,7 @@ const AppMapbox: React.FC<Props> = ({ points }) => {
   return (
     <div className="app-map-container">
       <ReactMapGL
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         {...viewport}
         mapStyle={mapStyle}
         className="app-map"
@@ -129,7 +130,7 @@ const AppMapbox: React.FC<Props> = ({ points }) => {
           </Popup>
         ) : null}
       </ReactMapGL>
-      
+
     </div>
   );
 };
