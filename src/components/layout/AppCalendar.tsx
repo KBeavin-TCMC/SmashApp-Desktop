@@ -32,7 +32,7 @@ const AppCalendar: React.FC<Props> = ({
         if (tileContentArr) {
           return (
             <>
-            {tileContentArr.map((u) => <TileContentComponent id={u.id} date={new Date(u.date)} type={u.type} />)}
+              {tileContentArr.map((u) => <TileContentComponent id={u.id} date={new Date(u.date)} type={u.type} />)}
             </>)
         }
       }

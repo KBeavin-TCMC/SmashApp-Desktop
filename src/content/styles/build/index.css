@@ -74,6 +74,9 @@ html {
 .tabs-container .tab-content-container .tab-content .tabcontent {
   display: none;
 }
+.tabs-container .tab-content-container .tab-content .tab-content-item {
+  height: 100%;
+}
 .tabs-container .tab-content-container .app-tab .app-tab-item.hide {
   display: none !important;
 }
@@ -330,6 +333,65 @@ html {
 }
 .app-calendar-pill:hover {
   background-color: #bababa;
+}
+
+.app-map-container {
+  height: 100%;
+  width: 100%;
+}
+.app-map-container .mapboxgl-popup-content {
+  padding: 0;
+}
+.app-map-container .mapboxgl-popup-content .app-map-popup {
+  display: flex;
+  flex-direction: column;
+}
+.app-map-container .mapboxgl-popup-content .app-map-popup .popup-image {
+  padding-bottom: 50px;
+  border-radius: 3px 3px 0 0;
+  flex: 1;
+  background-color: #C9DBFF;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.app-map-container .mapboxgl-popup-content .app-map-popup .popup-image .popup-close {
+  color: #bababa;
+}
+.app-map-container .mapboxgl-popup-content .app-map-popup .popup-image .popup-close:hover {
+  color: #666666;
+}
+.app-map-container .mapboxgl-popup-content .app-map-popup .popup-body {
+  flex: 1;
+  display: flex;
+  padding: 10px;
+}
+.app-map-container .mapboxgl-popup-content .app-map-popup .popup-body span {
+  font-weight: bold;
+  display: inline;
+  margin-right: 10px;
+}
+.app-map-container .mapboxgl-popup-content .app-map-popup .popup-body p {
+  display: inline;
+}
+
+.popup-body .popup-col-1 {
+  flex: 1;
+}
+.popup-body .popup-col-2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: right;
+}
+.popup-body .popup-col-2 .popup-btn {
+  margin-right: -5px;
+}
+
+.map-marker {
+  color: #BB1E10;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .col-1.td-checkbox {

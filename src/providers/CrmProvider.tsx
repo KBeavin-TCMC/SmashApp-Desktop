@@ -11,7 +11,7 @@ const initialScreen = {
             { name: 'Create Agreement', selected: false},
         ],
         calendar: [
-            { name: 'Order Events', selected: true},
+            { name: 'Crm Events', selected: true},
             { name: 'All Events', selected: false}
         ],
         map: [

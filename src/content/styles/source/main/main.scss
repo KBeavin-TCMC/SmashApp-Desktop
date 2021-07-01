@@ -100,6 +100,10 @@ html {
             .tabcontent {
                 display: none;
             }
+
+            .tab-content-item {
+                height: 100%;
+            }
         }
 
         .app-tab {
@@ -440,3 +444,81 @@ html {
     }
 }
 //====== Calendar ==========//
+
+//========= Map ==========//
+.app-map-container {
+    height: 100%;
+    width: 100%;
+
+    .app-map {
+
+
+    }
+
+    .mapboxgl-popup-content {
+        padding: 0;
+
+        .app-map-popup {
+            display: flex;
+            flex-direction: column;
+
+            .popup-image {
+                padding-bottom: 50px;
+                border-radius: 3px 3px 0 0;
+                flex: 1;
+                background-color: $SMT_Secondary_2_Light_2;
+                display: flex;
+                flex-direction: row-reverse;
+                
+                .popup-close {
+                    color: darken($SMT_Secondary_1_Light_1, 7%);
+                    &:hover {
+                    color: $SMT_Secondary_1;
+
+                    }
+                }
+            }
+
+            .popup-body {
+                flex: 1;
+                display: flex;
+                padding: 10px;
+
+                span {
+                    font-weight: bold;
+                    display: inline;
+                    margin-right: 10px;
+                }
+                p {
+                    display: inline;
+                }
+
+
+            }
+        }
+    }
+}
+
+.popup-body {
+    .popup-col-1 {
+        flex: 1;
+    }
+    .popup-col-2 {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: right;
+        
+        .popup-btn {
+            margin-right: -5px;
+        }
+    }
+}
+
+.map-marker {
+    color: $SMT_Primary_1;
+    font-size: 20px;
+    cursor: pointer;
+}
+//========= Map ==========//

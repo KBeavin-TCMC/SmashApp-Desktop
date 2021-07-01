@@ -47,24 +47,7 @@ const CrmScreen = () => {
         show({message: err.message});
       });
   };
-
-  const getFilteredAccounts = () => {
-    if (screen.filter.list.filter(u => u.selected === true)[0].name === 'Show All') return accounts;
-    
-    if (screen.filter.list.filter(u => u.selected === true )[0].name === 'Owned By Me') {
-      return accounts.filter((u: any) => u.owner_name === displayName && u);
-    }
-
-    if (screen.filter.list.filter(u => u.selected === true )[0].name === 'Unassigned') {
-      return accounts.filter((u: any) => {
-        if (u.owner_name === 'Unassigned' || u.owner_name === null || u.owner_name === undefined) {
-          return u;
-        } 
-        return null;
-      });
-    }
-  };
-
+  
   const getEvents = async () => {
     let allEvents: {id: string, date: Date, type: string}[] = [];
     let meetingEvents = await fetch(`${process.env.REACT_APP_TCMC_URI}/api/meetingsBy`, {
@@ -98,6 +81,33 @@ const CrmScreen = () => {
 
     setPills(allEvents);
   };
+
+  const getFilteredAccounts = () => {
+    if (screen.filter.list.filter(u => u.selected === true)[0].name === 'Show All') return accounts;
+    
+    if (screen.filter.list.filter(u => u.selected === true )[0].name === 'Owned By Me') {
+      return accounts.filter((u: any) => u.owner_name === displayName && u);
+    }
+
+    if (screen.filter.list.filter(u => u.selected === true )[0].name === 'Unassigned') {
+      return accounts.filter((u: any) => {
+        if (u.owner_name === 'Unassigned' || u.owner_name === null || u.owner_name === undefined) {
+          return u;
+        } 
+        return null;
+      });
+    }
+  };
+
+  const getFilteredEvents = () => {
+    if (pills) {
+      if (screen.filter.calendar.filter(u => u.selected === true)[0].name === 'All Events') return pills;
+      
+      if (screen.filter.calendar.filter(u => u.selected === true)[0].name === 'Crm Events') {
+        return pills.filter((u: any) => u.type === 'Meeting');
+      }
+    }
+  };
   
   return (
     <>
@@ -105,8 +115,8 @@ const CrmScreen = () => {
       <AppTabs
         Filter={<CrmFilter setSelected={setFilter} />}
         List={<CrmList accounts={getFilteredAccounts()} />}
-        Calendar={<CrmCalendar pills={pills} />}
-        Map={<CrmMap />}
+        Calendar={<CrmCalendar pills={getFilteredEvents()} />}
+        Map={<CrmMap accounts={accounts} />}
       />
     </>
   );

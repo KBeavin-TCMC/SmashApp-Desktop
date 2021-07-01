@@ -11,11 +11,6 @@ interface Props {
 }
 
 const AppTabs: React.FC<Props> = ({List, Calendar, Map, Filter}) => {
-  // const [tabs, setTabs] = useState([
-  //   { name: "List", active: true },
-  //   { name: "Calendar", active: false },
-  //   { name: "Map", active: false },
-  // ]);
   const {screen, setFilter, setTabs} = useContext(CrmContext);
 
   return (

@@ -94,7 +94,7 @@ const CrmFilter: React.FC<Props> = ({setSelected }) => {
       >
         <div className="d-flex justify-content-center filter-btn">
           <AppButton
-            label="Order Events"
+            label="Crm Events"
             onClick={() => setFilter('calendar', 0)}
             outlined={!screen.filter.calendar[0].selected}
             block
