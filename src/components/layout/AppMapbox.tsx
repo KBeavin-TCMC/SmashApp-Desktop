@@ -30,9 +30,9 @@ const AppMapbox: React.FC<Props> = ({ points }) => {
     longitude: -86.1581,
     zoom: 9,
   });
-  const [mapStyle, setMapStyle] = useState(
-    "mapbox://styles/mapbox/streets-v11"
-  );
+//   const [mapStyle, setMapStyle] = useState(
+//     "mapbox://styles/mapbox/streets-v11"
+//   );
 
   const handlePopup = (e: any, data: any) => {
     e.preventDefault();
@@ -44,7 +44,7 @@ const AppMapbox: React.FC<Props> = ({ points }) => {
       <ReactMapGL
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         {...viewport}
-        mapStyle={mapStyle}
+        // mapStyle={mapStyle}
         className="app-map"
         onViewportChange={(viewport: any) => setViewport(viewport)}
       >
