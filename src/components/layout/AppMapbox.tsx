@@ -129,6 +129,7 @@ const AppMapbox: React.FC<Props> = ({ points }) => {
           </Popup>
         ) : null}
       </ReactMapGL>
+      
     </div>
   );
 };
