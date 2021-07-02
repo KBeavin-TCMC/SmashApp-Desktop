@@ -1,28 +1,26 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import ReactMapGL, {
   GeolocateControl,
   Marker,
   Popup,
   NavigationControl,
 } from "react-map-gl";
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import AppButton from "./AppButton";
-import { MdClose } from "react-icons/md";
-
-interface Point {
-  _id: string;
-  longitude: number;
-  latitude: number;
-}
+import { Point } from "../../types";
 
 interface Props {
   points?: any;
+  popup?: any[];
+  selectedLocation: Point | null;
+  setSelectedLocation: Dispatch<SetStateAction<Point| null>>;
 }
 
-const AppMapbox: React.FC<Props> = ({ points }) => {
-  const [selectedLocation, setSelectedLocation] =
-    useState<{ coordinates: number[]; _id: string }>();
+const AppMapbox: React.FC<Props> = ({
+  points,
+  popup,
+  selectedLocation,
+  setSelectedLocation,
+}) => {
   const [viewport, setViewport] = useState({
     width: "100%",
     height: "100%",
@@ -34,13 +32,15 @@ const AppMapbox: React.FC<Props> = ({ points }) => {
     "mapbox://styles/mapbox/streets-v11"
   );
 
-  const handlePopup = (e: any, data: any) => {
-    e.preventDefault();
+  const handlePopupOnClick = (e: any, data: Point) => {
+    e.stopPropagation();
     setSelectedLocation(data);
-  };
+  }; 
 
   return (
-    <div className="app-map-container">
+    <div className="app-map-container"
+      onClick={() => setSelectedLocation(null)}
+    >
       <ReactMapGL
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         {...viewport}
@@ -83,12 +83,13 @@ const AppMapbox: React.FC<Props> = ({ points }) => {
                 >
                   <div
                     id={u._id}
-                    onClick={(e) =>
-                      handlePopup(e, {
-                        coordinates: [u.longitude, u.latitude],
+                    onClick={(e) => {
+                      handlePopupOnClick(e, {
                         _id: u._id,
+                        longitude: u.longitude,
+                        latitude: u.latitude,
                       })
-                    }
+                    }}
                   >
                     <FaMapMarkerAlt className="map-marker" />
                   </div>
@@ -97,40 +98,20 @@ const AppMapbox: React.FC<Props> = ({ points }) => {
             })}
         {selectedLocation ? (
           <Popup
-            longitude={selectedLocation.coordinates[0]}
-            latitude={selectedLocation.coordinates[1]}
+            longitude={selectedLocation.longitude}
+            latitude={selectedLocation.latitude}
             closeButton={false}
           >
-            <div className="app-map-popup">
-              <div className="popup-image">
-                  <MdClose
-                    className="popup-close"
-                    size={24}
-                    onClick={() => console.log("close")}
-                  />
-              </div>
-
-              <div className="popup-body">
-                <div className="popup-col-1">
-                  <span>{selectedLocation._id}</span>
-                  <h6>123 street rd.</h6>
-                  <h6>city, ST 46236</h6>
-                </div>
-                <div className="popup-col-2">
-                  <p style={{ margin: 0 }}>00 Mi.</p>
-                  <div className="popup-btn">
-                    <AppButton
-                      label="Details"
-                      onClick={() => console.log("hi")}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            {console.log('popup', popup)}
+            {popup!.find(
+              (u: any) => {
+                console.log('u: ', u);
+                return u.props.account._id === selectedLocation._id
+              }
+            )}
           </Popup>
         ) : null}
       </ReactMapGL>
-
     </div>
   );
 };

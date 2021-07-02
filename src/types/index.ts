@@ -53,3 +53,10 @@ export class Validator implements IValidator {
   message: string = '';
   isVisible: boolean = false;
 };
+
+//=== Mapbox ===//
+export interface Point {
+  _id: string;
+  longitude: number;
+  latitude: number;
+}

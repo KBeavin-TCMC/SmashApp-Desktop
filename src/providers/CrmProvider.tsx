@@ -39,7 +39,6 @@ const CrmProvider: React.FC<Props> = ({children}) => {
     }
 
     const setTabs = (newTabs: any) => {
-        console.log(newTabs)
         setScreen({...screen, ...newTabs});
     }
   
