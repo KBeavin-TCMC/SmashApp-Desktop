@@ -1,10 +1,11 @@
 import React from 'react';
+import AppTitle from '../../components/layout/AppTitle';
 
 const RoutesScreen = () =>{
     return (
-        <div>
-            <h1>Routes Screen</h1>
-        </div>
+        <>
+        <AppTitle title="Routes" />
+      </>
     );
 }
 
