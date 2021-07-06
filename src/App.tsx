@@ -9,6 +9,7 @@ import ToastProvider from "./providers/ToastProvider";
 import ModalProvider from "./providers/ModalProvider";
 import AppModal from "./components/layout/AppModal";
 import CrmProvider from "./providers/CrmProvider";
+import OrderProvider from "./providers/OrderProvider";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
@@ -50,7 +51,9 @@ const App = () => {
                 <AuthScreen />
               ) : (
                 <CrmProvider>
-                  <Navigation />
+                  <OrderProvider>
+                    <Navigation />
+                  </OrderProvider>
                 </CrmProvider>
               )}
             </Router>

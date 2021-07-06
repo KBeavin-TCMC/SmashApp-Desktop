@@ -113,6 +113,7 @@ const CrmScreen = () => {
     <>
       <AppTitle title="CRM" />
       <AppTabs
+        context={CrmContext}
         Filter={<CrmFilter setSelected={setFilter} />}
         List={<CrmList accounts={getFilteredAccounts()} />}
         Calendar={<CrmCalendar pills={getFilteredEvents()} />}

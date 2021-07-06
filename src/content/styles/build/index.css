@@ -3,7 +3,9 @@ html {
 }
 
 .table-container thead {
+  display: block;
   background-color: #C9DBFF;
+  width: calc(100% - 10px);
 }
 .table-container thead tr {
   border: 1px solid #CCCCCC;
@@ -11,6 +13,23 @@ html {
 }
 .table-container tr {
   border-bottom: 1px solid #CCCCCC;
+}
+.table-container tbody {
+  height: 300px;
+  display: block;
+  overflow-y: scroll;
+}
+.table-container tbody::-webkit-scrollbar {
+  width: 10px;
+  margin-left: 2px;
+}
+.table-container tbody::-webkit-scrollbar-thumb {
+  background: #CCCCCC;
+  border-radius: 15px;
+  border: 2px solid white;
+}
+.table-container tbody::-webkit-scrollbar-thumb:hover {
+  background: #bababa;
 }
 .table-container tbody tr {
   background-color: #FFFFFF;
@@ -29,6 +48,9 @@ html {
   text-align: center;
 }
 
+.tabs-container {
+  margin-right: 10px;
+}
 .tabs-container .tabs-list {
   overflow: hidden;
   background-color: #FFFFFF;

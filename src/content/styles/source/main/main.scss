@@ -4,12 +4,16 @@ html {
 
 //======== Tables ========//
 .table-container {
+
     thead {
+        display: block;
         background-color: $SMT_Secondary_2_Light_2;
+        width: calc(100% - 10px);
 
         tr {
             border: 1px solid $SMT_Secondary_1_Light_1;
             font-size: small;
+
         }        
     }
 
@@ -18,6 +22,24 @@ html {
     }
 
     tbody {
+        height: 300px;
+        display: block;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            width: 10px;
+            margin-left: 2px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: $SMT_Secondary_1_Light_1;
+            border-radius: 15px;
+            border: 2px solid white;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background: darken($SMT_Secondary_1_Light_1, 7%);
+        }
+
         tr {
             background-color: $SMT_Tertiary_1;
             &:hover {
@@ -45,6 +67,7 @@ html {
 
 //======== Tabs ========//
 .tabs-container {
+    margin-right: 10px;
     .tabs-list {
         overflow: hidden;
         background-color: $SMT_Tertiary_1;

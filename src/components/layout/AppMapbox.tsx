@@ -74,20 +74,20 @@ const AppMapbox: React.FC<Props> = ({
         </div>
         {!points
           ? null
-          : points.map((u: Point) => {
+          : points.map((u: any) => {
               return (
                 <Marker
                   key={u._id}
-                  longitude={u.longitude}
-                  latitude={u.latitude}
+                  longitude={parseFloat(u.longitude)}
+                  latitude={parseFloat(u.latitude)}
                 >
                   <div
                     id={u._id}
                     onClick={(e) => {
                       handlePopupOnClick(e, {
                         _id: u._id,
-                        longitude: u.longitude,
-                        latitude: u.latitude,
+                        longitude: parseFloat(u.longitude),
+                        latitude: parseFloat(u.latitude),
                       })
                     }}
                   >
@@ -102,13 +102,9 @@ const AppMapbox: React.FC<Props> = ({
             latitude={selectedLocation.latitude}
             closeButton={false}
           >
-            {console.log('popup', popup)}
-            {popup!.find(
-              (u: any) => {
-                console.log('u: ', u);
-                return u.props.account._id === selectedLocation._id
-              }
-            )}
+            {popup!.find((u: any) => {
+              return u.props.data._id === selectedLocation._id
+              })}
           </Popup>
         ) : null}
       </ReactMapGL>

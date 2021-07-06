@@ -10,6 +10,7 @@ import OrdersScreen from "../screens/header/OrdersScreen";
 import ReportsScreen from "../screens/header/ReportsScreen";
 import RoutesScreen from "../screens/header/RoutesScreen";
 import SettingsScreen from "../screens/header/SettingsScreen";
+import OrderDetailsScreen from "../screens/orders/OrderDetailsScreen";
 
 const Navigation = () => {
   return (
@@ -24,6 +25,7 @@ const Navigation = () => {
         <Route path='/crm/accounts/:id' component={AccountDetailsScreen} />
 
         <Route path="/orders" component={OrdersScreen} exact />
+        <Route path='/orders/orders/:id' component={OrderDetailsScreen} />
         <Route path="/routes" component={RoutesScreen} exact />
         <Route path="/invoices" component={InvoicesScreen} exact />
         <Route path="/reports" component={ReportsScreen} exact />

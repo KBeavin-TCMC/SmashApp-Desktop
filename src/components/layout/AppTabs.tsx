@@ -8,10 +8,11 @@ interface Props {
   Calendar: any;
   Map: any;
   Filter: any;
+  context: any;
 }
 
-const AppTabs: React.FC<Props> = ({List, Calendar, Map, Filter}) => {
-  const {screen, setFilter, setTabs} = useContext(CrmContext);
+const AppTabs: React.FC<Props> = ({List, Calendar, Map, Filter, context}) => {
+  const {screen, setTabs} = useContext(context);
 
   return (
     <div className="tabs-container">
@@ -20,9 +21,9 @@ const AppTabs: React.FC<Props> = ({List, Calendar, Map, Filter}) => {
           className={screen.tabs[0].active ? "tablinks active" : "tablinks"}
           onClick={() =>
             setTabs({tabs: [
-              { name: "London", active: true },
-              { name: "Paris", active: false },
-              { name: "Tokyo", active: false },
+              { name: "List", active: true },
+              { name: "Calendar", active: false },
+              { name: "Map", active: false },
             ]})
           }
         >

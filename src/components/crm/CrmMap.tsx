@@ -13,7 +13,7 @@ interface Props {
 }
 
 interface Props2 {
-    account: Account;
+    data: Account;
     setSelectedLocation: Dispatch<SetStateAction<Point | null>>;
 }
 
@@ -32,13 +32,13 @@ const CrmMap: React.FC<Props> = ({accounts}) => {
                       latitude: parseFloat(u.geo_location[1])
                   }
               })}
-              popup={accounts.map((u: Account) => <AppPopup account={u} setSelectedLocation={setSelectedLocation} />)}
+              popup={accounts.map((u: Account) => <AppCrmPopup data={u} setSelectedLocation={setSelectedLocation} />)}
             />
         </div>
     )
 }
 
-const AppPopup: React.FC<Props2> = ({account, setSelectedLocation}) => {
+const AppCrmPopup: React.FC<Props2> = ({data, setSelectedLocation}) => {
     let history = useHistory();
     const getAccountDetails = (id: string) => {
         history.push(`/crm/accounts/${id}`);
@@ -46,7 +46,7 @@ const AppPopup: React.FC<Props2> = ({account, setSelectedLocation}) => {
 
     return (
       <div
-        id={account._id}
+        id={data._id}
         className="app-map-popup"
         onClick={(e) => e.stopPropagation()}
       >
@@ -60,14 +60,14 @@ const AppPopup: React.FC<Props2> = ({account, setSelectedLocation}) => {
 
         <div className="popup-body">
           <div className="popup-col-1">
-            <span>{account.account_name}</span>
-            <h6>{account.address.address_street}</h6>
-            <h6>{account.address.address_city}, {account.address.address_state} {account.address.address_zip}</h6>
+            <span>{data.account_name}</span>
+            <h6>{data.address.address_street}</h6>
+            <h6>{data.address.address_city}, {data.address.address_state} {data.address.address_zip}</h6>
           </div>
           <div className="popup-col-2">
             <p style={{ margin: 0 }}>00 Mi.</p>
             <div className="popup-btn">
-              <AppButton label="Details" onClick={() => getAccountDetails(account._id)} />
+              <AppButton label="Details" onClick={() => getAccountDetails(data._id)} />
             </div>
           </div>
         </div>
