@@ -515,6 +515,8 @@ div.react-calendar .react-calendar__viewContainer {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100%;
+}
+div.react-calendar .react-calendar__viewContainer .react-calendar__month-view {
   margin-bottom: -359px;
 }
 div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__weekdays__weekday abbr {

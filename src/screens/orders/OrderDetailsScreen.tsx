@@ -35,7 +35,7 @@ const OrderDetailsScreen = (props: any) => {
           };
         getOrderDetails();
       }, [grpId, token, REACT_APP_TCMC_URI, route.id]);
-      console.log('order: ', order)
+      
     return (
         <div key={order?._id}>
           <AppTitle title={`Order: ${order?.order_id}`} />   

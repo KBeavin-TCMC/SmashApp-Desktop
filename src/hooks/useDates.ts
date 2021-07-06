@@ -40,12 +40,23 @@ const useDates = () => {
     return nextDate;
   };
 
+  const getCalendarMonthRange = (date: Date) : {gte: string, lt: string} => {
+    let range: {gte: string, lt: string} = {gte: '', lt: ''};
+    
+    // Get Month
+    range.gte = new Date(date.getFullYear(), date.getMonth(), 1).toLocaleDateString();
+    range.lt = new Date(date.getFullYear(), date.getMonth() + 1, 1).toLocaleDateString();
+
+    return range;
+  }; 
+
   return {
     formatDate,
     getSelectedDateRange,
     addDays,
     firstDay,
-    lastDay
+    lastDay,
+    getCalendarMonthRange
   };
 };
 

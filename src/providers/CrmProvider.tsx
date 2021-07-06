@@ -1,4 +1,5 @@
 import React, {useState, createContext, useCallback, ReactNode} from 'react';
+import useDates from '../hooks/useDates';
 
 const initialScreen = {
     filter: {
@@ -22,17 +23,20 @@ const initialScreen = {
         { name: "List", active: true },
         { name: "Calendar", active: false },
         { name: "Map", active: false },
-    ]
+    ],
+    range: {gte: '', lt: ''},
   };
 
 interface Props {
     children: ReactNode;
 }
 
-export const CrmContext = createContext({screen: initialScreen, setFilter: (newFilter: any) => {}, setTabs: (newFilter: any) => {}});
+export const CrmContext = createContext({screen: initialScreen, setFilter: (newFilter: any) => {}, setTabs: (newFilter: any) => {}, setRange: (newRange: any) => {}});
 
 const CrmProvider: React.FC<Props> = ({children}) => {
     const [screen, setScreen] = useState(initialScreen);
+    const {getCalendarMonthRange} = useDates();
+    const [dateRange, setDateRange] = useState(getCalendarMonthRange(new Date()));
   
     const setFilter = (newFilter: any) => {
         setScreen({...screen, ...newFilter});
@@ -41,13 +45,18 @@ const CrmProvider: React.FC<Props> = ({children}) => {
     const setTabs = (newTabs: any) => {
         setScreen({...screen, ...newTabs});
     }
+
+    const setRange = (newRange: any) => {
+        setScreen({...screen, ...newRange});
+    }
   
     return (
       <CrmContext.Provider
         value={{
           screen,
           setFilter,
-          setTabs
+          setTabs,
+          setRange
         }}>
             {children}
         </CrmContext.Provider>

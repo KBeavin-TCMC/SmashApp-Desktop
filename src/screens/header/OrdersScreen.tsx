@@ -5,6 +5,7 @@ import OrderCalendar from "../../components/orders/OrderCalendar";
 import OrderFilter from "../../components/orders/OrderFilter";
 import OrderList from "../../components/orders/OrderList";
 import OrderMap from "../../components/orders/OrderMap";
+import useDates from "../../hooks/useDates";
 import AppContext from "../../providers/AppContext";
 import { OrderContext } from "../../providers/OrderProvider";
 import { ToastContext } from "../../providers/ToastProvider";
@@ -51,10 +52,8 @@ const OrdersScreen = () => {
       method: 'POST',
       headers: {'Content-type': 'application/json', 'x-access-token': token},
       body: JSON.stringify({group_id: grpId, time: {
-          // $gte: formatDate(new Date()),
-          // $lt: addDays(new Date(), 1).toLocaleDateString(),
-          $gte: '3/31/21',
-          $lt: '7/5/21'
+          $gte: screen.range.gte,
+          $lt: screen.range.lt
         }
       })
     }).then(res => res.json());

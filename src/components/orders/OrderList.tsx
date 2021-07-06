@@ -12,7 +12,7 @@ const OrderList: React.FC<Props> = ({orders}) => {
     const getOrderDetails = (id: string, item: Order) => {
       history.push(`/orders/orders/${id}`, item);
     };
-    console.log(orders)
+    
     return (
         <div className="table-container">
         <table className="col-12">

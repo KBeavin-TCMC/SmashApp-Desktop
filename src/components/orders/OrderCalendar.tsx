@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { OrderContext } from "../../providers/OrderProvider";
 import AppCalendar from "../layout/AppCalendar";
 
 interface Props {
@@ -7,10 +8,11 @@ interface Props {
 
 const OrderCalendar: React.FC<Props> = ({ pills }) => {
   const [dates, setDates] = useState(new Date());
+  const {screen, setRange} = useContext(OrderContext);
 
   return (
     <div>
-      <AppCalendar value={dates} onChange={setDates} tileContent={pills} />
+      <AppCalendar value={dates} onDayChange={setDates} tileContent={pills} onMonthChange={setRange} />
     </div>
   );
 };

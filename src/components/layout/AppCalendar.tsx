@@ -10,16 +10,18 @@ interface TileContent {
 
 interface Props {
   value: Date | Date[];
-  onChange: Dispatch<SetStateAction<Date>>;
+  onDayChange: Dispatch<SetStateAction<Date>>;
   tileContent?: TileContent[];
   tileClassName?: () => string;
+  onMonthChange: Dispatch<SetStateAction<any>>;
 }
 
 const AppCalendar: React.FC<Props> = ({
   value,
-  onChange,
+  onDayChange,
   tileContent,
   tileClassName,
+  onMonthChange
 }) => {
   const defaultTileContent = (date: any) => {
     
@@ -54,7 +56,11 @@ const AppCalendar: React.FC<Props> = ({
     <div style={{ display: "flex" }}>
       <Calendar
         formatShortWeekday={(locale, date) => formatShortWeekday(date)}
-        onChange={onChange}
+        onChange={(val) => {
+          console.log('onchangeval: ', val)
+          onDayChange(val);
+          onMonthChange(val);
+        }}
         value={value}
         tileContent={defaultTileContent}
         tileClassName={tileClassName}
