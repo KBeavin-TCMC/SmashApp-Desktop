@@ -5,7 +5,6 @@ import OrderCalendar from "../../components/orders/OrderCalendar";
 import OrderFilter from "../../components/orders/OrderFilter";
 import OrderList from "../../components/orders/OrderList";
 import OrderMap from "../../components/orders/OrderMap";
-import useDates from "../../hooks/useDates";
 import AppContext from "../../providers/AppContext";
 import { OrderContext } from "../../providers/OrderProvider";
 import { ToastContext } from "../../providers/ToastProvider";
@@ -16,7 +15,7 @@ import { isSuccessStatusCode } from "../../utils/Helpers";
 const OrdersScreen = () => {
   const { REACT_APP_TCMC_URI } = process.env;
   const { screen, setFilter } = useContext(OrderContext);
-  const { grpId, token, displayName } = useContext(AppContext);
+  const { grpId, token } = useContext(AppContext);
   const { show } = useContext(ToastContext);
   const [orders, setOrders] = useState<Order[]>([]);
   const [pills, setPills] = useState<any>();
@@ -24,10 +23,10 @@ const OrdersScreen = () => {
   useEffect(() => {
     getEvents();
     getOrders();
-  }, []);
+  }, [screen]);
 
   const getOrders = async () => {
-    fetch(`${REACT_APP_TCMC_URI}/api/ordersBy`, {
+    fetch(`${REACT_APP_TCMC_URI}/api/ordersBy?page=${screen.pagination.page}&limit=${screen.pagination.limit}`, {
       method: "POST",
       headers: { "Content-type": "application/json", "x-access-token": token },
       body: JSON.stringify({ group_id: grpId }),
@@ -35,8 +34,7 @@ const OrdersScreen = () => {
       .then((res) => res.json())
       .then((json) => {
         if (isSuccessStatusCode(json.status)) {
-          let filteredOrders = json.data.slice(0, 99);
-          setOrders(filteredOrders); // Todo: pagination
+          setOrders(json.data); // Todo: pagination
         } else {
           show({ message: json.message });
         }

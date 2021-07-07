@@ -52,6 +52,40 @@ html {
         }
     }
 
+    tfoot {
+        border-top: 1px solid $SMT_Secondary_1_Light_1;
+        
+        .pagination-container {
+            display: flex;
+        }
+
+        .pagination-column {
+            display: flex;
+            flex: .5;
+        }
+
+        .pagination-dropdown {
+            text-align: left;
+            flex: 1;
+            margin-left: 15px;
+            display: flex;
+
+            .pagination-control {
+                font-size: larger;
+                margin: 10px;
+                border-radius: 3px;
+
+                &:hover {
+                    background-color: lighten($SMT_Secondary_1_Light_1, 7%);
+                }
+
+                span {
+                    padding: 10px;
+                }
+            }
+        }
+    }
+
     td {
         padding-left: 10px;
         padding-right: 10px;

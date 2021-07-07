@@ -40,6 +40,33 @@ html {
 .table-container tbody:hover {
   cursor: pointer;
 }
+.table-container tfoot {
+  border-top: 1px solid #CCCCCC;
+}
+.table-container tfoot .pagination-container {
+  display: flex;
+}
+.table-container tfoot .pagination-column {
+  display: flex;
+  flex: 0.5;
+}
+.table-container tfoot .pagination-dropdown {
+  text-align: left;
+  flex: 1;
+  margin-left: 15px;
+  display: flex;
+}
+.table-container tfoot .pagination-dropdown .pagination-control {
+  font-size: larger;
+  margin: 10px;
+  border-radius: 3px;
+}
+.table-container tfoot .pagination-dropdown .pagination-control:hover {
+  background-color: #dedede;
+}
+.table-container tfoot .pagination-dropdown .pagination-control span {
+  padding: 10px;
+}
 .table-container td {
   padding-left: 10px;
   padding-right: 10px;

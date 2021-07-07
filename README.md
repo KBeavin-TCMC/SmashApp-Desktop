@@ -1,4 +1,8 @@
+## Deploy
 
+Committing straight to main will trigger CI/CD and automatically deploy to heroku.
+
+Sometimes Heroku will cache and read old files after a successful deploy. When this happens I have found that going to Heroku and restarting the app's dynos to help.
 
 ## Available Scripts
 

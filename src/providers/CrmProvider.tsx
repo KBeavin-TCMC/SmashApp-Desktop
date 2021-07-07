@@ -1,66 +1,85 @@
-import React, {useState, createContext, useCallback, ReactNode} from 'react';
-import useDates from '../hooks/useDates';
+import React, { useState, createContext, ReactNode, useEffect } from "react";
+import useDates from "../hooks/useDates";
 
 const initialScreen = {
-    filter: {
-        list: [
-            { name: 'Show All', selected: true},
-            { name: 'Owned By Me', selected: false},
-            { name: 'Unassigned', selected: false},
-            { name: '+ Add View', selected: false},
-            { name: 'Schedule Demo', selected: false},
-            { name: 'Create Agreement', selected: false},
-        ],
-        calendar: [
-            { name: 'Crm Events', selected: true},
-            { name: 'All Events', selected: false}
-        ],
-        map: [
-            { name: 'All', selected: true}
-        ]
-    },
-    tabs: [
-        { name: "List", active: true },
-        { name: "Calendar", active: false },
-        { name: "Map", active: false },
+  filter: {
+    list: [
+      { name: "Show All", selected: true },
+      { name: "Owned By Me", selected: false },
+      { name: "Unassigned", selected: false },
+      { name: "+ Add View", selected: false },
+      { name: "Schedule Demo", selected: false },
+      { name: "Create Agreement", selected: false },
     ],
-    range: {gte: '', lt: ''},
-  };
+    calendar: [
+      { name: "Crm Events", selected: true },
+      { name: "All Events", selected: false },
+    ],
+    map: [{ name: "All", selected: true }],
+  },
+  tabs: [
+    { name: "List", active: true },
+    { name: "Calendar", active: false },
+    { name: "Map", active: false },
+  ],
+  range: { gte: "", lt: "" },
+  pagination: { page: 0, limit: 10 },
+};
 
 interface Props {
-    children: ReactNode;
+  children: ReactNode;
 }
 
-export const CrmContext = createContext({screen: initialScreen, setFilter: (newFilter: any) => {}, setTabs: (newFilter: any) => {}, setRange: (newRange: any) => {}});
+export const CrmContext = createContext({
+  screen: initialScreen,
+  setFilter: (newFilter: any) => {},
+  setTabs: (newFilter: any) => {},
+  setRange: (newRange: any) => {},
+  setPagination: (newQuery: any) => {},
+});
 
-const CrmProvider: React.FC<Props> = ({children}) => {
-    const [screen, setScreen] = useState(initialScreen);
-    const {getCalendarMonthRange} = useDates();
-    const [dateRange, setDateRange] = useState(getCalendarMonthRange(new Date()));
-  
-    const setFilter = (newFilter: any) => {
-        setScreen({...screen, ...newFilter});
-    }
+const CrmProvider: React.FC<Props> = ({ children }) => {
+  const [screen, setScreen] = useState(initialScreen);
+  const { getCalendarMonthRange } = useDates();
+  const [dateRange, setDateRange] = useState(getCalendarMonthRange(new Date()));
+ 
+  useEffect(() => {
+    setScreen({
+      ...initialScreen,
+      range: { gte: dateRange.gte, lt: dateRange.lt },
+    });
+  }, []);
 
-    const setTabs = (newTabs: any) => {
-        setScreen({...screen, ...newTabs});
-    }
+  const setFilter = (newFilter: any) => {
+    setScreen({ ...screen, ...newFilter });
+  };
 
-    const setRange = (newRange: any) => {
-        setScreen({...screen, ...newRange});
-    }
-  
-    return (
-      <CrmContext.Provider
-        value={{
-          screen,
-          setFilter,
-          setTabs,
-          setRange
-        }}>
-            {children}
-        </CrmContext.Provider>
-    );
-  }
-  
-  export default CrmProvider;
+  const setTabs = (newTabs: any) => {
+    setScreen({ ...screen, ...newTabs });
+  };
+
+  const setRange = (newRange: any) => {
+    setScreen({ ...screen, ...newRange });
+  };
+
+  const setPagination = (newQuery: any) => {
+      console.log("hi")
+    setScreen({ ...screen, pagination: { ...newQuery }});
+  };
+
+  return (
+    <CrmContext.Provider
+      value={{
+        screen,
+        setFilter,
+        setTabs,
+        setRange,
+        setPagination
+      }}
+    >
+      {children}
+    </CrmContext.Provider>
+  );
+};
+
+export default CrmProvider;

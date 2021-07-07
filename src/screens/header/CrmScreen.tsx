@@ -27,10 +27,10 @@ const CrmScreen = () => {
   useEffect(() => {
     getEvents();
     getAccounts();
-  }, []);
+  }, [screen]);
 
   const getAccounts = async () => {
-    fetch(`${REACT_APP_TCMC_URI}/api/accountsBy`, {
+    fetch(`${REACT_APP_TCMC_URI}/api/accountsBy?page=${screen.pagination.page}&limit=${screen.pagination.limit}`, {
       method: "POST",
       headers: { "Content-type": "application/json", "x-access-token": token },
       body: JSON.stringify({ group_id: grpId }),

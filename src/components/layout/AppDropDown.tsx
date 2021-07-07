@@ -8,6 +8,7 @@ interface Props {
   list: { id: string; label: string; value: string }[];
   onChange: any;
   disabled?: boolean;
+  top?: boolean;
 }
 
 const AppDropDown: React.FC<Props> = ({
@@ -16,6 +17,7 @@ const AppDropDown: React.FC<Props> = ({
   onChange,
   list,
   disabled,
+  top
 }) => {
   const [selectedOption, setSelectedOption] = useState(value);
 
@@ -41,6 +43,7 @@ const AppDropDown: React.FC<Props> = ({
         }}
         options={list}
         isDisabled={disabled}
+        menuPlacement={top ? 'top' : 'auto'}
       />
     </div>
   );
