@@ -10,6 +10,8 @@ import ModalProvider from "./providers/ModalProvider";
 import AppModal from "./components/layout/AppModal";
 import CrmProvider from "./providers/CrmProvider";
 import OrderProvider from "./providers/OrderProvider";
+import RouteProvider from "./providers/RoutesProvider";
+import InvoiceProvider from "./providers/InvoiceProvider";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
@@ -52,7 +54,11 @@ const App = () => {
               ) : (
                 <CrmProvider>
                   <OrderProvider>
-                    <Navigation />
+                    <RouteProvider>
+                      <InvoiceProvider>
+                        <Navigation />
+                      </InvoiceProvider>
+                    </RouteProvider>
                   </OrderProvider>
                 </CrmProvider>
               )}

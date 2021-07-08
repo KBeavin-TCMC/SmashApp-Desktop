@@ -3,18 +3,19 @@ import {useParams} from 'react-router-dom';
 
 import AppTitle from '../../components/layout/AppTitle';
 import AppContext from '../../providers/AppContext';
-import { Account } from '../../types/crm';
+import { SMT_User } from '../../types';
 import { isSuccessStatusCode } from '../../utils/Helpers';
 
-const AccountDetailsScreen = () => {
+const UserDetailsScreen = () => {
     const { REACT_APP_TCMC_URI } = process.env;
     let params: {id: string} = useParams(); 
     const {grpId, token} = useContext(AppContext);
-    const [account, setAccount] = useState<Account>();
+    const [user, setUser] = useState<SMT_User>();
 
     useEffect(() => {
-        const getAccountDetails = async () => {
-            fetch(`${REACT_APP_TCMC_URI}/api/accountsBy`, {
+        const getUserDetails = async () => {
+            // TODO: set up dotenv and update uri.
+            fetch(`${REACT_APP_TCMC_URI}/api/usersBy`, {
               method: "POST",
               headers: { "Content-type": "application/json", "x-access-token": token },
               body: JSON.stringify({ group_id: grpId, _id: params.id }),
@@ -22,7 +23,8 @@ const AccountDetailsScreen = () => {
               .then((res) => res.json())
               .then((json) => {
                 if (isSuccessStatusCode(json.status)) {
-                  setAccount(json.data[0]);
+                    console.log(json.data)
+                  setUser(json.data[0]);
                 } else {
                   // show
                 }
@@ -31,14 +33,14 @@ const AccountDetailsScreen = () => {
                   // show
               });
           };
-        getAccountDetails();
+        getUserDetails();
       }, [grpId, token, REACT_APP_TCMC_URI, params.id]);
 
     return (
-        <div key={account?._id}>
-          <AppTitle title={`Account: ${account?.account_name}`} />   
+        <div key={user?._id}>
+          <AppTitle title={`User: ${user?.first_name + ' ' + user?.last_name}`} />   
         </div>
     );
 }
 
-export default AccountDetailsScreen;
+export default UserDetailsScreen;

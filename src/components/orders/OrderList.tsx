@@ -16,36 +16,6 @@ const OrderList: React.FC<Props> = ({ orders }) => {
     history.push(`/orders/orders/${id}`, item);
   };
 
-  const getPages = (): { id: string; label: string; value: string }[] => {
-    let list: { id: string; label: string; value: string }[] = [];
-
-    for (var i = 0; i < 5; i++) {
-      let item = {
-        id: (screen.pagination.page - i).toString(),
-        label: (screen.pagination.page - i).toString(),
-        value: (screen.pagination.page - i).toString(),
-      };
-      list.push(item);
-    }
-
-    list.push({
-      id: screen.pagination.page.toString(),
-      label: screen.pagination.page.toString(),
-      value: screen.pagination.page.toString(),
-    });
-
-    for (var i = 0; i < 5; i++) {
-      let item = {
-        id: (screen.pagination.page + i).toString(),
-        label: (screen.pagination.page + i).toString(),
-        value: (screen.pagination.page + i).toString(),
-      };
-      list.push(item);
-    }
-
-    return list;
-  };
-
   const setLimit = (val: any) => {
     setPagination({ page: screen.pagination.page, limit: val });
   };

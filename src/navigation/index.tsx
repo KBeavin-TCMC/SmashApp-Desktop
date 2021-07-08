@@ -10,7 +10,11 @@ import OrdersScreen from "../screens/header/OrdersScreen";
 import ReportsScreen from "../screens/header/ReportsScreen";
 import RoutesScreen from "../screens/header/RoutesScreen";
 import SettingsScreen from "../screens/header/SettingsScreen";
+import InvoiceDetailsScreen from "../screens/invoices/InvoiceDetailsScreen";
 import OrderDetailsScreen from "../screens/orders/OrderDetailsScreen";
+import RouteDetailsScreen from "../screens/routes/RouteDetailsScreen";
+import TruckDetailsScreen from "../screens/routes/TruckDetailsScreen";
+import UserDetailsScreen from "../screens/routes/UserDetails";
 
 const Navigation = () => {
   return (
@@ -18,17 +22,25 @@ const Navigation = () => {
       <AppHeader />
       <Switch>
         <Route path="/dashboard" component={DashboardScreen} exact />
+        
         <Route path="/settings" component={SettingsScreen} exact />
 
-        {/* CRM Routes */}
         <Route path="/crm" component={CrmScreen} exact />
         <Route path='/crm/accounts/:id' component={AccountDetailsScreen} />
 
         <Route path="/orders" component={OrdersScreen} exact />
         <Route path='/orders/orders/:id' component={OrderDetailsScreen} />
+
         <Route path="/routes" component={RoutesScreen} exact />
+        <Route path='/routes/routes/:id' component={RouteDetailsScreen} />
+        <Route path='/routes/trucks/:id' component={TruckDetailsScreen} />
+        <Route path='/routes/users/:id' component={UserDetailsScreen} />
+
         <Route path="/invoices" component={InvoicesScreen} exact />
+        <Route path='/invoices/invoices/:id' component={InvoiceDetailsScreen} />
+
         <Route path="/reports" component={ReportsScreen} exact />
+
         <Route component={NoMatchScreen} />
       </Switch>
     </Router>
