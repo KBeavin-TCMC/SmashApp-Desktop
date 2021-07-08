@@ -57,7 +57,6 @@ const AppCalendar: React.FC<Props> = ({
       <Calendar
         formatShortWeekday={(locale, date) => formatShortWeekday(date)}
         onChange={(val) => {
-          console.log('onchangeval: ', val)
           onDayChange(val);
           onMonthChange(val);
         }}

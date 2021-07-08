@@ -55,7 +55,6 @@ const RouteProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   const setFilter = (newFilter: any) => {
-    console.log('hi new filter')
     setScreen({ ...screen, ...newFilter });
   };
 

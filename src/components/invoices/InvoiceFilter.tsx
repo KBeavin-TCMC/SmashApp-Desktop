@@ -1,5 +1,6 @@
 import React from "react";
 import { useContext } from "react";
+import { InvoiceContext } from "../../providers/InvoiceProvider";
 import { ModalContext } from "../../providers/ModalProvider";
 import { RouteContext } from "../../providers/RoutesProvider";
 import AppButton from "../layout/AppButton";
@@ -8,8 +9,8 @@ interface Props {
   setSelected: any;
 }
 
-const RouteFilter: React.FC<Props> = ({ setSelected }) => {
-  const { screen } = useContext(RouteContext);
+const InvoiceFilter: React.FC<Props> = ({ setSelected }) => {
+  const { screen } = useContext(InvoiceContext);
   const { show } = useContext(ModalContext);
 
   const setFilter = (type: string, index: number) => {
@@ -39,7 +40,7 @@ const RouteFilter: React.FC<Props> = ({ setSelected }) => {
       >
         <div className="d-flex justify-content-center filter-btn">
           <AppButton
-            label="Routes"
+            label="All Invoices"
             onClick={() => setFilter("list", 0)}
             outlined={!screen.filter.list[0].selected}
             block
@@ -47,7 +48,7 @@ const RouteFilter: React.FC<Props> = ({ setSelected }) => {
         </div>
         <div className="d-flex justify-content-center filter-btn">
           <AppButton
-            label="Trucks"
+            label="Outstanding"
             onClick={() => setFilter("list", 1)}
             outlined={!screen.filter.list[1].selected}
             block
@@ -55,7 +56,7 @@ const RouteFilter: React.FC<Props> = ({ setSelected }) => {
         </div>
         <div className="d-flex justify-content-center filter-btn">
           <AppButton
-            label="Drivers"
+            label="Paid"
             onClick={() => setFilter("list", 2)}
             outlined={!screen.filter.list[2].selected}
             block
@@ -69,7 +70,7 @@ const RouteFilter: React.FC<Props> = ({ setSelected }) => {
           <AppButton label="Filter" onClick={() => null} block disabled />
         </div>
         <div className="d-flex justify-content-center filter-btn">
-          <AppButton label="Create Route" onClick={() => null} block disabled />
+          <AppButton label="Create Invoice" onClick={() => null} block disabled />
         </div>
       </div>
 
@@ -80,7 +81,7 @@ const RouteFilter: React.FC<Props> = ({ setSelected }) => {
       >
         <div className="d-flex justify-content-center filter-btn">
           <AppButton
-            label="Route Events"
+            label="Invoice Events"
             onClick={() => setFilter("calendar", 0)}
             outlined={!screen.filter.calendar[0].selected}
             block
@@ -112,4 +113,4 @@ const RouteFilter: React.FC<Props> = ({ setSelected }) => {
   );
 };
 
-export default RouteFilter;
+export default InvoiceFilter;

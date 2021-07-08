@@ -121,7 +121,6 @@ const RouteScreen = () => {
     demoEvents.data.forEach((u: Order) => {
       allEvents.push({id: u._id, date: new Date(u.service_date), type: 'Demo'})
     });
-    console.log(allEvents)
     setPills(allEvents);
   };
 

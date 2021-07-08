@@ -4,19 +4,19 @@ import useDates from "../hooks/useDates";
 const initialScreen = {
   filter: {
     list: [
-      { name: "All Orders", selected: true },
-      { name: "Assigned", selected: false },
-      { name: "Unassigned", selected: false },
+      { name: "All Invoices", selected: true },
+      { name: "Outstanding", selected: false },
+      { name: "Paid", selected: false },
       { name: "+ Add View", selected: false },
       { name: "Filter", selected: false },
-      { name: "Create Agreement", selected: false },
+      { name: "Create Invoice", selected: false },
     ],
     calendar: [
-      { name: "Order Events", selected: true },
+      { name: "Invoice Events", selected: true },
       { name: "All Events", selected: false },
     ],
     map: [
-      { name: "Order Locations", selected: true },
+      { name: "Invoice Locations", selected: true },
       { name: "All Locations", selected: false },
       { name: "Filter", selected: false },
     ],

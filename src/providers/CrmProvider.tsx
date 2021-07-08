@@ -63,7 +63,6 @@ const CrmProvider: React.FC<Props> = ({ children }) => {
   };
 
   const setPagination = (newQuery: any) => {
-      console.log("hi")
     setScreen({ ...screen, pagination: { ...newQuery }});
   };
 

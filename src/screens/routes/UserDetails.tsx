@@ -23,7 +23,6 @@ const UserDetailsScreen = () => {
               .then((res) => res.json())
               .then((json) => {
                 if (isSuccessStatusCode(json.status)) {
-                    console.log(json.data)
                   setUser(json.data[0]);
                 } else {
                   // show

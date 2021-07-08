@@ -54,10 +54,8 @@ const CrmScreen = () => {
       method: 'POST',
       headers: {'Content-type': 'application/json', 'x-access-token': token},
       body: JSON.stringify({group_id: grpId, meeting_time: {
-          // $gte: formatDate(new Date()),
-          // $lt: addDays(new Date(), 1).toLocaleDateString(),
-          $gte: '5/31/21',
-          $lt: '7/5/21'
+          $gte: screen.range.gte,
+          $lt: screen.range.lt
         }
       })
     }).then(res => res.json());
