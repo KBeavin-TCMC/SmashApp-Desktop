@@ -43,7 +43,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div style={{height: '100%'}}>
       <AppContext.Provider value={userSettings}>
         <ModalProvider>
           <ToastProvider>

@@ -29,6 +29,7 @@
     "react-map-gl": "^6.1.16",
     "react-map-gl-geocoder": "^2.1.6",
     "react-mapbox-gl-geocoder": "^1.1.0",
+    "react-minimal-pie-chart": "^8.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-select": "^4.3.1",
@@ -54,7 +55,8 @@
   },
   "browserslist": {
     "production": [
-      "defaults", "not ie 11"
+      "defaults",
+      "not ie 11"
     ],
     "development": [
       "last 1 chrome version",

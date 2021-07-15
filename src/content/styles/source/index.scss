@@ -4,8 +4,10 @@
 @import './main/variables.scss';
 @import './main/main.scss';
 @import './main/lib_overrides.scss';
+@import './main/components.scss';
 
 //--- Screens ---//
+@import './dashboard/dashboard.scss';
 @import './crm/crm.scss';
 @import './orders/orders.scss';
 @import './auth/auth.scss';

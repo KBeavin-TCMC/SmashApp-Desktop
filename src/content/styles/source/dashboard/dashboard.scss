@@ -1,0 +1,242 @@
+.app-dashboard-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.app-dashboard-container {
+    display: flex;
+    height: 100%;
+    overflow-y: scroll;
+    margin-bottom: 75px;
+
+    .dashboard-summary-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .dashboard-widget-column {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+}
+
+.dashboard-summary-widget {
+    .net-income-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        padding-bottom: 5px;
+        background-color: $SMT_Secondary_2_Light_2;
+        margin-bottom: 10px;
+    }
+
+    .kpi-container {
+        text-align: center;
+
+        .kpi-row {
+            display: flex;
+            flex-direction: row;
+
+            .kpi-item {
+                flex: 1;
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+        }
+    }
+}
+
+.dashboard-widget-row {
+    // flex: 1;
+    display: flex;
+}
+
+.sales-event-ul {
+    li {
+        margin: 5px;
+
+        &::marker {
+            color: $SMT_Secondary_2;
+        }
+
+        p {
+            font-size: small;
+        }
+    }
+}
+
+.todays-orders-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+    .todays-orders-graphs {
+        display: flex;
+        justify-content: space-between;
+
+        .todays-orders-ul {
+            ul {
+                display: flex;
+                flex-direction: column;
+                padding-left: 20px;
+
+                li {
+                    flex: 1;
+                    font-size: larger;
+
+                    &:first-child {
+                        &::marker {
+                            color: $SMT_Secondary_2_Light_1;
+                        }
+                    }
+
+                    &:last-child {
+                        &::marker {
+                            color: $SMT_Primary_1_Dark_1;
+                        }
+                    }
+
+                    &::marker {
+                        color: $SMT_Primary_1;
+                    }
+
+                }
+                p {
+                    margin: 0;
+                    margin-top: -20px;
+                    font-size: 10px;
+                }
+            }
+        }
+
+        .todays-orders-pie {
+
+        }
+    }
+}
+
+.invoice-tracker-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+    .invoice-tracker-row {
+        flex: 1;
+        display: flex;
+        margin-bottom: 15px;
+
+        .invoice-tracker-item {
+            margin:auto;
+
+            .invoice-tracker-item-box {
+                background-color: $SMT_Secondary_1_Light_1;
+                text-align: center;
+
+                p {
+                    font-size: 14px;
+                    margin-top: -5px;
+                    margin-bottom: -5px;
+                }
+
+                h4 {
+                    margin-top: 5px;
+                    padding-bottom: 5px;
+                }
+            }
+        }
+    }
+}
+
+.franchise-status {
+    flex: 1;
+    background-color: $SMT_Secondary_1_Light_1;
+    margin-bottom: 15px;
+
+    .franchise-status-header {
+        display: flex;
+        margin-left: 10px;
+        
+        span {
+            color: $SMT_Secondary_2_Light_1;
+        }
+    }
+
+    .franchise-status-body {
+        display: flex;
+
+        .franchise-status-item {
+            flex: 1;
+            display: flex;
+            margin: 10px;
+            padding: 10px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border: 2px solid $SMT_Secondary_1;
+
+            p {
+                margin: auto;
+            }
+        }
+    }
+}
+
+.income-reports {
+    flex: 1;
+    display: flex;
+
+    table {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    thead {
+        flex: 1;
+        display: flex;
+        background-color: $SMT_Secondary_2_Light_2;
+
+        tr {
+            td {
+                &:first-child {
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                &:first-child {
+                    font-weight: bold;
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    tr {
+        flex: 1;
+        display: flex;
+
+        &:nth-child(even) {
+            background-color: $SMT_Secondary_1_Light_1;
+        }
+    }
+
+    td {
+        flex: 1;
+        padding: 10px;
+    }
+}

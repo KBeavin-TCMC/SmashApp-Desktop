@@ -1,5 +1,14 @@
 html {
   overflow: hidden;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
 }
 
 .table-container thead {
@@ -443,6 +452,29 @@ html {
   cursor: pointer;
 }
 
+.widget-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #666666;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.widget-container .widget-header {
+  flex: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #CCCCCC;
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.widget-container .widget-body {
+  flex: 1;
+  display: flex;
+}
+
 .col-1.td-checkbox {
   width: 0;
 }
@@ -569,6 +601,196 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
 div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__days .react-calendar__tile--active {
   background: #BB1E10;
   color: white;
+}
+
+.app-title {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+
+.app-dashboard-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app-dashboard-container {
+  display: flex;
+  height: 100%;
+  overflow-y: scroll;
+  margin-bottom: 75px;
+}
+.app-dashboard-container .dashboard-summary-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.app-dashboard-container .dashboard-widget-column {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.dashboard-summary-widget .net-income-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  padding-bottom: 5px;
+  background-color: #C9DBFF;
+  margin-bottom: 10px;
+}
+.dashboard-summary-widget .kpi-container {
+  text-align: center;
+}
+.dashboard-summary-widget .kpi-container .kpi-row {
+  display: flex;
+  flex-direction: row;
+}
+.dashboard-summary-widget .kpi-container .kpi-row .kpi-item {
+  flex: 1;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.dashboard-widget-row {
+  display: flex;
+}
+
+.sales-event-ul li {
+  margin: 5px;
+}
+.sales-event-ul li::marker {
+  color: #3B5998;
+}
+.sales-event-ul li p {
+  font-size: small;
+}
+
+.todays-orders-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.todays-orders-container .todays-orders-graphs {
+  display: flex;
+  justify-content: space-between;
+}
+.todays-orders-container .todays-orders-graphs .todays-orders-ul ul {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+.todays-orders-container .todays-orders-graphs .todays-orders-ul ul li {
+  flex: 1;
+  font-size: larger;
+}
+.todays-orders-container .todays-orders-graphs .todays-orders-ul ul li:first-child::marker {
+  color: #6d85c9;
+}
+.todays-orders-container .todays-orders-graphs .todays-orders-ul ul li:last-child::marker {
+  color: #830000;
+}
+.todays-orders-container .todays-orders-graphs .todays-orders-ul ul li::marker {
+  color: #BB1E10;
+}
+.todays-orders-container .todays-orders-graphs .todays-orders-ul ul p {
+  margin: 0;
+  margin-top: -20px;
+  font-size: 10px;
+}
+.invoice-tracker-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.invoice-tracker-container .invoice-tracker-row {
+  flex: 1;
+  display: flex;
+  margin-bottom: 15px;
+}
+.invoice-tracker-container .invoice-tracker-row .invoice-tracker-item {
+  margin: auto;
+}
+.invoice-tracker-container .invoice-tracker-row .invoice-tracker-item .invoice-tracker-item-box {
+  background-color: #CCCCCC;
+  text-align: center;
+}
+.invoice-tracker-container .invoice-tracker-row .invoice-tracker-item .invoice-tracker-item-box p {
+  font-size: 14px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+.invoice-tracker-container .invoice-tracker-row .invoice-tracker-item .invoice-tracker-item-box h4 {
+  margin-top: 5px;
+  padding-bottom: 5px;
+}
+
+.franchise-status {
+  flex: 1;
+  background-color: #CCCCCC;
+  margin-bottom: 15px;
+}
+.franchise-status .franchise-status-header {
+  display: flex;
+  margin-left: 10px;
+}
+.franchise-status .franchise-status-header span {
+  color: #6d85c9;
+}
+.franchise-status .franchise-status-body {
+  display: flex;
+}
+.franchise-status .franchise-status-body .franchise-status-item {
+  flex: 1;
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 2px solid #666666;
+}
+.franchise-status .franchise-status-body .franchise-status-item p {
+  margin: auto;
+}
+
+.income-reports {
+  flex: 1;
+  display: flex;
+}
+.income-reports table {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.income-reports thead {
+  flex: 1;
+  display: flex;
+  background-color: #C9DBFF;
+}
+.income-reports thead tr td:first-child {
+  text-align: left;
+}
+.income-reports tbody tr td:first-child {
+  font-weight: bold;
+  text-align: left;
+}
+.income-reports tr {
+  flex: 1;
+  display: flex;
+}
+.income-reports tr:nth-child(even) {
+  background-color: #CCCCCC;
+}
+.income-reports td {
+  flex: 1;
+  padding: 10px;
 }
 
 .foo {
