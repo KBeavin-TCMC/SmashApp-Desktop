@@ -8,7 +8,7 @@ import OrderMap from "../../components/orders/OrderMap";
 import AppContext from "../../providers/AppContext";
 import { OrderContext } from "../../providers/OrderProvider";
 import { ToastContext } from "../../providers/ToastProvider";
-import { Order } from "../../types/orders";
+import { Agreement, Order } from "../../types/orders";
 import { Route } from "../../types/routes";
 import { isSuccessStatusCode } from "../../utils/Helpers";
 
@@ -18,11 +18,13 @@ const OrdersScreen = () => {
   const { grpId, token } = useContext(AppContext);
   const { show } = useContext(ToastContext);
   const [orders, setOrders] = useState<Order[]>([]);
+  const [agreements, setAgreements] = useState<Agreement[]>([]);
   const [pills, setPills] = useState<any>();
 
   useEffect(() => {
     getEvents();
     getOrders();
+    getAgreements();
   }, [screen]);
 
   const getOrders = async () => {
@@ -34,7 +36,26 @@ const OrdersScreen = () => {
       .then((res) => res.json())
       .then((json) => {
         if (isSuccessStatusCode(json.status)) {
-          setOrders(json.data); // Todo: pagination
+          setOrders(json.data);
+        } else {
+          show({ message: json.message });
+        }
+      })
+      .catch((err) => {
+        show({ message: err.message });
+      });
+  };
+
+  const getAgreements = async () => {
+    fetch(`${REACT_APP_TCMC_URI}/api/agreementsBy?page=${screen.pagination.page}&limit=${screen.pagination.limit}`, {
+      method: "POST",
+      headers: { "Content-type": "application/json", "x-access-token": token },
+      body: JSON.stringify({ group_id: grpId }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (isSuccessStatusCode(json.status)) {
+          setAgreements(json.data);
         } else {
           show({ message: json.message });
         }
@@ -130,7 +151,7 @@ const OrdersScreen = () => {
       <AppTabs
         context={OrderContext}
         Filter={<OrderFilter setSelected={setFilter} />}
-        List={<OrderList orders={getFilteredOrders()} />}
+        List={<OrderList orders={getFilteredOrders()} agreements={agreements}/>}
         Calendar={<OrderCalendar pills={getFilteredEvents()} />}
         Map={<OrderMap orders={getFilteredOrders()} />}
       />

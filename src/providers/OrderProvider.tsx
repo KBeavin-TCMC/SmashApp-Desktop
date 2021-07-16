@@ -7,6 +7,7 @@ const initialScreen = {
       { name: "All Orders", selected: true },
       { name: "Assigned", selected: false },
       { name: "Unassigned", selected: false },
+      { name: "Agreements", selected: false},
       { name: "+ Add View", selected: false },
       { name: "Filter", selected: false },
       { name: "Create Agreement", selected: false },

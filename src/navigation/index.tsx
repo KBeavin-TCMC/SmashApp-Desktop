@@ -11,6 +11,7 @@ import ReportsScreen from "../screens/header/ReportsScreen";
 import RoutesScreen from "../screens/header/RoutesScreen";
 import SettingsScreen from "../screens/header/SettingsScreen";
 import InvoiceDetailsScreen from "../screens/invoices/InvoiceDetailsScreen";
+import AgreementDetailsScreen from "../screens/orders/AgreementDetailsScreen";
 import OrderDetailsScreen from "../screens/orders/OrderDetailsScreen";
 import RouteDetailsScreen from "../screens/routes/RouteDetailsScreen";
 import TruckDetailsScreen from "../screens/routes/TruckDetailsScreen";
@@ -30,6 +31,7 @@ const Navigation = () => {
 
         <Route path="/orders" component={OrdersScreen} exact />
         <Route path='/orders/orders/:id' component={OrderDetailsScreen} />
+        <Route path='/orders/agreements/:id' component={AgreementDetailsScreen} />
 
         <Route path="/routes" component={RoutesScreen} exact />
         <Route path='/routes/routes/:id' component={RouteDetailsScreen} />

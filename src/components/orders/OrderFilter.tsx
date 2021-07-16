@@ -63,6 +63,14 @@ const OrderFilter: React.FC<Props> = ({ setSelected }) => {
               block
             />
           </div>
+          <div className="d-flex justify-content-center filter-btn">
+            <AppButton
+              label="Agreements"
+              onClick={() => setFilter('list', 3)}
+              outlined={!screen.filter.list[3].selected}
+              block
+            />
+          </div>
           <hr />
           <div className="d-flex justify-content-center filter-btn">
             <AppButton
