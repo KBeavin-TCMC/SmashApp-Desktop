@@ -2,6 +2,8 @@ import React from 'react';
 import { useContext } from 'react';
 import { ModalContext } from '../../providers/ModalProvider';
 import { OrderContext } from '../../providers/OrderProvider';
+import AddAgreementForm from '../crm/AddAgreementForm';
+import AddWorkOrderForm from '../crm/AddWorkOrderForm';
 import AppButton from '../layout/AppButton';
 
 interface Props {
@@ -65,9 +67,8 @@ const OrderFilter: React.FC<Props> = ({ setSelected }) => {
           <div className="d-flex justify-content-center filter-btn">
             <AppButton
               label="+ Add View"
-              onClick={() => null}
+              onClick={() => show({ form: <AddWorkOrderForm /> })}
               block
-              disabled
             />
           </div>
           <div className="d-flex justify-content-center filter-btn">
@@ -81,9 +82,8 @@ const OrderFilter: React.FC<Props> = ({ setSelected }) => {
           <div className="d-flex justify-content-center filter-btn">
             <AppButton
               label="Create Agreement"
-              onClick={() => null}
+              onClick={() => show({ form: <AddAgreementForm />})}
               block
-              disabled
             />
           </div>
         </div>

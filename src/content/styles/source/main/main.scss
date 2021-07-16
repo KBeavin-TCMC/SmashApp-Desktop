@@ -324,6 +324,7 @@ body {
         left: 0;
         right: 0;
         background-color: $SMT_Primary_2;
+        z-index: 1;
     }
 
     .modal-form {
@@ -331,6 +332,7 @@ body {
         position: absolute;
         background-color: $SMT_Tertiary_1;
         height: 100%;
+        z-index: 2;
     }
 }
 //======== Modal =========//
@@ -347,7 +349,7 @@ body {
         display: flex;
         margin-bottom: 15px;
         padding: 15px;
-        background-color: $SMT_Primary_1;
+        background-color: $SMT_Primary_1_Dark_1;
         color: $SMT_Tertiary_1;
 
         .form-header-title {

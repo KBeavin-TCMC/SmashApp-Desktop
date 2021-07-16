@@ -3,6 +3,7 @@ import { CrmContext } from "../../providers/CrmProvider";
 import { ModalContext } from "../../providers/ModalProvider";
 import AppButton from "../layout/AppButton";
 import AddAccountForm from "./AddAccountForm";
+import AddAgreementForm from "./AddAgreementForm";
 import AddWorkOrderForm from "./AddWorkOrderForm";
 
 interface Props {
@@ -80,9 +81,8 @@ const CrmFilter: React.FC<Props> = ({setSelected }) => {
         <div className="d-flex justify-content-center filter-btn">
           <AppButton
             label="Create Agreement"
-            onClick={() => null}
+            onClick={() => show({ form: <AddAgreementForm />})}
             block
-            disabled
           />
         </div>
       </div>

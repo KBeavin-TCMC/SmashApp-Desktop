@@ -253,12 +253,14 @@ body {
   left: 0;
   right: 0;
   background-color: #101820;
+  z-index: 1;
 }
 .app-modal .modal-form {
   display: flex;
   position: absolute;
   background-color: #FFFFFF;
   height: 100%;
+  z-index: 2;
 }
 
 .app-form {
@@ -272,7 +274,7 @@ body {
   display: flex;
   margin-bottom: 15px;
   padding: 15px;
-  background-color: #BB1E10;
+  background-color: #830000;
   color: #FFFFFF;
 }
 .app-form .form-header .form-header-title {
@@ -606,6 +608,32 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
 .app-title {
   margin-top: 3vh;
   margin-bottom: 3vh;
+}
+
+.appBtnGrp-container {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+.appBtnGrp-container .appBtnGrp-button {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #CCCCCC;
+  margin-bottom: 5px;
+  height: 28px;
+  min-width: 28px;
+}
+.appBtnGrp-container .appBtnGrp-button:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.appBtnGrp-container .appBtnGrp-button:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.appBtnGrp-container .appBtnGrp-button .appBtnGrp-btnText {
+  color: #101820;
+  margin: auto;
 }
 
 .app-dashboard-screen {

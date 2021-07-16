@@ -4,3 +4,35 @@
     margin-bottom: 3vh;
 }
 //========= AppTitle =========//
+
+//======== AppBtnGrp =========//
+.appBtnGrp-container {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+
+    .appBtnGrp-button {
+        display: flex;
+        justify-content: center;
+        border: 1px solid $SMT_Secondary_1_Light_1;
+        margin-bottom: 5px;
+        height: 28px;
+        min-width: 28px;
+
+        &:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        &:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .appBtnGrp-btnText {
+            color: $SMT_Primary_2;
+            margin: auto;
+        }
+    }
+}
+//======== AppBtnGrp =========//
