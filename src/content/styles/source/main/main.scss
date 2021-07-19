@@ -367,6 +367,7 @@ body {
         flex: 1;
         padding-left: 15px;
         padding-right: 15px;
+        overflow-y: auto;
 
         .form-row {
             display: flex;

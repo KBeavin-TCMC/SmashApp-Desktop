@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { ModalContext } from "../../providers/ModalProvider";
 import { RouteContext } from "../../providers/RoutesProvider";
 import AppButton from "../layout/AppButton";
+import AddRouteForm from "./AddRouteForm";
+import AddTruckForm from "./AddTruckForm";
 
 interface Props {
   setSelected: any;
@@ -63,13 +65,16 @@ const RouteFilter: React.FC<Props> = ({ setSelected }) => {
         </div>
         <hr />
         <div className="d-flex justify-content-center filter-btn">
-          <AppButton label="+ Add View" onClick={() => null} block disabled />
+          <AppButton label="+ Add View" onClick={() => show({ form: <AddRouteForm /> })} block />
         </div>
         <div className="d-flex justify-content-center filter-btn">
           <AppButton label="Filter" onClick={() => null} block disabled />
         </div>
         <div className="d-flex justify-content-center filter-btn">
-          <AppButton label="Create Route" onClick={() => null} block disabled />
+          <AppButton label="Create Route" onClick={() => show({ form: <AddRouteForm /> })} block />
+        </div>
+        <div className="d-flex justify-content-center filter-btn">
+          <AppButton label="Create Truck" onClick={() => show({ form: <AddTruckForm /> })} block />
         </div>
       </div>
 

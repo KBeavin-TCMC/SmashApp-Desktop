@@ -33,6 +33,7 @@ export type Route = {
   group_id: string;
   route_id: string;
   truck_id?: string;
+  truck_vin: string;
   inspection_id: string;
   is_active: boolean;
   route_stage: string;
