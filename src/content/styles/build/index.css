@@ -11,6 +11,11 @@ body {
   height: 100%;
 }
 
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .table-container thead {
   display: block;
   background-color: #C9DBFF;
@@ -637,6 +642,13 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
   margin: auto;
 }
 
+p.small-label {
+  font-size: 10px;
+  margin-top: -15px;
+  margin-left: 15px;
+  margin-bottom: 0;
+}
+
 .app-dashboard-screen {
   display: flex;
   flex-direction: column;
@@ -858,6 +870,26 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
 }
 .app-auth-container .auth-form-container .auth-form .auth-toast-container .app-toast {
   background-color: #dedede;
+}
+
+.charge-container {
+  flex: 1;
+  display: flex;
+}
+.charge-container .charge-item {
+  margin-right: 15px;
+}
+.charge-container .charge-item:nth-child(1) {
+  flex: 1;
+}
+.charge-container .charge-item:last-child {
+  margin-right: 0;
+}
+
+.charges-button-row {
+  flex: 1;
+  display: flex;
+  margin-bottom: 15px;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -100,9 +100,7 @@ const InvoiceScreen = () => {
 
   const getFilteredEvents = () => {
     if (pills) {
-      console.log('filter: ', screen.filter.calendar.filter(u => u.selected === true))
       if (screen.filter.calendar.filter(u => u.selected === true)[0].name === 'All Events') return pills;
-      console.log('screen: ', screen)
       if (screen.filter.calendar.filter(u => u.selected === true)[0].name === 'Invoice Events') {
         return pills.filter((u: any) => u.type === 'Invoice');
       }

@@ -1,12 +1,13 @@
 export type Invoice = {
 	_id: string; 
     account_id: {
-		account_name: string
+		_id: string;
+		account_name: string;
 	};
 	charges: Array<string>;
 	contact_id: {
-		first_name: string,
-		last_name: string
+		first_name: string;
+		last_name: string;
 	};
 	group_id: string;
 	invoice_date: string;
@@ -35,6 +36,7 @@ export type AddInvoice = {
 	tax: number;
 	total: number;
 	type: string;
+	status: string;
 }
 
 export enum InvoiceType {

@@ -10,7 +10,6 @@ const AppBtnGrp: React.FC<Props> = ({ state }) => {
   const [btnMap, setBtnMap] = useState<any>(btnArr);
 
   useEffect(() => {
-    console.log(state);
     setBtnArr(Object.keys(state.btnObj));
   }, []);
 

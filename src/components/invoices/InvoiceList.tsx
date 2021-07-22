@@ -122,7 +122,7 @@ const InvoiceList: React.FC<Props> = ({ invoices }) => {
       </div>
     );
   };
-
+  
   return (
     <>
       {renderList()}

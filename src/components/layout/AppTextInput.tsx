@@ -6,12 +6,13 @@ interface Props {
   onChange: Dispatch<SetStateAction<string>>;
   type?: string;
   disabled?: boolean;
+  containerStyle?: any;
 }
 
-const AppTextInput: React.FC<Props> = ({ label, value, onChange, type, disabled }) => {
+const AppTextInput: React.FC<Props> = ({ label, value, onChange, type, disabled, containerStyle }) => {
   return (
     <div
-      className='app-textinput'
+      className='app-textinput' style={containerStyle}
     >
       <label
         className='textinput-label'

@@ -4,6 +4,7 @@ import { InvoiceContext } from "../../providers/InvoiceProvider";
 import { ModalContext } from "../../providers/ModalProvider";
 import { RouteContext } from "../../providers/RoutesProvider";
 import AppButton from "../layout/AppButton";
+import AddInvoiceForm from "./AddInvoiceForm";
 
 interface Props {
   setSelected: any;
@@ -64,7 +65,7 @@ const InvoiceFilter: React.FC<Props> = ({ setSelected }) => {
         </div>
         <hr />
         <div className="d-flex justify-content-center filter-btn">
-          <AppButton label="+ Add View" onClick={() => null} block disabled />
+          <AppButton label="+ Add View" onClick={() => show({ form: <AddInvoiceForm />})} block />
         </div>
         <div className="d-flex justify-content-center filter-btn">
           <AppButton label="Filter" onClick={() => null} block disabled />

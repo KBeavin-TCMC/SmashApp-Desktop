@@ -137,7 +137,6 @@ const OrderList: React.FC<Props> = ({ orders, agreements }) => {
       screen.filter.list.filter((u) => u.selected === true)[0].name ===
       "Agreements"
     ) {
-      console.log('agreements: ', agreements)
       return (
         <div className="table-container">
           <table className="col-12">

@@ -98,7 +98,6 @@ const AddRouteForm = () => {
         time: new Date(time),
         notes: '',
     }
-        console.log('newRoute: ', newRoute)
       return newRoute;
     };
 
