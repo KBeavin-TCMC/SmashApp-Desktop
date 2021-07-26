@@ -71,7 +71,7 @@ const InvoiceFilter: React.FC<Props> = ({ setSelected }) => {
           <AppButton label="Filter" onClick={() => null} block disabled />
         </div>
         <div className="d-flex justify-content-center filter-btn">
-          <AppButton label="Create Invoice" onClick={() => null} block disabled />
+          <AppButton label="Create Invoice" onClick={() => show({ form: <AddInvoiceForm />})} block />
         </div>
       </div>
 

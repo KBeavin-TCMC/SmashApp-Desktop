@@ -229,6 +229,13 @@ hr {
                 padding-top: 0;
                 padding-bottom: 0;
             }
+
+            &.lg {
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 4px;
+                padding-bottom: 4px;
+            }
             
             &:hover {
                 background-color: darken($SMT_Tertiary_1, 7%);
@@ -275,6 +282,14 @@ hr {
                 padding-bottom: 0;
             }
 
+            
+            &.lg {
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 4px;
+                padding-bottom: 4px;
+            }
+
             &:hover {
                 background-color: darken($SMT_Tertiary_1, 7%);
             }
@@ -289,6 +304,13 @@ hr {
             padding-right: 8px;
             padding-top: 1px;
             padding-bottom: 1px;
+        }
+        
+        &.lg {
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-top: 8px;
+            padding-bottom: 8px;
         }
 
         &:hover {
@@ -618,3 +640,72 @@ hr {
     }
 }
 //======= Widget =========//
+
+//====== Details =========//
+.details-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .details-row {
+        flex: 1;
+        display: flex;
+
+        &:first-child {
+            flex: 0;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            margin-right: 25px;
+        }
+
+        .details-button-row {
+            flex:1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+    }
+
+    .details-column {
+        flex: 1;
+        display: flex;
+
+        .details-column-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin-left: 15px;
+            margin-right: 15px;
+
+            .details-column-header {
+                margin-left: 15px;
+
+                p {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .details-list-container {
+            flex: 1;
+            display: flex;
+            padding-left: 15px;
+            padding-right: 15px;
+            background-color: $SMT_Secondary_2_Light_1;
+        }
+    }
+
+    .details-list {
+        flex: 1;
+        display: flex;
+        background-color: $SMT_Secondary_2_Light_2;
+
+        .details-list-header {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+//====== Details =========//

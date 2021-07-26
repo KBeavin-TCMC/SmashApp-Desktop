@@ -180,6 +180,12 @@ hr {
   padding-top: 0;
   padding-bottom: 0;
 }
+.button.primary.outlined.lg {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
 .button.primary.outlined:hover {
   background-color: #ededed;
 }
@@ -218,6 +224,12 @@ hr {
   padding-top: 0;
   padding-bottom: 0;
 }
+.button.secondary.outlined.lg {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
 .button.secondary.outlined:hover {
   background-color: #ededed;
 }
@@ -229,6 +241,12 @@ hr {
   padding-right: 8px;
   padding-top: 1px;
   padding-bottom: 1px;
+}
+.button.secondary.lg {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 .button.secondary:hover {
   background-color: #5f0000;
@@ -481,6 +499,63 @@ hr {
 .widget-container .widget-body {
   flex: 1;
   display: flex;
+}
+
+.details-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.details-container .details-row {
+  flex: 1;
+  display: flex;
+}
+.details-container .details-row:first-child {
+  flex: 0;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  margin-right: 25px;
+}
+.details-container .details-row .details-button-row {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.details-container .details-column {
+  flex: 1;
+  display: flex;
+}
+.details-container .details-column .details-column-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.details-container .details-column .details-column-container .details-column-header {
+  margin-left: 15px;
+}
+.details-container .details-column .details-column-container .details-column-header p {
+  margin-bottom: 0;
+}
+.details-container .details-column .details-list-container {
+  flex: 1;
+  display: flex;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #6d85c9;
+}
+.details-container .details-list {
+  flex: 1;
+  display: flex;
+  background-color: #C9DBFF;
+}
+.details-container .details-list .details-list-header {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
 }
 
 .col-1.td-checkbox {

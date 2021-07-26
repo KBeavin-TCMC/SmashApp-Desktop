@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom';
+import AppButton from '../../components/layout/AppButton';
 
 import AppTitle from '../../components/layout/AppTitle';
 import AppContext from '../../providers/AppContext';
@@ -37,9 +38,78 @@ const InvoiceDetailsScreen = () => {
       }, [grpId, token, REACT_APP_TCMC_URI, params.id]);
 
     return (
-        <div key={invoice?._id}>
-          <AppTitle title={`Invoice: ${invoice?.invoice_id}`} />   
+      <div key={invoice?._id} style={{ height: "100%" }}>
+        <AppTitle title={`Invoice: ${invoice?.invoice_id}`} />
+
+        <div className="details-container">
+          <div className="details-row">
+            <div className="details-button-row">
+              <AppButton
+                label="Details"
+                onClick={() => console.log("Details")}
+                outlined
+                size='sm'
+              />
+              <AppButton
+                label="Schedule"
+                onClick={() => console.log("Schedule")}
+                outlined
+                size='sm'
+              />
+              <AppButton
+                label="Agreement History"
+                onClick={() => console.log("Agreement History")}
+                outlined
+                size='sm'
+              />
+              <AppButton
+                label="View Current Agreement"
+                onClick={() => console.log("View Current Agreement")}
+                secondary
+                size='lg'
+              />
+            </div>
+          </div>
+          <div className="details-row">
+            <div className="details-column">
+              <div className='details-column-container'>
+                <h1>Details</h1>
+                
+              </div>
+            </div>
+            <div className="details-column">
+              <div className='details-list-container' style={{paddingLeft: '30px'}}>
+                <div className='details-list'>
+                  <div className='details-list-header'>
+                    <h1>Agreements</h1>
+                    <AppButton label='+' onClick={() => null} />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="details-column">
+            <div className='details-list-container'>
+                <div className='details-list'>
+                  <div className='details-list-header'>
+                    <h1>Orders</h1>
+                    <AppButton label='+' onClick={() => null} />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="details-column">
+            <div className='details-list-container' style={{paddingRight: '30px'}}>
+                <div className='details-list'>
+                  <div className='details-list-header'>
+                    <h1>Invoices</h1>
+                    <AppButton label='+' onClick={() => null} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     );
 }
 
