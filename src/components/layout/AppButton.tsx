@@ -23,7 +23,9 @@ const AppButton: React.FC<Props> = ({
   outlined,
   icon,
   block,
+  children
 }) => {
+
   const getClassNames = (): string => {
     let classNames: string = "button";
 
@@ -57,6 +59,7 @@ const AppButton: React.FC<Props> = ({
         className={getClassNames()}
         disabled={disabled}
       >
+        {children}
         {label}
       </button>
     </div>

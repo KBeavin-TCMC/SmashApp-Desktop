@@ -24,6 +24,11 @@ const initialScreen = {
   ],
   range: { gte: "", lt: "" },
   pagination: { page: 0, limit: 10 },
+  detailFilter: [
+    { name: "Details", selected: true},
+    { name: "Schedule", selected: false},
+    { name: "Agreement History", selected: false}
+  ]
 };
 
 interface Props {
@@ -36,6 +41,7 @@ export const CrmContext = createContext({
   setTabs: (newFilter: any) => {},
   setRange: (newRange: any) => {},
   setPagination: (newQuery: any) => {},
+  setDetailFilter: (newQuery: any) => {},
 });
 
 const CrmProvider: React.FC<Props> = ({ children }) => {
@@ -66,6 +72,10 @@ const CrmProvider: React.FC<Props> = ({ children }) => {
     setScreen({ ...screen, pagination: { ...newQuery }});
   };
 
+  const setDetailFilter = (newFilter: any) => {
+    setScreen({ ...screen, ...newFilter });
+  };
+
   return (
     <CrmContext.Provider
       value={{
@@ -73,7 +83,8 @@ const CrmProvider: React.FC<Props> = ({ children }) => {
         setFilter,
         setTabs,
         setRange,
-        setPagination
+        setPagination,
+        setDetailFilter
       }}
     >
       {children}
