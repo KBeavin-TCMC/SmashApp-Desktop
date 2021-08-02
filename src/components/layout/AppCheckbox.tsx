@@ -1,15 +1,15 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 interface Props {
   label: string;
   value: boolean;
   onChange: Dispatch<SetStateAction<boolean>>;
   disabled?: boolean;
-  isChecked?: boolean;
 }
 
-const AppCheckbox: React.FC<Props> = ({ label, value, onChange, disabled, isChecked }) => {
-    const [checked, setChecked] = useState(isChecked);
+const AppCheckbox: React.FC<Props> = ({ label, value, onChange, disabled }) => {
+    const [checked, setChecked] = useState(value);
+
   return (
     <div
       className='app-textinput'
@@ -28,13 +28,10 @@ const AppCheckbox: React.FC<Props> = ({ label, value, onChange, disabled, isChec
         className='textinput'
         placeholder="Placeholder Text"
         disabled={disabled}
+        checked={value}
       />
     </div>
   );
 };
-
-AppCheckbox.defaultProps = {
-    isChecked: false
-}
 
 export default AppCheckbox;

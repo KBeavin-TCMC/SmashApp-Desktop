@@ -741,6 +741,110 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
   margin: auto;
 }
 
+.app-header {
+  display: flex;
+  align-items: center;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+  background-color: #101820;
+}
+.app-header .left-header {
+  display: flex;
+}
+.app-header .left-header .left-header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+.app-header .left-header .left-header-container .left-header-icon {
+  font-size: 38px;
+  font-weight: bold;
+  color: #f5573b;
+}
+.app-header .left-header .left-header-container label {
+  font-size: 12px;
+  color: #FFFFFF;
+}
+.app-header .center-header {
+  display: flex;
+}
+.app-header .center-header .group-dropdown-container {
+  margin-left: 3vw;
+  margin-right: 3vw;
+}
+.app-header .center-header .group-dropdown-container .group-dropdown {
+  position: relative;
+}
+.app-header .center-header .group-dropdown-container .group-dropdown .group-button {
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  padding: 4px 14px 4px 14px;
+  background-color: #830000;
+}
+.app-header .center-header .group-dropdown-container .group-dropdown .group-button label {
+  color: #FFFFFF;
+}
+.app-header .center-header .group-dropdown-container .group-dropdown .group-button:hover {
+  background-color: #5f0000;
+}
+.app-header .center-header .group-dropdown-container .group-dropdown .group-item-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #830000;
+  border-radius: 0 0 5px 5px;
+  border: 1px solid #FFFFFF;
+  z-index: 1;
+  opacity: 0.9;
+}
+.app-header .center-header .group-dropdown-container .group-dropdown .group-item-container .item-wrapper {
+  display: flex;
+  padding: 10px;
+}
+.app-header .center-header .group-dropdown-container .group-dropdown .group-item-container .item-wrapper label {
+  color: #FFFFFF;
+  font-weight: bold;
+  text-align: center;
+}
+.app-header .center-header .nav-link-container {
+  display: flex;
+  align-self: center;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+.app-header .right-header {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.app-header .right-header .toast-container {
+  flex: 1;
+  display: flex;
+  margin-right: 12vh;
+  align-self: stretch;
+}
+.app-header .right-header .right-header-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+.app-header .right-header .right-header-container .right-header-icon {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 38px;
+  font-weight: bold;
+  color: #f5573b;
+}
+.app-header .right-header .right-header-container label {
+  font-size: 12px;
+  color: #FFFFFF;
+}
+
 p.small-label {
   font-size: 10px;
   margin-top: -15px;

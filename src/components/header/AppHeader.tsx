@@ -7,16 +7,8 @@ import RightHeader from "./RightHeader";
 const AppHeader = () => {
 
   return (
-    <header style={{ backgroundColor: Colors.SMT_Primary_2 }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            paddingTop: ".5vh",
-            paddingBottom: ".5vh",
-          }}
-        >
+    <header>
+        <div className='app-header'>
           <LeftHeader />
           <CenterHeader />
           <RightHeader />

@@ -34,15 +34,17 @@ const OrderMap: React.FC<Props> = ({ orders }) => {
   const getPoints = () => {
     let ordArr: Point[] = [];
     orders.forEach(async (u) => {
-      let coord: number[] = await getCoordsByAccountId(
-        u.account_id.account_name
-      );
-      let point: Point = {
-        _id: u._id,
-        longitude: coord[0],
-        latitude: coord[1],
-      };
-      ordArr.push(point);
+      if (u.account_id) {
+        let coord: number[] = await getCoordsByAccountId(
+          u.account_id.account_name
+          );
+          let point: Point = {
+            _id: u._id,
+            longitude: coord[0],
+            latitude: coord[1],
+          };
+          ordArr.push(point);
+        }
     });
     setPoints(ordArr);
   };

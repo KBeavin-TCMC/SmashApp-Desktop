@@ -1,45 +1,19 @@
-import React from "react";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import Colors from "../../constants/Colors";
 import AppToast from "../layout/AppToast";
 
 const RightHeader = () => {
+
   return (
-    <div
-      style={{
-        flex: 1,
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: 'flex-end'
-      }}
-    >
-      <div style={{ marginRight: '12vh', display: 'flex', alignSelf: 'stretch'}}>
+    <div className='right-header'>
+      <div className='toast-container'>
         <AppToast />
       </div>
 
-      <div
-        style={{
-          marginLeft: "1vw",
-          marginRight: "1vw",
-        }}
-      >
-        <Link to="/dashboard">
-          <IoPersonCircleOutline
-            style={{
-              marginLeft: '10px',
-              marginRight: 'auto',
-              fontSize: 38,
-              fontWeight: "bold",
-              color: Colors.SMT_Primary_1_Light_1,
-            }}
-          />
-          <div>
-            <label style={{ fontSize: 12, color: "white" }}>Dashboard</label>
-          </div>
+        <Link to="/dashboard" className='right-header-container'>
+          <IoPersonCircleOutline className='right-header-icon' />
+          <label>Dashboard</label>
         </Link>
-      </div>
     </div>
   );
 };
