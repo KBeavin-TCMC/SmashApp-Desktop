@@ -22,7 +22,7 @@ const Navigation = () => {
     <Router>
       <AppHeader />
       <Switch>
-        <Route path="/dashboard" component={DashboardScreen} exact />
+        <Route path={["/", "/dashboard"]} component={DashboardScreen} exact />
         
         <Route path="/settings" component={SettingsScreen} exact />
 
