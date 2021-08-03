@@ -75,7 +75,7 @@ const CenterHeader = () => {
               <div className='group-item-container'>
                 {groupsList.map(u => {
                   return (
-                    <div className='item-wrapper' onClick={() => {
+                    <div key={u._id} className='item-wrapper' onClick={() => {
                         setToggle(!toggle);
                         setGrpId(u._id);
                         setGrpName(u.name);

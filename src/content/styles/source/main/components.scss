@@ -105,6 +105,12 @@
                     .item-wrapper {
                         display: flex;
                         padding: 10px;
+                        white-space: nowrap;
+                        border-bottom: 1px solid $SMT_Tertiary_1;
+
+                        &:hover {
+                            background-color: darken($SMT_Primary_1_Dark_1, 7%);
+                        }
 
                         label {
                             color: $SMT_Tertiary_1;

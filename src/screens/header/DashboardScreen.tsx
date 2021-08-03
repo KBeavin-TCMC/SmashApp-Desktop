@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AppButton from "../../components/layout/AppButton";
 import AppTitle from "../../components/layout/AppTitle";
 import { useHistory } from "react-router-dom";
@@ -10,6 +10,10 @@ import { MdCheckCircle, MdInfo } from "react-icons/md";
 const DashboardScreen = () => {
   let history = useHistory();
   const [route, setRoute] = useState("");
+
+  useEffect(() => {
+    console.log(window.localStorage.getItem('smtUser'));
+  }, []);
 
   return (
     <div className="app-dashboard-screen">

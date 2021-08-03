@@ -12,7 +12,7 @@ import AppCheckbox from '../../components/layout/AppCheckbox';
 
 
 const SettingsScreen = () => {
-  const { grpId, token, role } = useContext(AppContext);
+  const { grpId, token, role, setToken, setIsAuth } = useContext(AppContext);
   const modal = useContext(ModalContext);
   const { show, hide } = useContext(ToastContext);
   const [franchise, setFranchise] = useState<Group | any>();
@@ -64,6 +64,12 @@ const SettingsScreen = () => {
     console.log('tabs: ', tabs);
   };
 
+  const logout = () => {
+    window.localStorage.removeItem('smtUser');
+    setToken('');
+    setIsAuth(false);
+  }
+
   return (
     <div className='settings-screen'>
       <AppTitle title="Settings" />
@@ -101,7 +107,7 @@ const SettingsScreen = () => {
             <div className='tab-footer-item' onClick={() => window.location.href = 'http://smthub.us/'}>
               <label>Help Center</label>
             </div>
-            <div className='tab-footer-item' onClick={() => alert("Implement Log Out Function.")}>
+            <div className='tab-footer-item' onClick={logout}>
               <label>Log Out</label>
             </div>
           </div>

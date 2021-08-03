@@ -8,11 +8,14 @@ import AppTextInput from "../../components/layout/AppTextInput";
 import { Link } from "react-router-dom";
 import { ToastContext } from "../../providers/ToastProvider";
 import AppToast from "../../components/layout/AppToast";
+import { SMT_User } from "../../types";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 const AuthScreen = () => {
   const { show } = useContext(ToastContext);
-  const [email, setEmail] = useState("kyle.beavin@tcmcllc.com");
-  const [password, setPassword] = useState("password123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [smtUser, setSmtUser] = useLocalStorage('smtUser', {});
   const {
     setId,
     setIsAuth,
@@ -33,6 +36,8 @@ const AuthScreen = () => {
       .then((res) => res.json())
       .then((json) => {
         if (isSuccessStatusCode(json.status)) {
+          let user: SMT_User = json.data;
+          setSmtUser(user);
           setToken(json.data.token);
           setGrpArr(json.data.group_id);
           setGrpId(json.data.group_id[0]);
