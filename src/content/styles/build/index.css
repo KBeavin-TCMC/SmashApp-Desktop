@@ -1083,6 +1083,7 @@ p.small-label {
   margin-left: 50px;
   color: black;
   text-decoration: none;
+  cursor: pointer;
 }
 .app-auth-container .auth-form-container .auth-form a.login:hover {
   border-bottom: 1px solid black;

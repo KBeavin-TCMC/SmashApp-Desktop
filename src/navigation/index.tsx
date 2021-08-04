@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AppHeader from "../components/header/AppHeader";
+import ResetScreen from "../screens/auth/ResetScreen";
 import AccountDetailsScreen from "../screens/crm/AccountDetailsScreen";
 import CrmScreen from "../screens/header/CrmScreen";
 import DashboardScreen from "../screens/header/DashboardScreen";
@@ -24,6 +25,8 @@ const Navigation = () => {
       <Switch>
         <Route path={["/", "/dashboard"]} component={DashboardScreen} exact />
         
+        <Route path='/reset/:id' component={ResetScreen} />
+
         <Route path="/settings" component={SettingsScreen} exact />
 
         <Route path="/crm" component={CrmScreen} exact />

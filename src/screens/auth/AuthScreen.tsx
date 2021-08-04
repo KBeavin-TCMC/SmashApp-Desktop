@@ -56,7 +56,8 @@ const AuthScreen = () => {
   };
 
   const handleForgotPassword = async () => {
-    fetch(`${process.env.REACT_APP_TCMC_URI}/api/forgot`, {
+    // fetch(`${process.env.REACT_APP_TCMC_URI}/api/forgot`, {
+      fetch(`http://localhost:3000/api/forgot`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({ email }),

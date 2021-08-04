@@ -13,6 +13,7 @@ import OrderProvider from "./providers/OrderProvider";
 import RouteProvider from "./providers/RoutesProvider";
 import InvoiceProvider from "./providers/InvoiceProvider";
 import { isSuccessStatusCode } from "./utils/Helpers";
+import AuthNavigation from "./navigation/auth";
 
 const App = () => {
   const {show} = useContext(ToastContext);
@@ -84,6 +85,7 @@ const App = () => {
             <AppModal />
             <Router>
               {!isAuth ? (
+                // <AuthNavigation />
                 <AuthScreen />
               ) : (
                 <CrmProvider>
