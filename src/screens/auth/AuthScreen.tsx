@@ -26,6 +26,7 @@ const AuthScreen = () => {
     setRole,
     setImage,
   } = useContext(AppContext);
+  const [toggleForm, setToggleForm] = useState(false);
 
   const login = async () => {
     fetch(`${process.env.REACT_APP_TCMC_URI}/api/login`, {
@@ -63,20 +64,30 @@ const AuthScreen = () => {
 
       <section className="auth-form-container">
         <div className="auth-form">
-        <div className='auth-toast-container'>
-          <AppToast />
-        </div>
-
-          <AppTextInput label="Log In" value={email} onChange={setEmail} />
-          <AppTextInput
-            label="Password"
-            value={password}
-            onChange={setPassword}
-            type='password'
-          />
-          <Link to="/dashboard">
-            <AppButton label="Log In!" onClick={login} />
-          </Link>
+          <div className='auth-toast-container'>
+            <AppToast />
+          </div>
+          {!toggleForm ? (
+            <>
+              <AppTextInput label="Log In" value={email} onChange={setEmail} />
+              <AppTextInput
+                label="Password"
+                value={password}
+                onChange={setPassword}
+                type='password'
+              />
+              <Link to="/dashboard">
+                <AppButton label="Log In!" onClick={login} />
+              </Link>
+              <a className='login' onClick={() => setToggleForm(!toggleForm)}>forgot password?</a>
+            </>
+          ) : (
+            <>
+              <AppTextInput label="Email" value={email} onChange={setEmail} />
+              <AppButton label="Submit" onClick={() => alert('send email')} />
+              <a className='login' onClick={() => setToggleForm(!toggleForm)}>log in?</a>
+            </>
+          )}
         </div>
       </section>
     </main>

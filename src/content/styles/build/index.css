@@ -1079,6 +1079,14 @@ p.small-label {
 .app-auth-container .auth-form-container .auth-form .auth-toast-container .app-toast {
   background-color: #dedede;
 }
+.app-auth-container .auth-form-container .auth-form a.login {
+  margin-left: 50px;
+  color: black;
+  text-decoration: none;
+}
+.app-auth-container .auth-form-container .auth-form a.login:hover {
+  border-bottom: 1px solid black;
+}
 
 .charge-container {
   flex: 1;
