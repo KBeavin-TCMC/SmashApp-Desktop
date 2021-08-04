@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import Colors from "../../constants/Colors";
 import logo from "../../content/assets/smt_logo.png";
 import AppContext from "../../providers/AppContext";
 import { isSuccessStatusCode } from "../../utils/Helpers";
@@ -56,6 +55,23 @@ const AuthScreen = () => {
       });
   };
 
+  const handleForgotPassword = async () => {
+    fetch(`${process.env.REACT_APP_TCMC_URI}/api/forgot`, {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({ email }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.status == 500) {
+          show({ message: json.message });
+        } 
+        show({ message: "An Email has been sent to your account."})
+      })
+      .catch((err) => {
+        show({ message: "Error: " + err.message });
+      });  };
+
   return (
     <main className="app-auth-container">
       <section className="auth-image-container">
@@ -84,7 +100,7 @@ const AuthScreen = () => {
           ) : (
             <>
               <AppTextInput label="Email" value={email} onChange={setEmail} />
-              <AppButton label="Submit" onClick={() => alert('send email')} />
+              <AppButton label="Submit" onClick={handleForgotPassword} />
               <a className='login' onClick={() => setToggleForm(!toggleForm)}>log in?</a>
             </>
           )}
