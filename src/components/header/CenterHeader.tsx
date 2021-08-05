@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import AppContext from "../../providers/AppContext";
 import { ToastContext } from "../../providers/ToastProvider";
 import { Group } from "../../types";
@@ -91,18 +91,22 @@ const CenterHeader = () => {
         )}
       </div>
       <div className='nav-link-container'>
-        <Link to="/crm">
-          <AppButton size={"sm"} label="CRM" onClick={() => null} />
-        </Link>
-        <Link to="/orders">
-          <AppButton size={"sm"} label="Orders" onClick={() => null} />
-        </Link>
-        <Link to="/routes">
-          <AppButton size={"sm"} label="Routes" onClick={() => null} />
-        </Link>
-        <Link to="/invoices">
-          <AppButton size={"sm"} label="Invoices" onClick={() => null} />
-        </Link>
+        <NavLink activeClassName='is-active' className='header-link' to="/crm">
+          Clients
+          {/* <AppButton size={"sm"} label="CRM" onClick={() => null} /> */}
+        </NavLink>
+        <NavLink activeClassName='is-active' className='header-link' to="/orders">
+          Orders
+          {/* <AppButton size={"sm"} label="Orders" onClick={() => null} /> */}
+        </NavLink>
+        <NavLink activeClassName='is-active' className='header-link' to="/routes">
+          Routes
+          {/* <AppButton size={"sm"} label="Routes" onClick={() => null} /> */}
+        </NavLink>
+        <NavLink activeClassName='is-active' className='header-link' to="/invoices">
+          Invoices
+          {/* <AppButton size={"sm"} label="Invoices" onClick={() => null} /> */}
+        </NavLink>
       </div>
     </div>
   );

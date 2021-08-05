@@ -109,7 +109,7 @@ const CrmScreen = () => {
   
   return (
     <>
-      <AppTitle title="CRM" />
+      <AppTitle title="Clients" />
       <AppTabs
         context={CrmContext}
         Filter={<CrmFilter setSelected={setFilter} />}
