@@ -10,6 +10,7 @@ import { ToastContext } from '../../providers/ToastProvider';
 import { Group } from '../../types';
 import AppCheckbox from '../../components/layout/AppCheckbox';
 import { useHistory } from 'react-router-dom';
+import ResetPasswordForm from '../../components/header/ResetPasswordForm';
 
 
 const SettingsScreen = () => {
@@ -133,9 +134,14 @@ const SettingsScreen = () => {
               <label className='link'>Edit Password</label>
             </div>
             {role === 'admin' ? (
+              <>
               <div className='content-item' onClick={() => modal.show({ form: <AddGroupForm /> })}>
                 <label className='link'>Add Franchise</label>
               </div>
+              <div className='content-item' onClick={() => modal.show({ form: <ResetPasswordForm />})}>
+                <label className='link'>Change User Password</label>
+              </div>
+              </>
             ) : null}
           </div>
 

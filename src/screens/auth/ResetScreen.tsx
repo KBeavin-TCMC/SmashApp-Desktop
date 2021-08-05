@@ -25,7 +25,6 @@ const ResetScreen = () => {
                 })
                     .then((res) => res.json())
                     .then((json) => {
-                        console.log(json);
                         show({ message: json.message });
                     })
                     .catch((err) => {
