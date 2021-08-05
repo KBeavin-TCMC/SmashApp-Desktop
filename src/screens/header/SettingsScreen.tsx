@@ -9,14 +9,16 @@ import { isSuccessStatusCode } from '../../utils/Helpers';
 import { ToastContext } from '../../providers/ToastProvider';
 import { Group } from '../../types';
 import AppCheckbox from '../../components/layout/AppCheckbox';
+import { useHistory } from 'react-router-dom';
 
 
 const SettingsScreen = () => {
+  let history = useHistory();
   const { grpId, token, role, setToken, setIsAuth } = useContext(AppContext);
   const modal = useContext(ModalContext);
   const { show, hide } = useContext(ToastContext);
   const [franchise, setFranchise] = useState<Group | any>();
-  
+
   useEffect(() => {
     getFranchise();
   }, [])
@@ -29,7 +31,7 @@ const SettingsScreen = () => {
     })
       .then((res) => res.json())
       .then((json) => {
-        
+
         if (isSuccessStatusCode(json.status)) {
           setFranchise(json.data[0]);
         } else {
@@ -65,6 +67,7 @@ const SettingsScreen = () => {
   };
 
   const logout = () => {
+    history.push('/');
     window.localStorage.removeItem('smtUser');
     setToken('');
     setIsAuth(false);

@@ -4,13 +4,14 @@ import AppContext from "../../providers/AppContext";
 import { isSuccessStatusCode } from "../../utils/Helpers";
 import AppButton from "../../components/layout/AppButton";
 import AppTextInput from "../../components/layout/AppTextInput";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { ToastContext } from "../../providers/ToastProvider";
 import AppToast from "../../components/layout/AppToast";
 import { SMT_User } from "../../types";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 const AuthScreen = () => {
+  let history = useHistory();
   const { show } = useContext(ToastContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,6 +47,7 @@ const AuthScreen = () => {
           setRole(json.data.role[0]);
           setImage(json.data.image);
           setIsAuth(true);
+          history.push('/dashboard');
         } else {
           show({ message: "Login Failed." });
         }
@@ -56,8 +58,7 @@ const AuthScreen = () => {
   };
 
   const handleForgotPassword = async () => {
-    // fetch(`${process.env.REACT_APP_TCMC_URI}/api/forgot`, {
-      fetch(`http://localhost:3000/api/forgot`, {
+    fetch(`${process.env.REACT_APP_TCMC_URI}/api/forgot`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({ email }),
@@ -93,9 +94,7 @@ const AuthScreen = () => {
                 onChange={setPassword}
                 type='password'
               />
-              <Link to="/dashboard">
                 <AppButton label="Log In!" onClick={login} />
-              </Link>
               <a className='login' onClick={() => setToggleForm(!toggleForm)}>forgot password?</a>
             </>
           ) : (

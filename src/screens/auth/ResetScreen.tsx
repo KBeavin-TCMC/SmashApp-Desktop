@@ -18,14 +18,14 @@ const ResetScreen = () => {
     const handleResetPassword = async () => {
         if (checkConfirmPassword()) {
             if (validationToggle.valid) {
-                // fetch(`${process.env.REACT_APP_TCMC_URI}/api/forgot`, {
-                fetch(`http://localhost:3000/api/reset`, {
+                fetch(`${process.env.REACT_APP_TCMC_URI}/api/reset`, {
                     method: "POST",
                     headers: { "Content-type": "application/json" },
                     body: JSON.stringify({ resetId: params.id, email, password }),
                 })
                     .then((res) => res.json())
                     .then((json) => {
+                        console.log(json);
                         show({ message: json.message });
                     })
                     .catch((err) => {
