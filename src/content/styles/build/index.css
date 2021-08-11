@@ -798,6 +798,8 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
   border: 1px solid #FFFFFF;
   z-index: 1;
   opacity: 0.9;
+  overflow-y: auto;
+  max-height: 80vh;
 }
 .app-header .center-header .group-dropdown-container .group-dropdown .group-item-container .item-wrapper {
   display: flex;

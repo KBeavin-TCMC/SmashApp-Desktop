@@ -7,7 +7,7 @@ import { isSuccessStatusCode } from "../../utils/Helpers";
 import AppButton from "../layout/AppButton";
 
 const CenterHeader = () => {
-  const {grpArr, setGrpId, grpId, role, token} = useContext(AppContext);
+  const {grpArr, setGrpId, grpId, role, token, displayName} = useContext(AppContext);
   const {show} = useContext(ToastContext);
   const [grpName, setGrpName] = useState('');
   const [groupsList, setGroupsList] = useState<Group[]>([]);
@@ -107,6 +107,11 @@ const CenterHeader = () => {
           Invoices
           {/* <AppButton size={"sm"} label="Invoices" onClick={() => null} /> */}
         </NavLink>
+        {displayName === "Kyle Beavin" ?
+          <NavLink activeClassName='is-active' className='header-link' to='/admin'>
+            Admin
+          </NavLink>
+        : null}
       </div>
     </div>
   );

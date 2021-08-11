@@ -4,7 +4,7 @@ import AppContext from "../../providers/AppContext";
 import { isSuccessStatusCode } from "../../utils/Helpers";
 import AppButton from "../../components/layout/AppButton";
 import AppTextInput from "../../components/layout/AppTextInput";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { ToastContext } from "../../providers/ToastProvider";
 import AppToast from "../../components/layout/AppToast";
 import { SMT_User } from "../../types";
@@ -72,7 +72,8 @@ const AuthScreen = () => {
       })
       .catch((err) => {
         show({ message: "Error: " + err.message });
-      });  };
+      });
+  };
 
   return (
     <main className="app-auth-container">

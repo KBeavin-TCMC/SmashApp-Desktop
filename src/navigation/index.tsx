@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AppHeader from "../components/header/AppHeader";
+import AppContext from "../providers/AppContext";
+import AdminScreen from "../screens/admin/AdminScreen";
 import ResetScreen from "../screens/auth/ResetScreen";
 import AccountDetailsScreen from "../screens/crm/AccountDetailsScreen";
 import CrmScreen from "../screens/header/CrmScreen";
@@ -19,6 +21,7 @@ import TruckDetailsScreen from "../screens/routes/TruckDetailsScreen";
 import UserDetailsScreen from "../screens/routes/UserDetails";
 
 const Navigation = () => {
+  const {displayName} = useContext(AppContext);
   return (
     <Router>
       <AppHeader />
@@ -45,6 +48,10 @@ const Navigation = () => {
         <Route path='/invoices/invoices/:id' component={InvoiceDetailsScreen} />
 
         <Route path="/reports" component={ReportsScreen} exact />
+
+        {displayName === "Kyle Beavin" ?
+          <Route path="/admin" component={AdminScreen} />
+        : null}
 
         <Route component={NoMatchScreen} />
       </Switch>

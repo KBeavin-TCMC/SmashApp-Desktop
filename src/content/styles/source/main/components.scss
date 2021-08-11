@@ -101,6 +101,9 @@
                     border: 1px solid $SMT_Tertiary_1;
                     z-index: 1;
                     opacity: .9;
+                    overflow-y: auto;
+                    max-height: 80vh;
+
 
                     .item-wrapper {
                         display: flex;
