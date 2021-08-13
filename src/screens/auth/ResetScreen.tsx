@@ -17,20 +17,18 @@ const ResetScreen = () => {
 
     const handleResetPassword = async () => {
         if (checkConfirmPassword()) {
-            if (validationToggle.valid) {
-                fetch(`${process.env.REACT_APP_TCMC_URI}/api/reset`, {
-                    method: "POST",
-                    headers: { "Content-type": "application/json" },
-                    body: JSON.stringify({ resetId: params.id, email, password }),
+            fetch(`${process.env.REACT_APP_TCMC_URI}/api/reset`, {
+                method: "POST",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify({ resetId: params.id, email, password }),
+            })
+                .then((res) => res.json())
+                .then((json) => {
+                    show({ message: json.message });
                 })
-                    .then((res) => res.json())
-                    .then((json) => {
-                        show({ message: json.message });
-                    })
-                    .catch((err) => {
-                        show({ message: "Error: " + err.message });
-                    });
-            }
+                .catch((err) => {
+                    show({ message: "Error: " + err.message });
+                });
         }
     };
 
@@ -38,10 +36,8 @@ const ResetScreen = () => {
         let match = false;
 
         if (password !== confirmPassword) {
-            setValidationToggle({ visible: true, valid: false });
             show({ message: "Passwords do not match." });
         } else {
-            setValidationToggle({ visible: false, valid: true });
             match = true;
         }
 
