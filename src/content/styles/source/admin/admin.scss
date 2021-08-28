@@ -1,0 +1,14 @@
+.app-admin {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    .app-admin-content {
+            display: flex;
+        
+        .app-admin-buttons {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

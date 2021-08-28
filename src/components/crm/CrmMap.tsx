@@ -19,18 +19,22 @@ interface Props2 {
 
 const CrmMap: React.FC<Props> = ({accounts}) => {
     const [selectedLocation, setSelectedLocation] = useState<Point| null>(null);
-
+    
     return (
         <div style={{height: '100%'}}>
             <AppMapbox 
               selectedLocation={selectedLocation}
               setSelectedLocation={setSelectedLocation}
               points={accounts.map(u => {
+                if (u.geo_location.length === 0) {
+                    return {_id: u._id, longitude: 0, latitude: 0};
+                  } else {
                   return {
                       _id: u._id,
                       longitude: parseFloat(u.geo_location[0]),
                       latitude: parseFloat(u.geo_location[1])
                   }
+                }
               })}
               popup={accounts.map((u: Account) => <AppCrmPopup data={u} setSelectedLocation={setSelectedLocation} />)}
             />

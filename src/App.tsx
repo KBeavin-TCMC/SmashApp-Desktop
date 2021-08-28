@@ -67,10 +67,12 @@ const App = () => {
         body: JSON.stringify({token: smtUser.token})
       })
       .then(res => res.json())
-      .then(json => {console.log('json: ', json)
+      .then(json => {
         if (isSuccessStatusCode(json.status)) {
           return setIsAuth(true);
-        } 
+        } else {
+          return setIsAuth(false);
+        }
       })
       .catch(err => show({ message: err.message}));
     }
