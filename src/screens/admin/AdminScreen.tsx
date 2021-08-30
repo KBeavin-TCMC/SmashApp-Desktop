@@ -43,7 +43,7 @@ const AdminScreen = () => {
                         if (u.isVisible) {
 
                             return (
-                                <div>{u.component}</div>
+                                <div key={u.name}>{u.component}</div>
                             )
                         }
                     })}

@@ -9,7 +9,8 @@ interface Props {
   onChange: any;
   disabled?: boolean;
   top?: boolean;
-  isMulti?: boolean
+  isMulti?: boolean;
+  block?: boolean;
 }
 
 const AppDropDown: React.FC<Props> = ({
@@ -19,7 +20,8 @@ const AppDropDown: React.FC<Props> = ({
   list,
   disabled,
   top,
-  isMulti
+  isMulti, 
+  block
 }) => {
   const [selectedOption, setSelectedOption] = useState(value);
 
@@ -32,7 +34,7 @@ const AppDropDown: React.FC<Props> = ({
   }, [value, list]);
 
   return (
-    <div className="app-dropdown">
+    <div className="app-dropdown" style={block ? {flex: 1} : {}}>
       <label className="dropdown-label">{label}</label>
       <Select
         className="app-dropdown-select"
