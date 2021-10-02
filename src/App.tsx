@@ -80,7 +80,10 @@ const App = () => {
 
 
   return (
-    <div style={{height: '100%'}}>
+    <div
+      // className='container-fluid'
+      // style={{height: '100%'}}
+    >
       <AppContext.Provider value={userSettings}>
         <ModalProvider>
           <ToastProvider>
