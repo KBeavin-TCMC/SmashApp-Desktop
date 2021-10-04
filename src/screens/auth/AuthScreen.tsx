@@ -1,9 +1,6 @@
 import React, { useContext, useState } from "react";
-import logo from "../../content/assets/smt_logo.png";
 import AppContext from "../../providers/AppContext";
 import { isSuccessStatusCode } from "../../utils/Helpers";
-import AppButton from "../../components/layout/AppButton";
-import AppTextInput from "../../components/layout/AppTextInput";
 import { useHistory } from "react-router-dom";
 import { ToastContext } from "../../providers/ToastProvider";
 import AppToast from "../../components/layout/AppToast";
@@ -132,10 +129,8 @@ const AuthScreen = () => {
                             <div className='col'>
                               <Button
                                 className="btn btn-primary btn-user btn-block"
-                                // block
                                 size="lg"
                                 type="submit"
-                              // disabled={!validateForm()}
                               >
                                 Login
                               </Button>
@@ -146,20 +141,6 @@ const AuthScreen = () => {
                           </div>
                         </Form>
                       </>
-                      // <>
-                      //   <div className='text-center'>
-                      //     <h1 className='h4 text-gray-900 mb-4'>Smash App</h1>
-                      //   </div>
-                      //   <AppTextInput label="Email" value={email} onChange={setEmail} />
-                      //   <AppTextInput
-                      //     label="Password"
-                      //     value={password}
-                      //     onChange={setPassword}
-                      //     type='password'
-                      //   />
-                      //   <AppButton label="Submit" onClick={login} />
-                      //   <a className='login' onClick={() => setToggleForm(!toggleForm)}>forgot password?</a>
-                      // </>
                     ) : (
                       <>
                       <div className='text-center'>
@@ -185,10 +166,8 @@ const AuthScreen = () => {
                           <div className='col'>
                             <Button
                               className="btn btn-primary btn-user btn-block"
-                              // block
                               size="lg"
                               type="submit"
-                            // disabled={!validateForm()}
                             >
                               Submit
                             </Button>
@@ -199,11 +178,6 @@ const AuthScreen = () => {
                         </div>
                       </Form>
                     </>
-                      // <>
-                      //   <AppTextInput label="Email" value={email} onChange={setEmail} />
-                      //   <AppButton label="Submit" onClick={handleForgotPassword} />
-                      //   <a className='login' onClick={() => setToggleForm(!toggleForm)}>log in?</a>
-                      // </>
                     )}
 
                   </div>

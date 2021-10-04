@@ -1,11 +1,7 @@
 import React, { useContext, useState } from 'react';
-import logo from "../../content/assets/smt_logo.png";
-import AppButton from '../../components/layout/AppButton';
-import AppTextInput from '../../components/layout/AppTextInput';
 import AppToast from '../../components/layout/AppToast';
 import { ToastContext } from '../../providers/ToastProvider';
 import { Link, useParams } from 'react-router-dom';
-import { isSuccessStatusCode } from '../../utils/Helpers';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -15,7 +11,6 @@ const ResetScreen = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [validationToggle, setValidationToggle] = useState({ visible: false, valid: false });
 
     const handleResetPassword = async (e: any) => {
         e.preventDefault();
@@ -109,18 +104,14 @@ const ResetScreen = () => {
                               <div className='col'>
                                 <Button
                                   className="btn btn-primary btn-user btn-block"
-                                  // block
                                   size="lg"
                                   type="submit"
-                                // disabled={!validateForm()}
                                 >
                                   Submit
                                 </Button>
                               </div>
                             <Link className="col login" to="/" style={{ textDecoration: 'none', color: "black" }}>
-                                {/* <a className='login'> */}
                                     log in?
-                                    {/* </a> */}
                             </Link>
                             </div>
                           </Form>
@@ -136,37 +127,6 @@ const ResetScreen = () => {
             <AppToast />
           </div>
       </main>
-        // <main className="app-auth-container">
-        //     <section className="auth-image-container">
-        //         <img className="auth-image" alt={"Logo"} src={logo} />
-        //     </section>
-
-        //     <section className="auth-form-container">
-        //         <div className="auth-form">
-        //             <div className='auth-toast-container'>
-        //                 <AppToast />
-        //             </div>
-        //             <AppTextInput label="Email" value={email} onChange={setEmail} />
-        //             <AppTextInput
-        //                 label="Password"
-        //                 value={password}
-        //                 onChange={setPassword}
-        //                 type='password'
-        //             />
-        //             <AppTextInput
-        //                 label="Confirm Password"
-        //                 value={confirmPassword}
-        //                 onChange={setConfirmPassword}
-        //                 type='password'
-        //             />
-
-        //             <AppButton label="Submit" onClick={handleResetPassword} />
-        //             <Link to="/" style={{ textDecoration: 'none' }}>
-        //                 <a className='login'>log in?</a>
-        //             </Link>
-        //         </div>
-        //     </section>
-        // </main>
     )
 };
 
