@@ -62,7 +62,8 @@ const AuthScreen = () => {
       });
   };
 
-  const handleForgotPassword = async () => {
+  const handleForgotPassword = async (e: any) => {
+    e.preventDefault();
     fetch(`${process.env.REACT_APP_TCMC_URI}/api/forgot`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
@@ -93,9 +94,6 @@ const AuthScreen = () => {
                 <div className='col-lg-6'>
                   <div className='p-5'>
 
-                    <div className={className}>
-                      <AppToast />
-                    </div>
                     {!toggleForm ? (
                       <>
                         <div className='text-center'>
@@ -164,10 +162,48 @@ const AuthScreen = () => {
                       // </>
                     ) : (
                       <>
-                        <AppTextInput label="Email" value={email} onChange={setEmail} />
-                        <AppButton label="Submit" onClick={handleForgotPassword} />
-                        <a className='login' onClick={() => setToggleForm(!toggleForm)}>log in?</a>
-                      </>
+                      <div className='text-center'>
+                        <h1 className='h4 text-gray-900 mb-4'>Smash App</h1>
+                      </div>
+                      <Form onSubmit={handleForgotPassword}>
+                        <Form.Group
+                          controlId="email"
+                          className="form-group"
+                        >
+                          <Form.Control
+                            className="form-control form-control-user"
+                            aria-describedby="emailHelp"
+                            placeholder="Enter Email Address..."
+                            autoFocus
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                          />
+                        </Form.Group>
+
+                        <div className='row'>
+                          <div className='col'>
+                            <Button
+                              className="btn btn-primary btn-user btn-block"
+                              // block
+                              size="lg"
+                              type="submit"
+                            // disabled={!validateForm()}
+                            >
+                              Submit
+                            </Button>
+                          </div>
+                            <div className='col'>
+                            <a className='login' onClick={() => setToggleForm(!toggleForm)}>log in?</a>
+                            </div>
+                        </div>
+                      </Form>
+                    </>
+                      // <>
+                      //   <AppTextInput label="Email" value={email} onChange={setEmail} />
+                      //   <AppButton label="Submit" onClick={handleForgotPassword} />
+                      //   <a className='login' onClick={() => setToggleForm(!toggleForm)}>log in?</a>
+                      // </>
                     )}
 
                   </div>
@@ -177,6 +213,9 @@ const AuthScreen = () => {
           </div>
         </div>
       </section>
+        <div className='row justify-content-center'>
+          <AppToast />
+        </div>
     </main>
   );
 };
