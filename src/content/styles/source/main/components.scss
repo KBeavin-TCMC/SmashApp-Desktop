@@ -39,11 +39,15 @@
 
 //========= AppHeader ========//
 .app-header {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
     display: flex;
     align-items: center;
     padding-top: .5vh;
     padding-bottom: .5vh;
-    background-color: $SMT_Primary_2;
+    background-color: $SMT_Tertiary_1;
+    border-bottom: solid lightgray 2px;
     
     .left-header {
         display: flex;
@@ -188,3 +192,31 @@
     }
 }
 //========= AppHeader ========//
+
+//========= Sidebar ==========//
+.app-sidebar {
+  position: fixed;
+  height: 100vh;
+  width: 10.7rem;
+  padding-top: 6rem;
+  background-color: $SMT_Primary_1;
+  color: $SMT_Tertiary_1;
+  
+  .sidebar-item {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 1.5rem;
+      &:hover {
+          background-color: darken($SMT_Primary_1, 7%);
+      }
+  }
+
+  svg {
+    margin-right: 1rem;
+  }
+
+  a {
+      color: $SMT_Tertiary_1;
+  }
+}
+//========= Sidebar ==========//

@@ -82,7 +82,7 @@ const App = () => {
   return (
     <div
       // className='container-fluid'
-      // style={{height: '100%'}}
+      style={{height: '100%'}}
     >
       <AppContext.Provider value={userSettings}>
         <ModalProvider>

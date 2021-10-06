@@ -58,13 +58,14 @@ const InvoiceList: React.FC<Props> = ({ invoices }) => {
               </tr>
             ) : (
               invoices.map((u: Invoice) => {
+                console.log(u);
                 return (
                   <tr key={u._id} onClick={() => getInvoiceDetails(u._id)}>
                     <td className="col-1 td-checkbox">
                       <input type="checkbox"></input>
                     </td>
                     <td className="col-3">{u.invoice_id}</td>
-                    <td className="col-3">{u.account_id.account_name}</td>
+                    {/* <td className="col-3">{u.account_id.account_name}</td> */}
                     <td className="col-3">{u.total.toString()}</td>
                     <td className="col-3">
                       {new Date(u.invoice_date).toLocaleDateString()}
