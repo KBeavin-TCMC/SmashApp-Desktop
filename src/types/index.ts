@@ -1,3 +1,5 @@
+import { StringMappingType } from "typescript";
+
 //=== Franchise ===//
 export type Group = {
   _id: string
@@ -63,4 +65,21 @@ export interface Point {
   _id: string;
   longitude: number;
   latitude: number;
+}
+
+export type Quote = {
+  _id: string;
+  group_id: string;
+  account_id: string;
+  location_id: string;
+  objectID: number;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  dateService: number;
+  dateCreated: number;
+  dateLastEdited: number;
+  isActive: boolean;
+  is_active: boolean;
+  title: string;
 }
