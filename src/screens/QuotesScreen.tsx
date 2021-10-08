@@ -30,7 +30,6 @@ const QuotesScreen = () => {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         if (isSuccessStatusCode(json.status)) {
           setData(json.data);
           if (dataTable) {

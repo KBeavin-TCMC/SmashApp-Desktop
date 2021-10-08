@@ -83,3 +83,18 @@ export type Quote = {
   is_active: boolean;
   title: string;
 }
+
+export type Lead = {
+  _id: string;
+  group_id: string;
+  objectID: number;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  dateService: number;
+  dateCreated: number;
+  dateLastEdited: number;
+  isActive: boolean;
+  is_active: boolean;
+  title: string;
+}
