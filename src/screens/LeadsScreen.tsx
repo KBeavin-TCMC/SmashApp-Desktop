@@ -36,7 +36,7 @@ const LeadsScreen = () => {
               "scrollY": "300px",
               data: json.data.map((u: Lead) => {
                 return {
-                  name: u.objectID,
+                  name: u.name,
                   address: 'dev',
                   contact: 'dev',
                   status: 'Active',
