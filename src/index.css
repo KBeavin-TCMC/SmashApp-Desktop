@@ -11317,6 +11317,8 @@ a:focus {
   background-size: 170px 82px;
   height: 60px;
   width: 170px;
+  position: relative;
+  top: 10px;
 }
 
 .bg-register-image {

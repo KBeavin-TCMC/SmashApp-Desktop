@@ -1,5 +1,11 @@
 import React, { useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import CreateAccountForm from "../components/forms/CreateAccountForm";
+import CreateAgreementForm from "../components/forms/CreateAgreementForm";
+import CreateInvoiceForm from "../components/forms/CreateInvoiceForm";
+import CreateJobForm from "../components/forms/CreateJobForm";
+import CreateLeadForm from "../components/forms/CreateLeadForm";
+import CreateQuoteForm from "../components/forms/CreateQuoteForm";
 import AppHeader from "../components/header/AppHeader";
 import Sidebar from "../components/layout/Sidebar";
 import AppContext from "../providers/AppContext";
@@ -40,11 +46,11 @@ const Navigation = () => {
       <div className='main-content'>
       <Switch>
         <Route path={["/", "/dashboard", "/home"]} component={HomeScreen} exact />
-        <Route path='/quotes' component={QuotesScreen} />
-        <Route path='/leads' component={LeadsScreen} />
-        <Route path='/reset/:id' component={ResetScreen} />
-        <Route path='/accounts' component={AccountsScreen} />
-        <Route path='/jobs' component={JobsScreen} />
+        <Route path='/quotes' component={QuotesScreen} exact />
+        <Route path='/leads' component={LeadsScreen} exact />
+        <Route path='/reset/:id' component={ResetScreen} exact />
+        <Route path='/accounts' component={AccountsScreen} exact />
+        <Route path='/jobs' component={JobsScreen} exact/>
         <Route path='/schedules' component={SchedulesScreen} />
         <Route path="/invoices" component={InvoicesScreen} exact />
         <Route path="/agreements" component={AgreementsScreen} exact />
@@ -52,6 +58,12 @@ const Navigation = () => {
         <Route path="/business" component={BusinessUnitScreen} exact />
         <Route path="/corporate" component={CorporateScreen} exact />
 
+        <Route path="/jobs/create" component={CreateJobForm} exact />
+        <Route path="/agreements/create" component={CreateAgreementForm} exact />
+        <Route path="/quotes/create" component={CreateQuoteForm} exact />
+        <Route path="/accounts/create" component={CreateAccountForm} exact />
+        <Route path="/leads/create" component={CreateLeadForm} exact />
+        <Route path="/invoices/create" component={CreateInvoiceForm} exact />
 
         <Route path="/settings" component={SettingsScreen} exact />
 

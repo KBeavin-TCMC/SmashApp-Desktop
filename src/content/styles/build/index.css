@@ -4,6 +4,7 @@
   height: 100vh;
   width: 100%;
   background-color: #f2f2f2;
+  overflow: hidden;
 }
 
 .table-container thead {
@@ -735,10 +736,6 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
   position: fixed;
   z-index: 1000;
   width: 100%;
-  display: flex;
-  align-items: center;
-  padding-top: 0.5vh;
-  padding-bottom: 0.5vh;
   background-color: #FFFFFF;
   border-bottom: solid lightgray 2px;
 }
