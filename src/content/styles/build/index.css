@@ -627,6 +627,11 @@
   box-shadow: none;
 }
 
+.list-group-item.active {
+  background-color: #BB1E10;
+  border-color: #BB1E10;
+}
+
 div.react-calendar {
   flex: 1;
   border: none;

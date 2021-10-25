@@ -65,6 +65,11 @@
     }
 }
 
+.list-group-item.active {
+    background-color: $SMT_Primary_1;
+    border-color: $SMT_Primary_1;
+}
+
 //======= react-calendar =======//
 div.react-calendar {
     flex: 1;

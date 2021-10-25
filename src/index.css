@@ -5021,7 +5021,7 @@ input[type="button"].btn-block {
   }
 }
 
-.accordion {
+/* .accordion {
   overflow-anchor: none;
 }
 
@@ -5043,7 +5043,7 @@ input[type="button"].btn-block {
 .accordion > .card > .card-header {
   border-radius: 0;
   margin-bottom: -1px;
-}
+} */
 
 .breadcrumb {
   display: flex;
