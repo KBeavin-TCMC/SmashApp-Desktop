@@ -191,6 +191,17 @@
         }
     }
 }
+
+.header-settings {
+    float: right;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    &:hover {
+        background-color: lighten($SMT_Secondary_1_Light_1, 7%);
+    }
+}
 //========= AppHeader ========//
 
 //========= Sidebar ==========//

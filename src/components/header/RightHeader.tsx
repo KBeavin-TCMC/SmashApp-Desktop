@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import { Col, Dropdown, DropdownButton, Row } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { Col, Dropdown, DropdownButton, FormControl, Row } from "react-bootstrap";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import AppContext from "../../providers/AppContext";
 import { ToastContext } from "../../providers/ToastProvider";
@@ -63,8 +63,10 @@ const RightHeader = () => {
   return (
     <Row>
       <Col>
-      <IoPersonCircleOutline style={{ position: 'relative', top: '5px', float: 'right', fontSize: '3rem' }} />
-        <span style={{ position: 'relative', top: '15px', float: 'right', marginRight: '15px' }}>{displayName}</span>
+        <div className='header-settings' onClick={() => history.push('/settings')}>
+            <IoPersonCircleOutline style={{ position: 'relative', top: '5px', float: 'right', fontSize: '3rem' }} />
+          <span style={{ position: 'relative', top: '15px', float: 'right', marginRight: '15px' }}>{displayName}</span>
+        </div>
         {role !== 'admin' ? (
           <DropdownButton variant="secondary" style={{ position: 'relative', top: '10px', float: 'right', marginRight: '60px' }} title={grpName}>
 

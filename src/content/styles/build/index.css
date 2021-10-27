@@ -863,6 +863,17 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
   margin-bottom: -2px;
 }
 
+.header-settings {
+  float: right;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+}
+.header-settings:hover {
+  background-color: #dedede;
+}
+
 .app-sidebar {
   position: fixed;
   height: 100vh;
