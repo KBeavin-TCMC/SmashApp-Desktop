@@ -22,6 +22,7 @@ export type Group = {
   territory_zips: string;
   time_zone: string;
   webpage: string;
+  vonigo_franchise_id: string;
 };
 
 //=== Auth Types ===//

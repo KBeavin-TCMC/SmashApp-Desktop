@@ -32,8 +32,9 @@ const RightHeader = () => {
       .then((res) => res.json())
       .then((json) => {
         console.log('grpname: ', json)
+
         if (isSuccessStatusCode(json.status)) {
-          setGrpName(json.data.name);
+          setGrpName(json.data[0].name);
         } else {
           show({ message: json.message });
         }
@@ -65,7 +66,7 @@ const RightHeader = () => {
       <IoPersonCircleOutline style={{ position: 'relative', top: '5px', float: 'right', fontSize: '3rem' }} />
         <span style={{ position: 'relative', top: '15px', float: 'right', marginRight: '15px' }}>{displayName}</span>
         {role !== 'admin' ? (
-          <DropdownButton style={{ position: 'relative', top: '10px' }} id="dropdown-basic-button" title={grpName}>
+          <DropdownButton variant="secondary" style={{ position: 'relative', top: '10px', float: 'right', marginRight: '60px' }} title={grpName}>
 
           </DropdownButton>
         ) : (

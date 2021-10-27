@@ -59,6 +59,7 @@ const AddGroupForm = () => {
         territory_zips: territoryZips,
         time_zone: timeZone,
         webpage: webpage,
+        vonigo_franchise_id: ''
       }
 
       return newGroup;

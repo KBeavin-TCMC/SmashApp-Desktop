@@ -1,35 +1,190 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useContext } from 'react';
 import { Accordion, Card, Col, FormControl, InputGroup, ListGroup, Row, Tab, Table } from 'react-bootstrap';
 import AppTitle from '../components/layout/AppTitle';
+import AppContext from '../providers/AppContext';
+import { ToastContext } from '../providers/ToastProvider';
+import { Group, SMT_User } from '../types';
+import { isSuccessStatusCode } from '../utils/Helpers';
 
 var $ = require('jquery');
 $.DataTable = require('datatables.net');
 
 const BusinessUnitScreen = () => {
+  const { grpId, token, role, setToken, setIsAuth } = useContext(AppContext);
   const [edit, setEdit] = useState(false);
-  const dataTable = useRef<any>(null);
+  const { show, hide } = useContext(ToastContext);
+  const [franchise, setFranchise] = useState<Group>();
+  const [zips, setZips] = useState([]);
+  const [employees, setEmployees] = useState<SMT_User[]>();
+  const addressTable = useRef<any>(null);
+  const documentsTable = useRef<any>(null);
+  const zipTable = useRef<any>(null);
+  const employeesTable = useRef<any>(null);
 
   useEffect(() => {
-    initAddressTable();
-  }, []);
+    if (!franchise){
+      getFranchise();
+    }
+    if (franchise) {
+      getZips();
+      initAddressTable();
+      initDocumentsTable();
+    }
+  }, [franchise]);
+
+  useEffect(() => {
+    if (zips) {
+      if (zips.length > 0) {
+        initZipTable();
+      }
+    }
+
+  }, [zips]);
+
+  useEffect(() => {
+    if (!employees) {
+      getEmployees();
+    }
+    if (employees) {
+      initEmployeesTable();
+    }
+  }, [employees]);
+
+  const getFranchise = async () => {
+    fetch(`${process.env.REACT_APP_TCMC_URI}/api/groupsBy`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-access-token': token },
+      body: JSON.stringify({ _id: grpId }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (isSuccessStatusCode(json.status)) {
+          setFranchise(json.data[0]);
+        } else {
+          show({ message: json.message });
+        }
+      })
+      .catch((err) => show({ message: err.message }));
+  }
+
+  const getZips = async () => {
+    fetch(`${process.env.REACT_APP_TCMC_URI}/api/zipsBy`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-access-token': token },
+      body: JSON.stringify({ franchiseID: franchise?.vonigo_franchise_id }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (isSuccessStatusCode(json.status)) {
+          setZips(json.data);
+        } else {
+          show({ message: json.message });
+        }
+      })
+      .catch((err) => show({ message: err.message }));
+  };
+
+  const getEmployees = async () => {
+    fetch(`${process.env.REACT_APP_TCMC_URI}/api/usersBy`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-access-token': token },
+      body: JSON.stringify({ group_id: grpId }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (isSuccessStatusCode(json.status)) {
+          setEmployees(json.data);
+        } else {
+          show({ message: json.message });
+        }
+      })
+      .catch((err) => show({ message: err.message }));
+  }
 
   const initAddressTable = () => {
-    if (dataTable) {
-      dataTable.current = $("#address-table").DataTable({
+    if (addressTable) {
+      addressTable.current = $("#address-table").DataTable({
         "scrollY": "300px",
-        data: [{address: "1075 73rd Street Soutwest, Byron Center, MI 49315", type: "Office", status: "Active"},{address: "15782 Columbian Road, Buchanan, MI 49107", type: "Mailing", status: "Active"},{address: "15782 Columbian Road, Buchanan, MI 49107", type: "Legal", status: "Active"},{address: "15782 Columbian Road, Buchanan, MI 49107", type: "Billing", status: "Active"}],
+        data: [{address: `${franchise?.address.address_street}, ${franchise?.address.address_city}, ${franchise?.address.address_state} ${franchise?.address.address_zip}`, type: "Mailing", status: "Active"}],
         columns: [
-          {title: "Address", data: 'address'},
-          {title: "Type", data: 'type'},
-          {title: "Status", data: 'status'}
+          { title: "Address", data: 'address' },
+          { title: "Type", data: 'type' },
+          { title: "Status", data: 'status' }
         ]
       });
     }
   };
 
-  const drawTable = () => {
+  const drawAddressTable = () => {
     setTimeout(() => {
-      dataTable.current.columns.adjust().draw();
+      addressTable.current.columns.adjust().draw();
+    }, 1);
+  };
+
+  const initDocumentsTable = () => {
+    if (documentsTable) {
+      documentsTable.current = $("#documents-table").DataTable({
+        "scrollY": "300px",
+        data: [],
+        columns: [
+          { title: "File Name", data: 'name' },
+          { title: "File Type", data: 'type' },
+          { title: "File Status", data: 'status' }
+        ]
+      });
+    }
+  };
+
+  const drawDocumentsTable = () => {
+    setTimeout(() => {
+      documentsTable.current.columns.adjust().draw();
+    }, 1);
+  };
+
+  const initZipTable = () => {
+    if (zips) {
+
+      if (zipTable) {
+        zipTable.current = $("#zip-table").DataTable({
+          "scrollY": "300px",
+          data: zips.map((u: any) => {
+            return {zip: u.zip}
+          }),
+          columns: [
+            { title: "Zip Code", data: 'zip' },
+          ]
+        });
+      }
+    }
+  };
+
+  const drawZipTable = () => {
+    setTimeout(() => {
+      zipTable.current.columns.adjust().draw();
+    }, 1);
+  };
+
+  const initEmployeesTable = () => {
+    if (employees) {
+      if (employeesTable) {
+        employeesTable.current = $("#employees-table").DataTable({
+          "scrollY": "300px",
+          data: employees.map(u => {
+            return {name: `${u.first_name} ${u.last_name}`, email: u.email, role: u.role}
+          }),
+          columns: [
+            { title: "Name", data: 'name' },
+            { title: "Email", data: 'email'},
+            { title: "Role", data: 'role'}
+          ]
+        });
+      }
+    }
+  };
+
+  const drawEmployeesTable = () => {
+    setTimeout(() => {
+      employeesTable.current.columns.adjust().draw();
     }, 1);
   };
 
@@ -42,22 +197,22 @@ const BusinessUnitScreen = () => {
             sm={1}
           >
             <ListGroup>
-              <ListGroup.Item style={{ padding: 0 , borderRadius: '.35rem 0 0 0', paddingLeft: '5px'}} action href="#details">
+              <ListGroup.Item style={{ padding: 0, borderRadius: '.35rem 0 0 0', paddingLeft: '5px' }} action href="#details">
                 Details
               </ListGroup.Item>
               <ListGroup.Item style={{ padding: 0, paddingLeft: '5px' }} action href="#accounting">
                 Accounting
               </ListGroup.Item>
-              <ListGroup.Item style={{ padding: 0, paddingLeft: '5px' }} action href="#employees">
+              <ListGroup.Item style={{ padding: 0, paddingLeft: '5px' }} action href="#employees" onClick={() => drawEmployeesTable()}>
                 Employees
               </ListGroup.Item>
-              <ListGroup.Item style={{ padding: 0, paddingLeft: '5px' }} action href="#operations" onClick={() => drawTable()}>
+              <ListGroup.Item style={{ padding: 0, paddingLeft: '5px' }} action href="#operations">
                 Operations
               </ListGroup.Item>
               <ListGroup.Item style={{ padding: 0, paddingLeft: '5px' }} action href="#pricing">
                 Pricing
               </ListGroup.Item>
-              <ListGroup.Item style={{ padding: 0, paddingLeft: '5px' , borderRadius: '0 0 0 .35rem'}} action href="#dispatching">
+              <ListGroup.Item style={{ padding: 0, paddingLeft: '5px', borderRadius: '0 0 0 .35rem' }} action href="#dispatching">
                 Dispatching
               </ListGroup.Item>
             </ListGroup>
@@ -88,59 +243,41 @@ const BusinessUnitScreen = () => {
                       <Tab.Content>
                         <Tab.Pane eventKey="#details">
                           <Accordion defaultActiveKey="0">
-                          <Accordion.Item eventKey="0">
+                            <Accordion.Item eventKey="0">
                               <Accordion.Header>Business Unit Information</Accordion.Header>
                               <Accordion.Body>
-                          <Row>
-                            <Col>
-                              <AppFormInput edit={edit} label='Name' value='My Business' />
-                              <AppFormInput edit={edit} label='Country' value='United States' />
-                              <AppFormInput edit={edit} label='Time Zone' value='(GMT -04:00) Eastern Time' />
-                              <AppFormInput edit={edit} label='Region' value='South West' />
-                              <AppFormInput edit={edit} label='Status' value='Active' />
-
-                              <AppFormInput edit={edit} label='Start Date' value='03/05/2020' />
-                              <AppFormInput edit={edit} label='Effective Date' value='' />
-                              <AppFormInput edit={edit} label='Minimum Royalty' value='' />
-                              <AppFormInput edit={edit} label='Operational Notes' value='' />
-                              <AppFormInput edit={edit} label='Region' value='' />
-
-                              <AppFormInput edit={edit} label='Phone' value='' />
-                              <AppFormInput edit={edit} label='Phone 2' value='' />
-                              <AppFormInput edit={edit} label='Fax' value='' />
-                              <AppFormInput edit={edit} label='Website' value='' />
-                              <AppFormInput edit={edit} label='Twitter URL' value='' />
-                              <AppFormInput edit={edit} label='Facebook' value='' />
-                              <AppFormInput edit={edit} label='LinkedIn' value='' />
-
-                              <AppFormInput edit={edit} label='Legal Company Name' value='Open Door Environment, LLC' />
-                              <AppFormInput edit={edit} label='DBA' value='Smash My Trash' />
-                              <AppFormInput edit={edit} label='Tax Registration #' value='' />
-                              <AppFormInput edit={edit} label='Legal Notes' value='' />
-                            </Col>
-                            <Col>
-                              <AppFormInput edit={edit} label='First Name' value='Heath' />
-                              <AppFormInput edit={edit} label='Last Name' value='Reid' />
-                              <AppFormInput edit={edit} label='Title' value='President' />
-                              <AppFormInput edit={edit} label='Direct Phone' value='' />
-                              <AppFormInput edit={edit} label='Mobile' value='' />
-                              <AppFormInput edit={edit} label='Direct Fax' value='' />
-                              <AppFormInput edit={edit} label='Email' value='heath.reid@smashmytrash.com' />
-                              <AppFormInput edit={edit} label='Skype ID' value='' />
-
-                              <AppFormInput edit={edit} label='Invoice Notes' value='' />
-                              <AppFormInput edit={edit} label='General Notes' value='' />
-
-                              <AppFormInput edit={edit} label='Hubspot Team' value='404769' />
-                            </Col>
-                          </Row>
-                          </Accordion.Body>
-                          </Accordion.Item>
-                          <Accordion.Item eventKey="1">
+                                <Row>
+                                  <Col>
+                                    {franchise ? (
+                                      <Row>
+                                        <Col>
+                                        <AppFormInput edit={edit} label='Franchise ID' value={franchise.vonigo_franchise_id} />
+                                        <AppFormInput edit={edit} label='Name' value={franchise.name} />
+                                        <AppFormInput edit={edit} label='DBA' value={franchise.dba} />
+                                        <AppFormInput edit={edit} label='EIN' value={franchise.ein} />
+                                        <AppFormInput edit={edit} label='Phone' value={franchise.phone} />
+                                        <AppFormInput edit={edit} label='Email' value={franchise.email} />
+                                        </Col>
+                                        <Col>
+                                        <AppFormInput edit={edit} label='Region' value={franchise.region} />
+                                        <AppFormInput edit={edit} label='Tax Rate' value={franchise.tax_rate} />
+                                        <AppFormInput edit={edit} label='Time Zone' value={franchise.time_zone} />
+                                        <AppFormInput edit={edit} label='Launch Date' value={franchise.launch_date.toString()} />
+                                        <AppFormInput edit={edit} label='Signing Date' value={franchise.signing_date} />
+                                        </Col>
+                                      </Row>
+                                    ) : (
+                                      null
+                                    )}
+                                  </Col>
+                                </Row>
+                              </Accordion.Body>
+                            </Accordion.Item>
+                            <Accordion.Item eventKey="1" onClick={() => drawAddressTable()}>
                               <Accordion.Header>Business Unit Addresses</Accordion.Header>
                               <Accordion.Body>
                                 <Table
-                                  ref={dataTable}
+                                  ref={addressTable}
                                   id='address-table'
                                   style={{ fontSize: '12px' }}
                                   responsive
@@ -150,22 +287,40 @@ const BusinessUnitScreen = () => {
                                 </Table>
                               </Accordion.Body>
                             </Accordion.Item>
-                            <Accordion.Item eventKey="2">
+                            <Accordion.Item eventKey="2" onClick={() => drawDocumentsTable()}>
                               <Accordion.Header>Business Unit Documents</Accordion.Header>
                               <Accordion.Body>
-                                Business Unit Documents
+                              <Table
+                                  ref={documentsTable}
+                                  id='documents-table'
+                                  style={{ fontSize: '12px' }}
+                                  responsive
+                                  hover
+                                  size="sm"
+                                >
+                                </Table>
                               </Accordion.Body>
                             </Accordion.Item>
-                            <Accordion.Item eventKey="3">
+                            <Accordion.Item eventKey="3"
+                             onClick={() => drawZipTable()}
+                             >
                               <Accordion.Header>Zip Codes</Accordion.Header>
                               <Accordion.Body>
-                                Zip Codes
+                              <Table
+                                  ref={zipTable}
+                                  id='zip-table'
+                                  style={{ fontSize: '12px' }}
+                                  responsive
+                                  hover
+                                  size="sm"
+                                >
+                                </Table>
                               </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="4">
-                              <Accordion.Header>Data Important</Accordion.Header>
+                              <Accordion.Header>Data Import</Accordion.Header>
                               <Accordion.Body>
-                                Data Important
+                                Data Import
                               </Accordion.Body>
                             </Accordion.Item>
                           </Accordion>
@@ -199,83 +354,91 @@ const BusinessUnitScreen = () => {
                             <Accordion.Item eventKey="4">
                               <Accordion.Header>QuickBooks Integration Setup</Accordion.Header>
                               <Accordion.Body>
-                              QuickBooks Integration Setup
+                                QuickBooks Integration Setup
                               </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="5">
                               <Accordion.Header>Royalty Statements</Accordion.Header>
                               <Accordion.Body>
-                              Royalty Statements
+                                Royalty Statements
                               </Accordion.Body>
                             </Accordion.Item>
                           </Accordion>
                         </Tab.Pane>
                         <Tab.Pane eventKey="#employees">
-                        <Accordion defaultActiveKey="0">
+                          <Accordion defaultActiveKey="0">
                             <Accordion.Item eventKey="0">
                               <Accordion.Header>Employees</Accordion.Header>
                               <Accordion.Body>
-                                Employees
+                              <Table
+                                  ref={employeesTable}
+                                  id='employees-table'
+                                  style={{ fontSize: '12px' }}
+                                  responsive
+                                  hover
+                                  size="sm"
+                                >
+                                </Table>
                               </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
                               <Accordion.Header>Business Unit Contacts</Accordion.Header>
                               <Accordion.Body>
-                              Business Unit Contacts
+                                Business Unit Contacts
                               </Accordion.Body>
                             </Accordion.Item>
                           </Accordion>
                         </Tab.Pane>
                         <Tab.Pane eventKey="#operations">
-                        <Accordion defaultActiveKey="0">
+                          <Accordion defaultActiveKey="0">
                             <Accordion.Item eventKey="0">
                               <Accordion.Header>Availability Templates</Accordion.Header>
                               <Accordion.Body>
-                              Availability Templates
+                                Availability Templates
                               </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
                               <Accordion.Header>Trucks</Accordion.Header>
                               <Accordion.Body>
-                              Trucks
+                                Trucks
                               </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="2">
                               <Accordion.Header>Zones</Accordion.Header>
                               <Accordion.Body>
-                              Zones
+                                Zones
                               </Accordion.Body>
                             </Accordion.Item>
                           </Accordion>
                         </Tab.Pane>
                         <Tab.Pane eventKey="#pricing">
-                        <Accordion defaultActiveKey="0">
+                          <Accordion defaultActiveKey="0">
                             <Accordion.Item eventKey="0">
                               <Accordion.Header>Price Lists</Accordion.Header>
                               <Accordion.Body>
-                              Price Lists
+                                Price Lists
                               </Accordion.Body>
                             </Accordion.Item>
                           </Accordion>
                         </Tab.Pane>
                         <Tab.Pane eventKey="#dispatching">
-                        <Accordion defaultActiveKey="0">
+                          <Accordion defaultActiveKey="0">
                             <Accordion.Item eventKey="0">
                               <Accordion.Header>Client Confirmation Emails</Accordion.Header>
                               <Accordion.Body>
-                              Client Confirmation Emails
+                                Client Confirmation Emails
                               </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
                               <Accordion.Header>Client Reminders</Accordion.Header>
                               <Accordion.Body>
-                              Client Reminders
+                                Client Reminders
                               </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="2">
                               <Accordion.Header>Routific Credentials</Accordion.Header>
                               <Accordion.Body>
-                              Routific Credentials
+                                Routific Credentials
                               </Accordion.Body>
                             </Accordion.Item>
                           </Accordion>
