@@ -102,3 +102,44 @@ export type Demo = {
   account_id: string;
   created: string;
 };
+
+export type VOrder = {
+  _id: string;
+	account_id: string;
+	contact_id: string;
+	group_id: string;
+	job_id: string;
+	location_id: string;
+	route_id: String;
+	document_id: string[];
+	status: string;
+	serviceType: string;
+	scheduledOn: number;
+	scheduledOnDuration: number;
+	subtotal: number;
+	summary: string;
+	label: string;
+	discountNotes: string;
+	discount: number;
+	tips: number;
+	price: number;
+	completedOn: Date;
+	total: number;
+	newBusiness: boolean;
+	smashOfTheWeek: boolean;
+	avgPreSmashFullness: number;
+	avgPostSmashFullness: number;
+	dumpsterID: string;
+	dumpstersSmashed: number;
+	haul: boolean;
+	smashNotes: string;
+	wasSmashPerformed: boolean;
+	notes: string;
+
+	dateCreated: number;
+	dateLastEdited: number;
+	isActive: boolean;
+	name: string;
+	order_id: string;
+	vonigo_order_id: number;
+}

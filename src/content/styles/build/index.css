@@ -897,6 +897,25 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
   color: #FFFFFF;
 }
 
+.schedule-col {
+  border-left: 1px solid #CCCCCC;
+  border-right: 1px solid #CCCCCC;
+}
+
+.schedule-header {
+  width: 100%;
+  border-bottom: 1px solid #CCCCCC;
+  text-align: center;
+}
+
+.schedule-sm-span {
+  position: relative;
+  top: -6px;
+  left: 1px;
+  font-size: 7px;
+  color: #CCCCCC;
+}
+
 p.small-label {
   font-size: 10px;
   margin-top: -15px;

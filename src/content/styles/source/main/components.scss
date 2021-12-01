@@ -231,3 +231,24 @@
   }
 }
 //========= Sidebar ==========//
+
+//========= Schedule ==========//
+.schedule-col {
+    border-left: 1px solid $SMT_Secondary_1_Light_1;
+    border-right: 1px solid $SMT_Secondary_1_Light_1;
+}
+
+.schedule-header {
+    width: 100%;
+    border-bottom: 1px solid $SMT_Secondary_1_Light_1;
+    text-align: center;
+}
+
+.schedule-sm-span {
+    position: relative;
+    top: -6px;
+    left: 1px;
+    font-size: 7px;
+    color: $SMT_Secondary_1_Light_1;
+}
+//========= Schedule ==========//

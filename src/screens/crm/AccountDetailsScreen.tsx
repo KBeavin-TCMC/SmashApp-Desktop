@@ -115,10 +115,10 @@ const AccountDetailsScreen = () => {
   };
 
   const getTodaysOrders = () => {
-    let dateObj = getSelectedDateRange();
+    let dateObj = getSelectedDateRange(new Date());
 
     return orders.map(u => {
-      if (new Date(u.service_date).toLocaleDateString() == dateObj.gte.toLocaleDateString()) {
+      if (new Date(u.service_date).toLocaleDateString() == new Date(dateObj.gte).toLocaleDateString()) {
         return (
           <div key={u._id} className='details-card'>
             <p>{u.order_id}</p>

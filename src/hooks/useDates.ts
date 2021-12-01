@@ -11,11 +11,14 @@ const useDates = () => {
     return [year, month, day].join('-');
   };
 
-  const getSelectedDateRange = () : {gte: Date, lt: number} => {
-    let date = new Date();
-    let lessThan = date.setDate(date.getDate() + 1)
+  const getSelectedDateRange = (date: Date) : {gte: number, lt: number} => {
+    let greatThan = new Date(date.toLocaleDateString());
+    let lessThan = addDays(greatThan, 1).getTime();
 
-    let dateRangeObject = {gte: new Date(), lt: lessThan};
+    let dateRangeObject = {
+      gte: Math.floor(greatThan.getTime()/1000),
+      lt: Math.floor(lessThan/1000)
+    };
     return dateRangeObject;
   };
 

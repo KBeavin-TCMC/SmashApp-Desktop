@@ -44,6 +44,23 @@ export type Route = {
   notes: string;
 }
 
+export type VRoute = {
+  _id: string;
+	group_id: string;
+	vonigo_route_id: number;
+	type: string;
+	status: string;
+	name: string;
+	abbreviation: string;
+	description: string;
+	office: string;
+	internalDispatchEmail: string;
+	internalDispatchPhone: string;
+	dateCreated: number;
+	dateLastEdited: number;
+	isActive: boolean;
+}
+
 export type PreTripInspection = {
   // Identify truck
   _id: string;
