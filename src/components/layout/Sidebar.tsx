@@ -7,7 +7,7 @@ const Sidebar = () => {
   const [open, setOpen] = useState(true);
 
   return (
-    <div className='app-sidebar' style={open ? {left: '-10.7rem'} : {left: 0}}>
+    <div className='app-sidebar' style={open ? {left: 0} : {left: '-10.7rem'}}>
       <div className='sidebar-toggle'>
         {open ? (
           <BiChevronRight style={{position: 'relative', right: '7px', top: '9px'}} size={25} onClick={() => setOpen(!open)}/>
