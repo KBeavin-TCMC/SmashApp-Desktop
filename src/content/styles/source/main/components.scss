@@ -397,29 +397,49 @@
 
 //========= Sidebar ==========//
 .app-sidebar {
-  position: fixed;
-  height: 100vh;
-  width: 10.7rem;
-  padding-top: 6rem;
-  background-color: $SMT_Primary_1;
-  color: $SMT_Tertiary_1;
-  
-  .sidebar-item {
-      padding-top: 5px;
-      padding-bottom: 5px;
-      padding-left: 1.5rem;
-      &:hover {
-          background-color: darken($SMT_Primary_1, 7%);
-      }
-  }
+    z-index: 500;
+    position: fixed;
+    height: 100vh;
+    width: 10.7rem;
+    padding-top: 6rem;
+    background-color: $SMT_Primary_1;
+    color: $SMT_Tertiary_1;
+    
+    .sidebar-toggle {
+        display: block;
+        position: relative;
+        top: -30px;
+        left: 170px;
+        width: 12px;
+        height: 50px;
+        border-radius: 0 7px 7px 0;
+        background-color: $SMT_Primary_1;
+    }
 
-  svg {
-    margin-right: 1rem;
-  }
+    .sidebar-item {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 1.5rem;
+        &:hover {
+            background-color: darken($SMT_Primary_1, 7%);
+        }
+    }
+    
+    svg {
+        margin-right: 1rem;
+    }
+    
+    a {
+        color: $SMT_Tertiary_1;
+    }
+}
 
-  a {
-      color: $SMT_Tertiary_1;
-  }
+@media (min-width: 576px) {
+    .app-sidebar {
+        .sidebar-toggle {
+            display: none;
+        }
+    }
 }
 //========= Sidebar ==========//
 

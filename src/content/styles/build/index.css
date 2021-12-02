@@ -1,12 +1,20 @@
 .main-content {
   padding-top: 4.5rem;
-  padding-left: 10.7rem;
-  height: 100vh;
-  width: 100%;
+  overflow-x: hidden;
   background-color: #f2f2f2;
-  overflow: hidden;
+  height: 100vh;
 }
 
+@media (min-width: 576px) {
+  .main-content {
+    padding-top: 4.5rem;
+    padding-left: 10.7rem;
+    height: 100vh;
+    width: 100%;
+    background-color: #f2f2f2;
+    overflow: hidden;
+  }
+}
 .table-container thead {
   display: block;
   background-color: #C9DBFF;
@@ -1043,12 +1051,23 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
   }
 }
 .app-sidebar {
+  z-index: 500;
   position: fixed;
   height: 100vh;
   width: 10.7rem;
   padding-top: 6rem;
   background-color: #BB1E10;
   color: #FFFFFF;
+}
+.app-sidebar .sidebar-toggle {
+  display: block;
+  position: relative;
+  top: -30px;
+  left: 170px;
+  width: 12px;
+  height: 50px;
+  border-radius: 0 7px 7px 0;
+  background-color: #BB1E10;
 }
 .app-sidebar .sidebar-item {
   padding-top: 5px;
@@ -1065,6 +1084,11 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
   color: #FFFFFF;
 }
 
+@media (min-width: 576px) {
+  .app-sidebar .sidebar-toggle {
+    display: none;
+  }
+}
 .schedule-col {
   border-left: 1px solid #CCCCCC;
   border-right: 1px solid #CCCCCC;

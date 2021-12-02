@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom";
 import { IoSettingsOutline } from "react-icons/io5";
+import { useState } from "react";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 const Sidebar = () => {
-  return (
-    <div className='app-sidebar'>
+  const [open, setOpen] = useState(true);
 
+  return (
+    <div className='app-sidebar' style={open ? {left: '-10.7rem'} : {left: 0}}>
+      <div className='sidebar-toggle'>
+        {open ? (
+          <BiChevronRight style={{position: 'relative', right: '7px', top: '9px'}} size={25} onClick={() => setOpen(!open)}/>
+        ) : (
+          <BiChevronLeft style={{position: 'relative', right: '5px', top: '9px'}} size={25} onClick={() => setOpen(!open)}/>
+        )}
+      </div>
       <div className="sidebar-item">
         <IoSettingsOutline />
         <Link to="/home">
