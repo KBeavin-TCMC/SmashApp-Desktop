@@ -70,6 +70,15 @@
     border-color: $SMT_Primary_1;
 }
 
+@media (min-width: 576px) {
+    .navbar {
+        padding: 0;
+    }
+    .navbar-expand-sm .navbar-collapse {
+        justify-content: end;
+    }
+}
+
 //======= react-calendar =======//
 div.react-calendar {
     flex: 1;
