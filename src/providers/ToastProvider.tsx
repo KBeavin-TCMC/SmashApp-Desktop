@@ -22,11 +22,12 @@ const ToastProvider: React.FC<Props> = ({children}) => {
 
   const hide = useCallback(() => {
     setToast({...toast, visible: false});
+    setTimeout(() => setToast({...toast, message: '', visible: false}), 200);
   }, [toast]);
 
   useEffect(() => {
     if (toast.visible) {
-      timeout.current = setTimeout(hide, 2500);
+      timeout.current = setTimeout(hide, 2300);
       return () => {
         if (timeout.current) {
           clearTimeout(timeout.current);
