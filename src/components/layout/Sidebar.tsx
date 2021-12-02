@@ -4,15 +4,15 @@ import { useState } from "react";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 const Sidebar = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(window.innerWidth > 576 ? true : false);
 
   return (
     <div className='app-sidebar' style={open ? {left: 0} : {left: '-10.7rem'}}>
       <div className='sidebar-toggle'>
         {open ? (
-          <BiChevronRight style={{position: 'relative', right: '7px', top: '9px'}} size={25} onClick={() => setOpen(!open)}/>
+          <BiChevronLeft style={{position: 'relative', right: '7px', top: '9px'}} size={25} onClick={() => setOpen(!open)}/>
         ) : (
-          <BiChevronLeft style={{position: 'relative', right: '5px', top: '9px'}} size={25} onClick={() => setOpen(!open)}/>
+          <BiChevronRight style={{position: 'relative', right: '5px', top: '9px'}} size={25} onClick={() => setOpen(!open)}/>
         )}
       </div>
       <div className="sidebar-item">
