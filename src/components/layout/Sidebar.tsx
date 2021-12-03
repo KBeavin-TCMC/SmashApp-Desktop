@@ -1,6 +1,10 @@
-import { Link } from "react-router-dom";
-import { IoSettingsOutline } from "react-icons/io5";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { AiOutlineSchedule, AiOutlineCheckCircle } from 'react-icons/ai';
+import { IoSettingsOutline, IoPeopleOutline, IoBusinessOutline } from "react-icons/io5";
+import { RiHomeLine, RiAccountBoxLine, RiFileWarningLine, RiFlag2Line } from "react-icons/ri";
+import { BsChatQuote, BsCardList } from "react-icons/bs";
+import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 const Sidebar = () => {
@@ -16,67 +20,67 @@ const Sidebar = () => {
         )}
       </div>
       <div className="sidebar-item">
-        <IoSettingsOutline />
+        <RiHomeLine />
         <Link to="/home">
             Home
         </Link>
       </div>
       <div className="sidebar-item">
-        <IoSettingsOutline />
+        <BsChatQuote />
         <Link to="/quotes">
             Quotes
         </Link>
       </div>
       <div className="sidebar-item">
-        <IoSettingsOutline />
+        <IoPeopleOutline />
         <Link to="/leads">
             Leads
         </Link>
       </div>
       <div className="sidebar-item">
-        <IoSettingsOutline />
+        <RiAccountBoxLine />
         <Link to="/accounts">
             Accounts
         </Link>
       </div>
       <div className="sidebar-item">
-        <IoSettingsOutline />
+        <HiOutlineLocationMarker />
         <Link to="/jobs">
             Jobs
         </Link>
       </div>
       <div className="sidebar-item">
-        <IoSettingsOutline />
+        <AiOutlineSchedule />
         <Link to="/schedules">
             Schedule
         </Link>
       </div>
       <div className="sidebar-item">
-        <IoSettingsOutline />
+        <RiFileWarningLine />
         <Link to="/invoices">
             Invoices
         </Link>
       </div>
       <div className="sidebar-item">
-        <IoSettingsOutline />
+        <AiOutlineCheckCircle />
         <Link to="/agreements">
             Agreements
         </Link>
       </div>
       <div className="sidebar-item">
-        <IoSettingsOutline />
+        <BsCardList />
         <Link to="/reports">
             Reports
         </Link>
       </div>
       <div className="sidebar-item">
-        <IoSettingsOutline />
+        <IoBusinessOutline />
         <Link to="/business">
             Business Unit
         </Link>
       </div>
       <div className="sidebar-item">
-        <IoSettingsOutline />
+        <RiFlag2Line />
         <Link to="/corporate">
             Corporate
         </Link>
