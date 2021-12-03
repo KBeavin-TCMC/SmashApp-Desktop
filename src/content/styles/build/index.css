@@ -1108,6 +1108,59 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
   color: #CCCCCC;
 }
 
+.schedule-table {
+  width: 1000px;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 1px solid #e3e6f0;
+}
+.schedule-table .schedule-th .schedule-th-tr {
+  height: 40px;
+}
+.schedule-table .schedule-th .schedule-th-tr :first-child {
+  width: 14% !important;
+  padding-left: 15px;
+}
+.schedule-table .schedule-th .schedule-th-tr :not(:first-child) {
+  text-align: center;
+}
+.schedule-table .schedule-th .schedule-th-tr .schedule-th-th {
+  width: 7%;
+  font-weight: 500;
+  border: 1px solid #e3e6f0;
+}
+.schedule-table .schedule-th .schedule-th-tr .schedule-th-th .schedule-th-span {
+  position: relative;
+  padding: 0;
+  top: -6px;
+  left: 1px;
+  font-size: 7px;
+  color: #CCCCCC;
+}
+.schedule-table .schedule-tb .schedule-tb-tr {
+  height: 40px;
+}
+.schedule-table .schedule-tb .schedule-tb-tr :first-child {
+  padding-left: 15px;
+}
+.schedule-table .schedule-tb .schedule-tb-tr :first-child svg {
+  padding: 0;
+}
+.schedule-table .schedule-tb .schedule-tb-tr .schedule-tb-td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 1px solid #e3e6f0;
+}
+.schedule-table .schedule-tb .schedule-tb-tr .schedule-tb-td :last-child {
+  border-left: 1px solid #e3e6f0;
+}
+.schedule-table .schedule-tb .schedule-tb-tr .schedule-tb-td .schedule-tb-td-divider {
+  display: inline-block;
+  height: 30px;
+  width: 50%;
+}
+
 p.small-label {
   font-size: 10px;
   margin-top: -15px;

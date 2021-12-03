@@ -462,4 +462,73 @@
     font-size: 7px;
     color: $SMT_Secondary_1_Light_1;
 }
+
+table, th, td {
+}
+
+.schedule-table {
+    width: 1000px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 1px solid #e3e6f0;
+    .schedule-th {
+        .schedule-th-tr {
+            height: 40px;
+
+            :first-child {
+                width: 14% !important;
+                padding-left: 15px;
+            }
+
+            :not(:first-child) {
+                text-align: center;
+            }
+
+            .schedule-th-th {
+                width: 7%;
+                font-weight: 500;
+                border: 1px solid #e3e6f0;
+
+                .schedule-th-span {
+                    position: relative;
+                    padding: 0;
+                    top: -6px;
+                    left: 1px;
+                    font-size: 7px;
+                    color: $SMT_Secondary_1_Light_1;
+                }
+            }
+        }
+    }
+
+    .schedule-tb {
+        .schedule-tb-tr {
+            height: 40px;
+
+            :first-child {
+                padding-left: 15px;
+
+                svg {
+                    padding: 0;
+                }
+            }
+
+            .schedule-tb-td {
+                white-space: nowrap; 
+                overflow: hidden;
+                text-overflow: ellipsis;
+                border: 1px solid #e3e6f0;
+
+                :last-child {
+                    border-left: 1px solid #e3e6f0;
+                }
+                .schedule-tb-td-divider {
+                    display: inline-block;
+                    height: 30px;
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
 //========= Schedule ==========//
