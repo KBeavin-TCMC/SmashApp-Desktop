@@ -463,9 +463,6 @@
     color: $SMT_Secondary_1_Light_1;
 }
 
-table, th, td {
-}
-
 .schedule-table {
     width: 1000px;
     table-layout: fixed;
@@ -506,8 +503,6 @@ table, th, td {
             height: 40px;
 
             :first-child {
-                padding-left: 15px;
-
                 svg {
                     padding: 0;
                 }
@@ -527,6 +522,17 @@ table, th, td {
                     height: 30px;
                     width: 50%;
                 }
+            }
+
+            .schedule-vorder {
+                width: 25px;
+                height: 30px;
+                background-color: greenyellow;
+                word-wrap: normal;
+                white-space: nowrap;
+                overflow: hidden;
+                margin-left: 2px;
+                border: none !important;
             }
         }
     }

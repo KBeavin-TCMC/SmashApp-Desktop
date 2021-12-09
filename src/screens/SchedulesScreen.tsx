@@ -9,6 +9,25 @@ import { VOrder } from '../types/orders';
 import { VRoute } from '../types/routes';
 import { isSuccessStatusCode } from '../utils/Helpers';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
+import RouteDetailsScreen from './routes/RouteDetailsScreen';
+
+const availabilityTemplate = [
+  'ABBR',
+  '7:00',
+  '8:00',
+  '9:00',
+  '10:00',
+  '11:00',
+  '12:00',
+  '13:00',
+  '14:00',
+  '15:00',
+  '16:00',
+  '17:00',
+  '18:00',
+  '19:00',
+  '20:00'
+]
 
 const SchedulesScreen = () => {
   const { grpId, token } = useContext(AppContext);
@@ -35,6 +54,23 @@ const SchedulesScreen = () => {
       .then((res) => res.json())
       .then((json) => {
         if (isSuccessStatusCode(json.status)) {
+          let pnd: VRoute = {
+            _id: 'n/a',
+            group_id: 'n/a',
+            vonigo_route_id: 0,
+            type: 'n/a',
+            status: 'n/a',
+            name: 'Pending Daily (PND)',
+            abbreviation: 'PND',
+            description: 'n/a',
+            office: 'n/a',
+            internalDispatchEmail: 'n/a',
+            internalDispatchPhone: 'n/a',
+            dateCreated: 0,
+            dateLastEdited: 0,
+            isActive: true
+          }
+          json.data.push(pnd);
           setVRoutes(json.data);
         } else {
           show({ message: json.message });
@@ -61,9 +97,42 @@ const SchedulesScreen = () => {
         }
       })
       .catch((err) => {
-        console.log('err: ', err);
         show({ message: err.message });
       });
+  };
+
+  const updateScheduledOn = async (id: string, routeId: string, time: string): Promise<boolean> => {
+    let timeArr = time.split(':');
+    let scheduledOn = new Date(
+      date.getUTCFullYear(),
+      date.getUTCMonth(),
+      date.getUTCDate(),
+      parseInt(timeArr[0]),
+      parseInt(timeArr[1]),
+      0
+    ).getTime();
+
+
+    return new Promise((resolve, reject) => {
+      fetch(`${process.env.REACT_APP_TCMC_URI}/api/updateScheduledOn`, {
+        method: "POST",
+        headers: { "Content-type": "application/json", "x-access-token": token },
+        body: JSON.stringify({ order_id: id,route_id: routeId, scheduledOn: (scheduledOn / 1000) }),
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          if (isSuccessStatusCode(json.status)) {
+            resolve(true);
+          } else {
+            show({ message: json.message });
+            reject(false);
+          }
+        })
+        .catch((err) => {
+          show({ message: err.message });
+          reject(false);
+        });
+    });
   };
 
   const handleChangeDay = (action: string) => {
@@ -74,136 +143,75 @@ const SchedulesScreen = () => {
     }
   };
 
-  const renderVOrders = () => {
-    if (vorders.length === 0) return;
-    return vorders.map(u => {
-      let abbr = u.route_id.split('(')[1].slice(0, -1);
-      let rowId = vroutes.findIndex((r, i) => abbr === r.abbreviation);
-      let left = getVOrderLeftStyle(u.scheduledOn);
-      let top;
-      if (rowId === 0) top = '59px';
-      if (rowId === 1) top = '100px';
+  const handleDragOver = (e: any) => {
+    e.preventDefault();
+  };
 
-      return (
-        <div
-          key={u._id}
-          style={{
-            width: '25px',
-            height: '30px',
-            position: 'absolute',
-            top: top,
-            left: left + 'px',
-            backgroundColor: 'green',
-            wordWrap: 'normal',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden'
-          }}
-        draggable={true}
-        >
-          {u.order_id}
-        </div>
-      )
+  const handleDragStart = (e: any, orderId: string) => {
+    e.dataTransfer.setData("id", orderId);
+  };
+
+  const handleDrop = async (e: any) => {
+    let id = e.dataTransfer.getData("id");
+    let vOrder = document.getElementById(id);
+
+    console.log(vOrder);
+    if (vOrder && id !== e.target.id && e.target.className === "schedule-tb-td-divider") {
+      let route = e.target.getAttribute("data-route");
+      let time = e.target.getAttribute("data-time");
+    
+      let success = await updateScheduledOn(id, route, time);
+      if (success) {
+        e.target.appendChild(vOrder);
+      }
+    }
+  };
+
+  const renderVOrder = (route: VRoute, cell: string, half: boolean) => {
+    return vorders.map(vo => {
+      if (route.abbreviation === vo.route_id.split('(')[1].slice(0, -1)) {
+        let vCell = getVOrderCell(vo.scheduledOn);
+        
+        if (half) {
+          if (cell.split(':')[0] === vCell.split(':')[0] && vCell.slice(-2) === "30") {
+            return (
+              <div key={vo.order_id}
+                id={vo.order_id}
+                className="schedule-vorder"
+                onDragStart={(e) => handleDragStart(e, vo.order_id)}
+                draggable={true}
+              >
+                {vo.order_id}
+              </div>
+            )
+          }
+        } else {
+          if (cell === vCell) {
+            return (
+              <div key={vo.order_id}
+                id={vo.order_id}
+                className="schedule-vorder"
+                onDragStart={(e) => handleDragStart(e, vo.order_id)}
+                draggable={true}
+              >
+                {vo.order_id}
+              </div>
+            )
+          }
+        }
+      }
     });
   };
 
-  const getVOrderLeftStyle = (time: number): number => {
-    let left = 0;
+  const getVOrderCell = (time: number): string => {
+    let cell = '';
 
     const dt = new Date(time * 1000);
     const hr = dt.getUTCHours();
     const m = "0" + dt.getUTCMinutes();
-    let t = hr + ':' + m.substr(-2);
+    cell = hr + ':' + m.substr(-2);
 
-    switch (t) {
-      case '7:00':
-        left = 144;
-        break;
-      case '7:30':
-        left = 176;
-        break;
-      case '8:00':
-        left = 207;
-        break;
-      case '8:30':
-        left = 239;
-        break;
-      case '9:00':
-        left = 269;
-        break;
-      case '9:30':
-        left = 300;
-        break;
-      case '10:00':
-        left = 332;
-        break;
-      case '10:30':
-        left = 363;
-        break;
-      case '11:00':
-        left = 395;
-        break;
-      case '11:30':
-        left = 425;
-        break;
-      case '12:00':
-        left = 456;
-        break;
-      case '12:30':
-        left = 488;
-        break;
-      case '13:00':
-        left = 520;
-        break;
-      case '13:30':
-        left = 550;
-        break;
-      case '14:00':
-        left = 581;
-        break;
-      case '14:30':
-        left = 611;
-        break;
-      case '15:00':
-        left = 641;
-        break;
-      case '15:30':
-        left = 671;
-        break;
-      case '16:00':
-        left = 701;
-        break;
-      case '16:30':
-        left = 731;
-        break;
-      case '17:00':
-        left = 761;
-        break;
-      case '17:30':
-        left = 791;
-        break;
-      case '18:00':
-        left = 821;
-        break;
-      case '18:30':
-        left = 863;
-        break;
-      case '19:00':
-        left = 881;
-        break;
-      case '19:30':
-        left = 926;
-        break;
-      case '20:00':
-        left = 941;
-        break;
-      case '20:30':
-        left = 971;
-        break;
-      default:
-        left = 0;
-    }
-
-    return left;
+    return cell;
   };
 
   return (
@@ -246,32 +254,31 @@ const SchedulesScreen = () => {
                   <th className="schedule-th-th">8<span className="schedule-th-span">PM</span></th>
                 </tr>
               </thead>
-              <tbody className="schedule-tb">
+              <tbody className="schedule-tb" onDragOver={handleDragOver} onDrop={handleDrop}>
                 {vroutes.map(u => {
                   return (
                     <tr key={u._id} className="schedule-tb-tr">
 
-                      {['ABBR', '7AM', '8AM', '9AM', '10AM', '11AM', '12AM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM']
-                        .map((td, i) => {
-                          if (i === 0) {
-                            return (
-                              <td key={td}>
-                                <HiOutlineLocationMarker
-                                  color={Colors.SMT_Secondary_1_Light_1}
-                                  // size={35}
-                                  style={{ position: 'relative', top: '-3px' }}
-                                />
-                                {u.abbreviation}
-                              </td>
-                            );
-                          }
+                      {availabilityTemplate.map((td, i) => {
+                        if (i === 0) {
                           return (
-                            <td key={td} className="schedule-tb-td">
-                              <div className="schedule-tb-td-divider">{" "}</div>
-                              <div className="schedule-tb-td-divider">{" "}</div>
+                            <td key={td}>
+                              <HiOutlineLocationMarker
+                                color={Colors.SMT_Secondary_1_Light_1}
+                                // size={35}
+                                style={{ position: 'relative', top: '-3px' }}
+                              />
+                              {u.abbreviation}
                             </td>
-                          )
-                        })
+                          );
+                        }
+                        return (
+                          <td key={td} className="schedule-tb-td">
+                            <div className="schedule-tb-td-divider" data-route={u.abbreviation} data-time={td}>{renderVOrder(u, td, false)}</div>
+                            <div className="schedule-tb-td-divider" data-route={u.abbreviation} data-time={td.split(':')[0] + ':30'}>{renderVOrder(u, td, true)}</div>
+                          </td>
+                        )
+                      })
                       }
                     </tr>
                   )
@@ -279,7 +286,6 @@ const SchedulesScreen = () => {
                 }
               </tbody>
             </table>
-            {renderVOrders()}
           </div>
         </Card.Body>
       </Card>

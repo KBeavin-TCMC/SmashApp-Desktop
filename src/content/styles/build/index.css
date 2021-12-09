@@ -1140,9 +1140,6 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
 .schedule-table .schedule-tb .schedule-tb-tr {
   height: 40px;
 }
-.schedule-table .schedule-tb .schedule-tb-tr :first-child {
-  padding-left: 15px;
-}
 .schedule-table .schedule-tb .schedule-tb-tr :first-child svg {
   padding: 0;
 }
@@ -1159,6 +1156,16 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
   display: inline-block;
   height: 30px;
   width: 50%;
+}
+.schedule-table .schedule-tb .schedule-tb-tr .schedule-vorder {
+  width: 25px;
+  height: 30px;
+  background-color: greenyellow;
+  word-wrap: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-left: 2px;
+  border: none !important;
 }
 
 p.small-label {
