@@ -892,6 +892,69 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
   margin-bottom: 10px;
 }
 
+.header-settings-icon {
+  font-size: 3rem;
+}
+
+.header-settings-span {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.header-dropdown {
+  position: relative;
+  top: 10px;
+  margin-right: 60px;
+}
+
+.settings-dropdown-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 50%;
+}
+.settings-dropdown-container:hover {
+  background-color: #dedede;
+}
+.settings-dropdown-container div.dropdown-tip.dropdown-tip-border.dropdown-menu.show {
+  left: 0px !important;
+}
+
+button#dropdown-basic.settings-dropdown.dropdown-toggle.btn.btn-white {
+  padding: 0;
+}
+button#dropdown-basic.settings-dropdown.dropdown-toggle.btn.btn-white:focus {
+  box-shadow: none;
+}
+
+button#dropdown-basic.settings-dropdown.dropdown-toggle.btn.btn-white::after {
+  display: none;
+}
+
+.dropdown-tip:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 122px;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-tip-border:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 123px;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border: 9px solid transparent;
+  border-bottom-color: white;
+}
+
 @media (min-width: 576px) {
   .app-header {
     position: fixed;
@@ -1019,35 +1082,22 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
     margin-bottom: -2px;
   }
 
-  .header-settings {
-    position: relative;
-    left: 28px;
-    float: right;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 10px;
-  }
-  .header-settings:hover {
-    background-color: #dedede;
-  }
-  .header-settings .header-settings-icon {
-    position: relative;
-    top: 5px;
-    float: right;
-    font-size: 3rem;
-  }
-  .header-settings .header-settings-span {
-    position: relative;
-    top: 15px;
-    float: right;
-    margin-right: 15px;
+  .settings-dropdown-container {
+    margin: 0;
+    width: 100%;
+    margin-right: -40px;
   }
 
-  .header-dropdown {
-    position: relative;
-    top: 10px;
-    margin-right: 60px;
+  .header-columns {
+    padding-bottom: 10px;
+    display: inline-block;
+  }
+  .header-columns:last-child {
+    padding-bottom: 0;
+  }
+
+  .group-dropdown button {
+    max-width: 150px;
   }
 }
 .app-sidebar {

@@ -1,11 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import {
-  Col,
-  Dropdown,
-  DropdownButton,
-  FormControl,
-  Row,
-} from "react-bootstrap";
+import { useContext, useEffect, useState } from "react";
+import { Col, Dropdown, DropdownButton, Row } from "react-bootstrap";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import AppContext from "../../providers/AppContext";
 import { ToastContext } from "../../providers/ToastProvider";
@@ -14,13 +8,11 @@ import { isSuccessStatusCode } from "../../utils/Helpers";
 import { useHistory } from "react-router-dom";
 
 const RightHeader = () => {
-  const { grpArr, setGrpId, grpId, role, token, displayName } =
-    useContext(AppContext);
+  const { grpArr, setGrpId, grpId, role, token, displayName, setToken, setIsAuth } = useContext(AppContext);
   let history = useHistory();
   const { show } = useContext(ToastContext);
   const [grpName, setGrpName] = useState("");
   const [groupsList, setGroupsList] = useState<Group[]>([]);
-  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     if (role === "admin") {
@@ -69,6 +61,13 @@ const RightHeader = () => {
       .catch((err) => show({ message: err.message }));
   };
 
+  const logout = () => {
+    history.push('/');
+    window.localStorage.removeItem('smtUser');
+    setToken('');
+    setIsAuth(false);
+  }
+
   return (
     <Row>
       <Col>
@@ -104,18 +103,19 @@ const RightHeader = () => {
             </Dropdown>
           </Col>
 
-          <Col xs={12} sm={4} className="header-columns">
+          <Col xs={12} sm={4} className="header-columns" style={{maxWidth: '80%'}}>
             {role !== "admin" ? (
               <DropdownButton
                 variant="secondary"
-                className="header-dropdown"
+                className="header-dropdown group-dropdown"
                 title={grpName}
               ><div></div></DropdownButton>
             ) : (
               <Dropdown className="header-dropdown">
-                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                <Dropdown.Toggle style={{maxWidth: '150px'}} variant="secondary" id="dropdown-basic">
                   {grpName}
                 </Dropdown.Toggle>
+
 
                 <Dropdown.Menu
                   style={{ maxHeight: "50vh", overflow: "scroll" }}
@@ -139,15 +139,23 @@ const RightHeader = () => {
           </Col>
 
           <Col xs={12} sm={4} className="header-columns">
-            <div
-              className="header-settings"
-              onClick={() => history.push("/settings")}
-            >
-              <IoPersonCircleOutline className="header-settings-icon"/>
-              <span className="header-settings-span">
-                {displayName}
-              </span>
-            </div>
+              <Dropdown className='settings-dropdown-container'>
+              <Dropdown.Toggle variant="white" id="dropdown-basic" className="settings-dropdown">
+                <div className='settings-dropdown-toggle'>
+                  <span className="header-settings-span">
+                    {displayName}
+                  </span>
+                  <IoPersonCircleOutline className="header-settings-icon" />
+                </div>
+              </Dropdown.Toggle>
+
+                <Dropdown.Menu className='dropdown-tip dropdown-tip-border' style={{ left: '-15px' }}>
+                  <Dropdown.Item onClick={logout}>
+                    Log Out
+                  </Dropdown.Item>
+
+                </Dropdown.Menu>
+              </Dropdown>
           </Col>
         </Row>
       </Col>

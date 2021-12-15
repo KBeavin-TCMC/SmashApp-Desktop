@@ -103,14 +103,14 @@ const SchedulesScreen = () => {
 
   const updateScheduledOn = async (id: string, routeId: string, time: string): Promise<boolean> => {
     let timeArr = time.split(':');
-    let scheduledOn = new Date(
+    let scheduledOn = Date.UTC(
       date.getUTCFullYear(),
       date.getUTCMonth(),
       date.getUTCDate(),
       parseInt(timeArr[0]),
       parseInt(timeArr[1]),
       0
-    ).getTime();
+    );
 
 
     return new Promise((resolve, reject) => {
@@ -169,7 +169,8 @@ const SchedulesScreen = () => {
 
   const renderVOrder = (route: VRoute, cell: string, half: boolean) => {
     return vorders.map(vo => {
-      if (route.abbreviation === vo.route_id.split('(')[1].slice(0, -1)) {
+      if (route.abbreviation === vo.route_id.substring(vo.route_id.lastIndexOf("(") + 1, vo.route_id.length - 1)) {
+
         let vCell = getVOrderCell(vo.scheduledOn);
         
         if (half) {
@@ -274,8 +275,8 @@ const SchedulesScreen = () => {
                         }
                         return (
                           <td key={td} className="schedule-tb-td">
-                            <div className="schedule-tb-td-divider" data-route={u.abbreviation} data-time={td}>{renderVOrder(u, td, false)}</div>
-                            <div className="schedule-tb-td-divider" data-route={u.abbreviation} data-time={td.split(':')[0] + ':30'}>{renderVOrder(u, td, true)}</div>
+                            <div className="schedule-tb-td-divider" data-route={`${u.name} (${u.abbreviation})`} data-time={td}>{renderVOrder(u, td, false)}</div>
+                            <div className="schedule-tb-td-divider" data-route={`${u.name} (${u.abbreviation})`} data-time={td.split(':')[0] + ':30'}>{renderVOrder(u, td, true)}</div>
                           </td>
                         )
                       })
