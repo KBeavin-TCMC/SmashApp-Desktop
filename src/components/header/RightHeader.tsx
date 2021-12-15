@@ -103,7 +103,7 @@ const RightHeader = () => {
             </Dropdown>
           </Col>
 
-          <Col xs={12} sm={4} className="header-columns" style={{maxWidth: '80%'}}>
+          <Col xs={12} sm={4} className="header-columns">
             {role !== "admin" ? (
               <DropdownButton
                 variant="secondary"
