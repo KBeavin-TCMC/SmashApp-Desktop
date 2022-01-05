@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
-import AppContext from "../../providers/AppContext";
-import { isSuccessStatusCode } from "../../utils/Helpers";
+import { Button, Form } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import { ToastContext } from "../../providers/ToastProvider";
+
+import AppContext from "../../providers/AppContext";
 import AppToast from "../../components/layout/AppToast";
-import { SMT_User } from "../../types";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import { isSuccessStatusCode } from "../../utils/Helpers";
+import { ToastContext } from "../../providers/ToastProvider";
+import { SMT_User } from "../../types";
 
 const AuthScreen = () => {
   let history = useHistory();
@@ -94,15 +94,14 @@ const AuthScreen = () => {
                     {!toggleForm ? (
                       <>
                         <div className='text-center'>
-                          <h1 className='h4 text-gray-900 mb-4'>Smash App</h1>
+                          <h1 className='h4 mb-4'>Smash App</h1>
                         </div>
                         <Form onSubmit={login}>
                           <Form.Group
                             controlId="email"
-                            className="form-group"
+                            className="mb-3"
                           >
                             <Form.Control
-                              className="form-control form-control-user"
                               aria-describedby="emailHelp"
                               placeholder="Enter Email Address..."
                               autoFocus
@@ -114,10 +113,9 @@ const AuthScreen = () => {
 
                           <Form.Group
                             controlId="password"
-                            className="form-group"
+                            className="mb-3"
                           >
                             <Form.Control
-                              className="form-control form-control-user"
                               placeholder="Password"
                               type="password"
                               value={password}
@@ -128,15 +126,14 @@ const AuthScreen = () => {
                           <div className='row'>
                             <div className='col'>
                               <Button
-                                className="btn btn-primary btn-user btn-block"
-                                size="lg"
+                                className="btn btn-primary w-100"
                                 type="submit"
                               >
                                 Login
                               </Button>
                             </div>
                               <div className='col'>
-                              <a className='login' onClick={() => setToggleForm(!toggleForm)}>forgot password?</a>
+                              <a className='login' onClick={() => setToggleForm(!toggleForm)} style={{ textDecoration: 'none', color: "black" }}>forgot password?</a>
                               </div>
                           </div>
                         </Form>
@@ -144,15 +141,14 @@ const AuthScreen = () => {
                     ) : (
                       <>
                       <div className='text-center'>
-                        <h1 className='h4 text-gray-900 mb-4'>Smash App</h1>
+                        <h1 className='h4 mb-4'>Smash App</h1>
                       </div>
                       <Form onSubmit={handleForgotPassword}>
                         <Form.Group
                           controlId="email"
-                          className="form-group"
+                          className="mb-3"
                         >
                           <Form.Control
-                            className="form-control form-control-user"
                             aria-describedby="emailHelp"
                             placeholder="Enter Email Address..."
                             autoFocus
@@ -165,15 +161,14 @@ const AuthScreen = () => {
                         <div className='row'>
                           <div className='col'>
                             <Button
-                              className="btn btn-primary btn-user btn-block"
-                              size="lg"
+                              className="btn btn-primary w-100"
                               type="submit"
                             >
                               Submit
                             </Button>
                           </div>
                             <div className='col'>
-                            <a className='login' onClick={() => setToggleForm(!toggleForm)}>log in?</a>
+                            <a className='login' onClick={() => setToggleForm(!toggleForm)} style={{ textDecoration: 'none', color: "black" }}>log in?</a>
                             </div>
                         </div>
                       </Form>

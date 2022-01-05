@@ -6,7 +6,11 @@ const LeftHeader = () => {
   return (
     <Row>
       <Col>
-        <div className='header-image'></div>
+        <div
+          className='header-image'
+        >
+
+        </div>
       </Col>
       <Col style={{position: 'relative', top: '4px'}}>
         <AppToast/>

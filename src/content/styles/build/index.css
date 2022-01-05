@@ -761,6 +761,16 @@ div.react-calendar .react-calendar__viewContainer .react-calendar__month-view .r
   background-color: #FFFFFF;
   border-bottom: solid lightgray 2px;
 }
+.app-header .header-image {
+  background-image: url("../../assets/smt_logo2.png");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 170px 82px;
+  height: 60px;
+  width: 170px;
+  position: relative;
+  top: 10px;
+}
 .app-header .left-header {
   display: flex;
 }

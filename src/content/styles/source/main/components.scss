@@ -42,13 +42,20 @@
     position: fixed;
     z-index: 1000;
     width: 100%;
-    // display: flex;
-    // align-items: center;
-    // padding-top: .5vh;
-    // padding-bottom: .5vh;
     background-color: $SMT_Tertiary_1;
     border-bottom: solid lightgray 2px;
     
+    .header-image {
+        background-image: url("../../assets/smt_logo2.png");
+        background-repeat: no-repeat;
+        background-position: left top;
+        background-size: 170px 82px;
+        height: 60px;
+        width: 170px;
+        position: relative;
+        top: 10px;
+    }
+
     .left-header {
         display: flex;
 

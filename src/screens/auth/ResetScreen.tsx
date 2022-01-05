@@ -61,10 +61,9 @@ const ResetScreen = () => {
                           <Form onSubmit={handleResetPassword}>
                             <Form.Group
                               controlId="email"
-                              className="form-group"
+                              className="mb-3"
                             >
                               <Form.Control
-                                className="form-control form-control-user"
                                 aria-describedby="emailHelp"
                                 placeholder="Enter Email Address..."
                                 autoFocus
@@ -76,10 +75,9 @@ const ResetScreen = () => {
   
                             <Form.Group
                               controlId="password"
-                              className="form-group"
+                              className="mb-3"
                             >
                               <Form.Control
-                                className="form-control form-control-user"
                                 placeholder="Password"
                                 type="password"
                                 value={password}
@@ -89,10 +87,9 @@ const ResetScreen = () => {
 
                             <Form.Group
                               controlId="confirm-password"
-                              className="form-group"
+                              className="mb-3"
                             >
                               <Form.Control
-                                className="form-control form-control-user"
                                 placeholder="Confirm Password"
                                 type="password"
                                 value={confirmPassword}
@@ -103,8 +100,7 @@ const ResetScreen = () => {
                             <div className='row'>
                               <div className='col'>
                                 <Button
-                                  className="btn btn-primary btn-user btn-block"
-                                  size="lg"
+                                  className="btn btn-primary w-100"
                                   type="submit"
                                 >
                                   Submit
