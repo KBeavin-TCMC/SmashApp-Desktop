@@ -12,6 +12,16 @@ const ResetScreen = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
+    function checkPassword() {
+      var decimal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+      if (password.match(decimal)) {
+          return true;
+      }
+      else {
+          return false;
+      }
+    }
+
     const handleResetPassword = async (e: any) => {
         e.preventDefault();
         if (checkConfirmPassword()) {
@@ -31,15 +41,19 @@ const ResetScreen = () => {
     };
 
     const checkConfirmPassword = (): Boolean => {
-        let match = false;
+      let match = false;
+      let validPass = checkPassword();
 
-        if (password !== confirmPassword) {
-            show({ message: "Passwords do not match." });
-        } else {
-            match = true;
-        }
-
-        return match;
+      if (!validPass) {
+          show({ message: "Password must be between 8 to 15 characters which contains at least one lowercase, one uppercase, one number, and one symbol"});
+      } else {
+          if (password !== confirmPassword) {
+              show({ message: "Passwords do not match." });
+          } else {
+              match = true;
+          }
+      }
+      return match;
     }
 
     return (
