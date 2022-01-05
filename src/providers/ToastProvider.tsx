@@ -4,13 +4,14 @@ const initialToast = {
   message: '',
   type: null,
   visible: false,
+  loading: false,
 };
 
 interface Props {
     children: ReactNode;
 }
 
-export const ToastContext = createContext({show: (a = {}) => {} , toast: initialToast, hide: (b = {}) => {}});
+export const ToastContext = createContext({show: (a = {}) => {} , toast: initialToast, hide: (b = {}) => {}, setLoading: (c = {}) => {}});
 
 const ToastProvider: React.FC<Props> = ({children}) => {
   const [toast, setToast] = useState(initialToast);
@@ -24,6 +25,10 @@ const ToastProvider: React.FC<Props> = ({children}) => {
     setToast({...toast, visible: false});
     setTimeout(() => setToast({...toast, message: '', visible: false}), 200);
   }, [toast]);
+
+  const setLoading = useCallback((args) => {
+    setToast({...initialToast, loading: args});
+  }, []);
 
   useEffect(() => {
     if (toast.visible) {
@@ -42,6 +47,7 @@ const ToastProvider: React.FC<Props> = ({children}) => {
         hide,
         show,
         toast,
+        setLoading
       }}>
           {children}
       </ToastContext.Provider>

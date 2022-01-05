@@ -1,14 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
-import { BiChevronLeftCircle, BiChevronRightCircle } from 'react-icons/bi';
 import { Card, Row, Col } from 'react-bootstrap';
-import Colors from '../constants/Colors';
-import useDates from '../hooks/useDates';
+import { BiChevronLeftCircle, BiChevronRightCircle } from 'react-icons/bi';
+import { HiOutlineLocationMarker } from 'react-icons/hi';
+
 import AppContext from '../providers/AppContext';
 import { ToastContext } from '../providers/ToastProvider';
+import useDates from '../hooks/useDates';
+import Colors from '../constants/Colors';
 import { VOrder } from '../types/orders';
 import { VRoute } from '../types/routes';
 import { isSuccessStatusCode } from '../utils/Helpers';
-import { HiOutlineLocationMarker } from 'react-icons/hi';
 import RouteDetailsScreen from './routes/RouteDetailsScreen';
 
 const availabilityTemplate = [
@@ -31,7 +32,7 @@ const availabilityTemplate = [
 
 const SchedulesScreen = () => {
   const { grpId, token } = useContext(AppContext);
-  const { show } = useContext(ToastContext);
+  const { show, setLoading, toast } = useContext(ToastContext);
   const { addDays, getSelectedDateRange } = useDates();
   const [date, setDate] = useState<Date>(new Date());
   const [vroutes, setVRoutes] = useState<VRoute[]>([]);
@@ -82,6 +83,7 @@ const SchedulesScreen = () => {
   };
 
   const getVOrders = () => {
+    setLoading(true);
     let dateObj = getSelectedDateRange(date);
     fetch(`${process.env.REACT_APP_TCMC_URI}/api/vordersBy`, {
       method: "POST",
@@ -92,16 +94,19 @@ const SchedulesScreen = () => {
       .then((json) => {
         if (isSuccessStatusCode(json.status)) {
           setVOrders(json.data);
+          setLoading(false);
         } else {
           show({ message: json.message });
+          setLoading(false);
         }
       })
       .catch((err) => {
         show({ message: err.message });
+        setLoading(false);
       });
   };
 
-  const updateScheduledOn = async (id: string, routeId: string, time: string): Promise<boolean> => {
+  const updateScheduledOn = async (id: string, routeId: string, time: string) => {
     let timeArr = time.split(':');
     let scheduledOn = Date.UTC(
       date.getUTCFullYear(),
@@ -112,27 +117,22 @@ const SchedulesScreen = () => {
       0
     );
 
-
-    return new Promise((resolve, reject) => {
-      fetch(`${process.env.REACT_APP_TCMC_URI}/api/updateScheduledOn`, {
-        method: "POST",
-        headers: { "Content-type": "application/json", "x-access-token": token },
-        body: JSON.stringify({ order_id: id,route_id: routeId, scheduledOn: (scheduledOn / 1000) }),
+    fetch(`${process.env.REACT_APP_TCMC_URI}/api/updateScheduledOn`, {
+      method: "POST",
+      headers: { "Content-type": "application/json", "x-access-token": token },
+      body: JSON.stringify({ order_id: id,route_id: routeId, scheduledOn: (scheduledOn / 1000) }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (isSuccessStatusCode(json.status)) {
+          getVOrders();
+        } else {
+          show({ message: json.message });
+        }
       })
-        .then((res) => res.json())
-        .then((json) => {
-          if (isSuccessStatusCode(json.status)) {
-            resolve(true);
-          } else {
-            show({ message: json.message });
-            reject(false);
-          }
-        })
-        .catch((err) => {
-          show({ message: err.message });
-          reject(false);
-        });
-    });
+      .catch((err) => {
+        show({ message: err.message });
+      });
   };
 
   const handleChangeDay = (action: string) => {
@@ -154,23 +154,18 @@ const SchedulesScreen = () => {
   const handleDrop = async (e: any) => {
     let id = e.dataTransfer.getData("id");
     let vOrder = document.getElementById(id);
-
-    console.log(vOrder);
+    
     if (vOrder && id !== e.target.id && e.target.className === "schedule-tb-td-divider") {
+      setLoading(true);
       let route = e.target.getAttribute("data-route");
       let time = e.target.getAttribute("data-time");
-    
-      let success = await updateScheduledOn(id, route, time);
-      if (success) {
-        e.target.appendChild(vOrder);
-      }
+      updateScheduledOn(id, route, time);
     }
   };
 
   const renderVOrder = (route: VRoute, cell: string, half: boolean) => {
     return vorders.map(vo => {
       if (route.abbreviation === vo.route_id.substring(vo.route_id.lastIndexOf("(") + 1, vo.route_id.length - 1)) {
-
         let vCell = getVOrderCell(vo.scheduledOn);
         
         if (half) {

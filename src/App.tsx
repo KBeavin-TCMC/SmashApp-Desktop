@@ -91,7 +91,6 @@ const App = () => {
             <Router>
               {!isAuth ? (
                 <AuthNavigation />
-                // <AuthScreen />
               ) : (
                 <CrmProvider>
                   <OrderProvider>
