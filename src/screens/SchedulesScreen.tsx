@@ -11,6 +11,7 @@ import { VOrder } from '../types/orders';
 import { VRoute } from '../types/routes';
 import { isSuccessStatusCode } from '../utils/Helpers';
 import RouteDetailsScreen from './routes/RouteDetailsScreen';
+import ScheduledBlock from '../components/schedule/ScheduledBlock';
 
 const availabilityTemplate = [
   'ABBR',
@@ -171,27 +172,13 @@ const SchedulesScreen = () => {
         if (half) {
           if (cell.split(':')[0] === vCell.split(':')[0] && vCell.slice(-2) === "30") {
             return (
-              <div key={vo.order_id}
-                id={vo.order_id}
-                className="schedule-vorder"
-                onDragStart={(e) => handleDragStart(e, vo.order_id)}
-                draggable={true}
-              >
-                {vo.order_id}
-              </div>
+              <ScheduledBlock key={vo.order_id} vorder={vo} cell={cell} onDrag={handleDragStart} />
             )
           }
         } else {
           if (cell === vCell) {
             return (
-              <div key={vo.order_id}
-                id={vo.order_id}
-                className="schedule-vorder"
-                onDragStart={(e) => handleDragStart(e, vo.order_id)}
-                draggable={true}
-              >
-                {vo.order_id}
-              </div>
+              <ScheduledBlock key={vo.order_id} vorder={vo} cell={cell} onDrag={handleDragStart} />
             )
           }
         }
@@ -269,7 +256,7 @@ const SchedulesScreen = () => {
                           );
                         }
                         return (
-                          <td key={td} className="schedule-tb-td">
+                          <td key={td} className="schedule-tb-td" >
                             <div className="schedule-tb-td-divider" data-route={`${u.name} (${u.abbreviation})`} data-time={td}>{renderVOrder(u, td, false)}</div>
                             <div className="schedule-tb-td-divider" data-route={`${u.name} (${u.abbreviation})`} data-time={td.split(':')[0] + ':30'}>{renderVOrder(u, td, true)}</div>
                           </td>

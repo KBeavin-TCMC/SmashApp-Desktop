@@ -558,7 +558,7 @@ button#dropdown-basic.settings-dropdown.dropdown-toggle.btn.btn-white::after {
 
     .schedule-tb {
         .schedule-tb-tr {
-            height: 40px;
+            // height: 40px;
 
             :first-child {
                 svg {
@@ -571,26 +571,99 @@ button#dropdown-basic.settings-dropdown.dropdown-toggle.btn.btn-white::after {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 border: 1px solid #e3e6f0;
+                padding: 0;
 
                 :last-child {
                     border-left: 1px solid #e3e6f0;
                 }
                 .schedule-tb-td-divider {
                     display: inline-block;
-                    height: 30px;
+                    height: 34px;
                     width: 50%;
+                    vertical-align: text-top;
+                    margin-top: -1px;
+                    padding-top: 2px;
                 }
             }
 
             .schedule-vorder {
+                position: relative;
                 width: 25px;
                 height: 30px;
-                background-color: greenyellow;
+                background-color: $SMT_Secondary_2_Light_2;
                 word-wrap: normal;
                 white-space: nowrap;
                 overflow: hidden;
-                margin-left: 2px;
+                // margin-left: 2px;
+                margin-left: auto;
+                margin-right: auto;
                 border: none !important;
+                border-radius: 3px;
+            }
+
+            .schedule-vorder-tooltip {
+                position: fixed;
+                margin-left: 35px;
+                padding: 5px;
+                background-color: $SMT_Tertiary_1;
+                border: 1px solid $SMT_Secondary_2_Light_2 !important;
+                border-radius: 3px;
+                z-index: 10;
+                font-size: 10px;
+
+                p {
+                    margin-bottom: 0;
+                    border: none !important;
+                }
+
+                span {
+                    color: $SMT_Secondary_2_Light_2;
+                    text-decoration: underline;
+                    float: right;
+                }
+
+                .schedule-vorder-tooltip-header {
+                    font-weight: bold;
+                    p {
+                        display: inline;
+                    }
+                    span {
+                        font-size: 12px;
+                        border: none;
+
+                        &:hover {
+                            color: darken($SMT_Secondary_2_Light_2, 7%);
+                        }
+                    }
+                }
+            }
+
+            .schedule-vorder-tooltip:before {
+                content: '';
+                display: block;  
+                position: absolute;
+                top: 10%;
+                right: 100%;
+                width: 0;
+                height: 0;
+                border: 10px solid transparent;
+                border-top: 11px solid transparent;
+                border-bottom: 11px solid transparent; 
+                border-right: 18px solid $SMT_Secondary_2_Light_2;
+            }
+            
+            .schedule-vorder-tooltip:after {
+                content: '';
+                display: block;  
+                position: absolute;
+                top: 12%;
+                right: 100%;
+                width: 0;
+                height: 0;
+                border: 9px solid transparent;
+                border-top: 9px solid transparent;
+                border-bottom: 9px solid transparent; 
+                border-right: 16px solid white;
             }
         }
     }

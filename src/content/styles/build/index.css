@@ -1197,9 +1197,6 @@ button#dropdown-basic.settings-dropdown.dropdown-toggle.btn.btn-white::after {
   font-size: 7px;
   color: #CCCCCC;
 }
-.schedule-table .schedule-tb .schedule-tb-tr {
-  height: 40px;
-}
 .schedule-table .schedule-tb .schedule-tb-tr :first-child svg {
   padding: 0;
 }
@@ -1208,24 +1205,89 @@ button#dropdown-basic.settings-dropdown.dropdown-toggle.btn.btn-white::after {
   overflow: hidden;
   text-overflow: ellipsis;
   border: 1px solid #e3e6f0;
+  padding: 0;
 }
 .schedule-table .schedule-tb .schedule-tb-tr .schedule-tb-td :last-child {
   border-left: 1px solid #e3e6f0;
 }
 .schedule-table .schedule-tb .schedule-tb-tr .schedule-tb-td .schedule-tb-td-divider {
   display: inline-block;
-  height: 30px;
+  height: 34px;
   width: 50%;
+  vertical-align: text-top;
+  margin-top: -1px;
+  padding-top: 2px;
 }
 .schedule-table .schedule-tb .schedule-tb-tr .schedule-vorder {
+  position: relative;
   width: 25px;
   height: 30px;
-  background-color: greenyellow;
+  background-color: #C9DBFF;
   word-wrap: normal;
   white-space: nowrap;
   overflow: hidden;
-  margin-left: 2px;
+  margin-left: auto;
+  margin-right: auto;
   border: none !important;
+  border-radius: 3px;
+}
+.schedule-table .schedule-tb .schedule-tb-tr .schedule-vorder-tooltip {
+  position: fixed;
+  margin-left: 35px;
+  padding: 5px;
+  background-color: #FFFFFF;
+  border: 1px solid #C9DBFF !important;
+  border-radius: 3px;
+  z-index: 10;
+  font-size: 10px;
+}
+.schedule-table .schedule-tb .schedule-tb-tr .schedule-vorder-tooltip p {
+  margin-bottom: 0;
+  border: none !important;
+}
+.schedule-table .schedule-tb .schedule-tb-tr .schedule-vorder-tooltip span {
+  color: #C9DBFF;
+  text-decoration: underline;
+  float: right;
+}
+.schedule-table .schedule-tb .schedule-tb-tr .schedule-vorder-tooltip .schedule-vorder-tooltip-header {
+  font-weight: bold;
+}
+.schedule-table .schedule-tb .schedule-tb-tr .schedule-vorder-tooltip .schedule-vorder-tooltip-header p {
+  display: inline;
+}
+.schedule-table .schedule-tb .schedule-tb-tr .schedule-vorder-tooltip .schedule-vorder-tooltip-header span {
+  font-size: 12px;
+  border: none;
+}
+.schedule-table .schedule-tb .schedule-tb-tr .schedule-vorder-tooltip .schedule-vorder-tooltip-header span:hover {
+  color: #a5c3ff;
+}
+.schedule-table .schedule-tb .schedule-tb-tr .schedule-vorder-tooltip:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 10%;
+  right: 100%;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-right: 18px solid #C9DBFF;
+}
+.schedule-table .schedule-tb .schedule-tb-tr .schedule-vorder-tooltip:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 12%;
+  right: 100%;
+  width: 0;
+  height: 0;
+  border: 9px solid transparent;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-right: 16px solid white;
 }
 
 p.small-label {

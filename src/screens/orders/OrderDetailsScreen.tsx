@@ -16,7 +16,7 @@ const OrderDetailsScreen = (props: any) => {
 
     useEffect(() => {
         const getOrderDetails = async () => {
-            fetch(`${REACT_APP_TCMC_URI}/api/ordersBy`, {
+            fetch(`${REACT_APP_TCMC_URI}/api/vordersBy`, {
               method: "POST",
               headers: { "Content-type": "application/json", "x-access-token": token },
               body: JSON.stringify({_id: route.id }),
