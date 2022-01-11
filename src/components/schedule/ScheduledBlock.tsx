@@ -16,7 +16,10 @@ const ScheduledBlock: React.FC<Props> = ({ vorder, cell, onDrag }) => {
         <div key={vorder.order_id}
             id={vorder.order_id}
             className="schedule-vorder"
-            onDragStart={(e) => onDrag(e, vorder.order_id)}
+            onDragStart={(e) => {
+                setIsShown(false);
+                onDrag(e, vorder.order_id);
+            }}
             onMouseEnter={() => setIsShown(true)}
             onMouseLeave={() => setIsShown(false)}
             draggable={true}
@@ -25,7 +28,7 @@ const ScheduledBlock: React.FC<Props> = ({ vorder, cell, onDrag }) => {
                 <div className='schedule-vorder-tooltip'>
                     <div className='schedule-vorder-tooltip-header'>
                         <p>{vorder.account_id}</p>
-                        <span onClick={() => history.push(`orders/orders/${vorder._id}`)}>Details</span>
+                        <span onClick={() => history.push(`orders/orders/${vorder._id}`, vorder)}>Details</span>
                     </div>
                     <p>Scheduled: {cell}</p>
                     <p>{vorder.name}</p>
